@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.seata.tm.DefaultTransactionManager</OriginalElement>
+  <nodes>
+    <node x="216.0" y="454.0">io.seata.tm.api.TransactionalExecutor</node>
+    <node x="232.0" y="232.0">io.seata.tm.api.transaction.NoRollbackRule</node>
+    <node x="256.0" y="0.0">io.seata.tm.api.GlobalTransaction</node>
+    <node x="0.0" y="380.0">io.seata.tm.api.GlobalTransactionContext</node>
+    <node x="247.0" y="306.0">io.seata.tm.TransactionManagerHolder</node>
+    <node x="0.0" y="528.0">io.seata.tm.api.transaction.TransactionInfo</node>
+    <node x="24.5" y="153.0">io.seata.tm.api.transaction.TransactionHook</node>
+    <node x="431.0" y="454.0">io.seata.tm.api.GlobalTransactionRole</node>
+    <node x="174.0" y="528.0">io.seata.tm.TMClient</node>
+    <node x="234.0" y="79.0">io.seata.tm.api.DefaultGlobalTransaction</node>
+    <node x="0.0" y="232.0">io.seata.tm.api.transaction.TransactionHookAdapter</node>
+    <node x="238.0" y="380.0">io.seata.tm.api.transaction.TransactionHookManager</node>
+    <node x="0.0" y="306.0">io.seata.tm.DefaultTransactionManager</node>
+    <node x="0.0" y="454.0">io.seata.tm.api.TransactionalTemplate</node>
+    <node x="34.5" y="0.0">io.seata.tm.api.FailureHandler</node>
+    <node x="0.0" y="79.0">io.seata.tm.api.DefaultFailureHandlerImpl</node>
+    <node x="241.0" y="153.0">io.seata.tm.api.transaction.RollbackRule</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.seata.tm.api.transaction.TransactionHookAdapter" target="io.seata.tm.api.transaction.TransactionHook">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.tm.api.transaction.NoRollbackRule" target="io.seata.tm.api.transaction.RollbackRule">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.tm.api.DefaultGlobalTransaction" target="io.seata.tm.api.GlobalTransaction">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.tm.api.DefaultFailureHandlerImpl" target="io.seata.tm.api.FailureHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="101.0" y="54.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

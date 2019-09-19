@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.seata.server.AbstractTCInboundHandler</OriginalElement>
+  <nodes>
+    <node x="160.0595238095238" y="469.0">io.seata.server.store.AbstractTransactionStoreManager</node>
+    <node x="674.0" y="775.0">io.seata.server.session.SessionCondition</node>
+    <node x="33.75" y="548.0">io.seata.server.store.file.FileTransactionStoreManager</node>
+    <node x="0.0" y="622.0">io.seata.server.session.SessionLifecycle</node>
+    <node x="695.0" y="849.0">io.seata.server.lock.memory.MemoryLocker</node>
+    <node x="178.0" y="849.0">io.seata.server.lock.db.DataBaseLocker</node>
+    <node x="195.74999999999997" y="622.0">io.seata.server.store.SessionStorable</node>
+    <node x="41.99999999999997" y="158.0">io.seata.server.session.AbstractSessionManager</node>
+    <node x="354.0" y="849.0">io.seata.server.UUIDGenerator</node>
+    <node x="798.0" y="923.0">io.seata.server.Server</node>
+    <node x="485.0" y="775.0">io.seata.server.event.EventBusManager</node>
+    <node x="0.0" y="237.0">io.seata.server.session.DefaultSessionManager</node>
+    <node x="408.0" y="237.0">io.seata.server.session.Reloadable</node>
+    <node x="793.75" y="701.0">io.seata.server.coordinator.DefaultCore</node>
+    <node x="178.5" y="390.0">io.seata.server.store.TransactionStoreManager</node>
+    <node x="0.0" y="849.0">io.seata.server.ParameterParser</node>
+    <node x="568.0833333333334" y="548.0">io.seata.server.lock.DefaultLockManager</node>
+    <node x="270.58333333333337" y="548.0">io.seata.server.store.db.DatabaseTransactionStoreManager</node>
+    <node x="573.25" y="701.0">io.seata.server.coordinator.DefaultCoordinator</node>
+    <node x="366.75" y="701.0">io.seata.server.session.BranchSession</node>
+    <node x="0.0" y="469.0">io.seata.server.store.ReloadableStore</node>
+    <node x="331.0" y="923.0">io.seata.server.lock.LockerFactory</node>
+    <node x="0.0" y="775.0">io.seata.server.store.db.DruidDataSourceGenerator</node>
+    <node x="647.0" y="923.0">io.seata.server.store.StoreConfig</node>
+    <node x="495.0" y="923.0">io.seata.server.coordinator.CoreFactory</node>
+    <node x="547.75" y="622.0">io.seata.server.AbstractTCInboundHandler</node>
+    <node x="563.5833333333334" y="469.0">io.seata.server.lock.AbstractLockManager</node>
+    <node x="815.75" y="622.0">io.seata.server.coordinator.Core</node>
+    <node x="243.0" y="775.0">io.seata.server.store.db.DbcpDataSourceGenerator</node>
+    <node x="178.46969696969694" y="316.0">io.seata.server.session.file.FileBasedSessionManager</node>
+    <node x="36.74999999999997" y="701.0">io.seata.server.session.GlobalSession</node>
+    <node x="169.4393939393939" y="0.0">io.seata.server.session.SessionLifecycleListener</node>
+    <node x="416.75" y="622.0">io.seata.server.session.Lockable</node>
+    <node x="525.0" y="849.0">io.seata.server.store.FlushDiskMode</node>
+    <node x="0.0" y="923.0">io.seata.server.session.SessionHolder</node>
+    <node x="175.74999999999997" y="701.0">io.seata.server.store.TransactionWriteStore</node>
+    <node x="166.0" y="923.0">io.seata.server.session.SessionHelper</node>
+    <node x="196.99999999999997" y="237.0">io.seata.server.session.db.DataBaseSessionManager</node>
+    <node x="590.0833333333334" y="390.0">io.seata.server.lock.LockManager</node>
+    <node x="198.9242424242424" y="79.0">io.seata.server.session.SessionManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.seata.server.session.file.FileBasedSessionManager" target="io.seata.server.session.DefaultSessionManager">
+      <point x="-47.75" y="-14.5" />
+      <point x="226.21969696969694" y="291.0" />
+      <point x="88.5" y="291.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.db.DataBaseSessionManager" target="io.seata.server.session.AbstractSessionManager">
+      <point x="-63.66666666666663" y="-14.5" />
+      <point x="228.83333333333334" y="212.0" />
+      <point x="181.49999999999997" y="212.0" />
+      <point x="46.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.lock.DefaultLockManager" target="io.seata.server.lock.AbstractLockManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.AbstractSessionManager" target="io.seata.server.session.SessionManager">
+      <point x="46.5" y="-14.5" />
+      <point x="181.49999999999997" y="133.0" />
+      <point x="232.1742424242424" y="133.0" />
+      <point x="-33.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.GlobalSession" target="io.seata.server.session.SessionLifecycle">
+      <point x="-29.75" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.db.DataBaseSessionManager" target="io.seata.server.session.SessionManager">
+      <point x="0.0" y="-14.5" />
+      <point x="292.5" y="212.0" />
+      <point x="298.6742424242424" y="212.0" />
+      <point x="33.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.GlobalSession" target="io.seata.server.store.SessionStorable">
+      <point x="29.75" y="-14.5" />
+      <point x="125.99999999999997" y="676.0" />
+      <point x="217.58333333333331" y="676.0" />
+      <point x="-43.66666666666666" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.db.DatabaseTransactionStoreManager" target="io.seata.server.store.AbstractTransactionStoreManager">
+      <point x="-62.0" y="-14.5" />
+      <point x="332.58333333333337" y="523.0" />
+      <point x="343.0595238095238" y="523.0" />
+      <point x="61.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.AbstractSessionManager" target="io.seata.server.session.SessionLifecycleListener">
+      <point x="-46.5" y="-14.5" />
+      <point x="88.49999999999997" y="54.0" />
+      <point x="199.77272727272722" y="54.0" />
+      <point x="-60.666666666666686" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.TransactionWriteStore" target="io.seata.server.store.SessionStorable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.BranchSession" target="io.seata.server.session.Lockable">
+      <point x="31.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.lock.AbstractLockManager" target="io.seata.server.lock.LockManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.SessionManager" target="io.seata.server.session.SessionLifecycleListener">
+      <point x="0.0" y="-14.5" />
+      <point x="265.4242424242424" y="54.0" />
+      <point x="260.4393939393939" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.AbstractTransactionStoreManager" target="io.seata.server.store.TransactionStoreManager">
+      <point x="0.0" y="-14.5" />
+      <point x="282.0595238095238" y="444.0" />
+      <point x="274.0" y="444.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.file.FileBasedSessionManager" target="io.seata.server.session.Reloadable">
+      <point x="47.75" y="-14.5" />
+      <point x="321.71969696969694" y="291.0" />
+      <point x="457.0" y="291.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.BranchSession" target="io.seata.server.store.SessionStorable">
+      <point x="-31.0" y="-14.5" />
+      <point x="397.75" y="676.0" />
+      <point x="304.91666666666663" y="676.0" />
+      <point x="43.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.file.FileTransactionStoreManager" target="io.seata.server.store.AbstractTransactionStoreManager">
+      <point x="70.33333333333333" y="-14.5" />
+      <point x="209.58333333333331" y="523.0" />
+      <point x="221.0595238095238" y="523.0" />
+      <point x="-61.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.db.DataBaseSessionManager" target="io.seata.server.session.SessionLifecycleListener">
+      <point x="63.66666666666668" y="-14.5" />
+      <point x="356.16666666666663" y="212.0" />
+      <point x="342.4242424242424" y="212.0" />
+      <point x="342.4242424242424" y="54.0" />
+      <point x="321.1060606060606" y="54.0" />
+      <point x="60.666666666666686" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.coordinator.DefaultCoordinator" target="io.seata.server.AbstractTCInboundHandler">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.file.FileTransactionStoreManager" target="io.seata.server.store.ReloadableStore">
+      <point x="-70.33333333333331" y="-14.5" />
+      <point x="68.91666666666669" y="523.0" />
+      <point x="65.5" y="523.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.session.DefaultSessionManager" target="io.seata.server.session.AbstractSessionManager">
+      <point x="0.0" y="-14.5" />
+      <point x="-46.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.db.DatabaseTransactionStoreManager" target="io.seata.server.store.TransactionStoreManager">
+      <point x="62.0" y="-14.5" />
+      <point x="456.58333333333337" y="523.0" />
+      <point x="422.95238095238096" y="523.0" />
+      <point x="422.95238095238096" y="444.0" />
+      <point x="337.66666666666663" y="444.0" />
+      <point x="63.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.store.file.FileTransactionStoreManager" target="io.seata.server.store.TransactionStoreManager">
+      <point x="1.4210854715202004E-14" y="-14.5" />
+      <point x="139.25" y="523.0" />
+      <point x="141.5" y="523.0" />
+      <point x="141.5" y="444.0" />
+      <point x="210.33333333333337" y="444.0" />
+      <point x="-63.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.server.coordinator.DefaultCore" target="io.seata.server.coordinator.Core">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="181.0" y="54.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

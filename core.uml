@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.seata.core.codec.Codec</OriginalElement>
+  <nodes>
+    <node x="1793.5" y="415.0">io.seata.core.protocol.transaction.BranchRollbackRequest</node>
+    <node x="850.5" y="800.0">io.seata.core.rpc.ServerMessageListener</node>
+    <node x="605.0" y="1254.0">io.seata.core.protocol.transaction.RMInboundHandler</node>
+    <node x="2683.5" y="415.0">io.seata.core.protocol.transaction.GlobalStatusRequest</node>
+    <node x="573.9771367521371" y="168.0">io.seata.core.protocol.AbstractResultMessage</node>
+    <node x="1237.0" y="1106.0">io.seata.core.constants.ServerTableColumnsName</node>
+    <node x="2364.9611111111117" y="247.0">io.seata.core.protocol.transaction.AbstractTransactionRequestToTC</node>
+    <node x="1295.0" y="1180.0">io.seata.core.rpc.netty.TransportServerType</node>
+    <node x="1104.0" y="879.0">io.seata.core.store.db.AbstractDataSourceGenerator</node>
+    <node x="1296.0" y="1402.0">io.seata.core.context.RootContext</node>
+    <node x="37.5" y="953.0">io.seata.core.context.ContextCore</node>
+    <node x="383.0" y="647.0">io.seata.core.rpc.ServerMessageSender</node>
+    <node x="75.5" y="247.0">io.seata.core.protocol.AbstractIdentifyResponse</node>
+    <node x="385.0" y="1328.0">io.seata.core.protocol.HeartbeatMessage</node>
+    <node x="826.1517857142858" y="568.0">io.seata.core.rpc.RemotingClient</node>
+    <node x="2121.5625" y="79.0">io.seata.core.protocol.AbstractMessage</node>
+    <node x="950.0" y="1328.0">io.seata.core.codec.CompressorType</node>
+    <node x="252.0" y="1106.0">io.seata.core.rpc.netty.NettyClientChannelManager</node>
+    <node x="1600.5" y="415.0">io.seata.core.protocol.transaction.BranchCommitRequest</node>
+    <node x="336.0" y="1402.0">io.seata.core.codec.CodecFactory</node>
+    <node x="0.0" y="1106.0">io.seata.core.rpc.TransactionMessageHandler</node>
+    <node x="800.0" y="1254.0">io.seata.core.rpc.netty.v1.ProtocolV1Encoder</node>
+    <node x="463.0" y="879.0">io.seata.core.rpc.netty.NettyClientConfig</node>
+    <node x="816.0" y="879.0">io.seata.core.rpc.DefaultServerMessageListenerImpl</node>
+    <node x="1033.625" y="336.0">io.seata.core.protocol.transaction.GlobalLockQueryResponse</node>
+    <node x="511.3928571428572" y="489.0">io.seata.core.rpc.Disposable</node>
+    <node x="667.0" y="1180.0">io.seata.core.rpc.netty.ChannelEventListener</node>
+    <node x="1253.0" y="336.0">io.seata.core.protocol.transaction.AbstractBranchEndResponse</node>
+    <node x="0.0" y="800.0">io.seata.core.model.ResourceManagerInbound</node>
+    <node x="722.0" y="953.0">io.seata.core.store.LogStore</node>
+    <node x="1087.0" y="1180.0">io.seata.core.store.GlobalTransactionDO</node>
+    <node x="911.8750000000001" y="247.0">io.seata.core.protocol.transaction.AbstractTransactionResponse</node>
+    <node x="523.25" y="726.0">io.seata.core.rpc.netty.RpcServer</node>
+    <node x="234.0" y="1180.0">io.seata.core.rpc.netty.TransportProtocolType</node>
+    <node x="891.0" y="1476.0">io.seata.core.rpc.ClientType</node>
+    <node x="181.0" y="336.0">io.seata.core.protocol.RegisterTMResponse</node>
+    <node x="184.0" y="568.0">io.seata.core.rpc.netty.RegisterMsgListener</node>
+    <node x="1416.6358974358975" y="247.0">io.seata.core.protocol.RegisterTMRequest</node>
+    <node x="659.0" y="1402.0">io.seata.core.protocol.MessageType</node>
+    <node x="1288.0" y="953.0">io.seata.core.protocol.IncompatibleVersionException</node>
+    <node x="601.0" y="1476.0">io.seata.core.codec.CodecType</node>
+    <node x="0.0" y="1254.0">io.seata.core.rpc.netty.RpcEventLoopGroup</node>
+    <node x="1009.6517857142858" y="568.0">io.seata.core.lock.AbstractLocker</node>
+    <node x="455.0" y="1032.0">io.seata.core.event.GlobalTransactionEvent</node>
+    <node x="0.0" y="1476.0">io.seata.core.protocol.RpcMessage</node>
+    <node x="963.5000000000001" y="415.0">io.seata.core.protocol.transaction.GlobalRollbackResponse</node>
+    <node x="2491.5" y="415.0">io.seata.core.protocol.transaction.GlobalRollbackRequest</node>
+    <node x="1132.0" y="1328.0">io.seata.core.rpc.ChannelManager</node>
+    <node x="772.5000000000001" y="415.0">io.seata.core.protocol.transaction.GlobalStatusResponse</node>
+    <node x="1140.0" y="1402.0">io.seata.core.model.GlobalStatus</node>
+    <node x="747.0" y="1476.0">io.seata.core.store.StoreMode</node>
+    <node x="812.6517857142858" y="647.0">io.seata.core.rpc.netty.RpcClientBootstrap</node>
+    <node x="498.0" y="1402.0">io.seata.core.model.BranchStatus</node>
+    <node x="1036.1517857142858" y="489.0">io.seata.core.lock.Locker</node>
+    <node x="625.0" y="879.0">io.seata.core.rpc.netty.NettyServerConfig</node>
+    <node x="748.0" y="1106.0">io.seata.core.rpc.netty.DefaultChannelPoolHandler</node>
+    <node x="1768.0" y="247.0">io.seata.core.protocol.transaction.AbstractTransactionRequestToRM</node>
+    <node x="820.0" y="1402.0">io.seata.core.rpc.netty.NettyPoolKey</node>
+    <node x="1165.5" y="415.0">io.seata.core.protocol.transaction.BranchCommitResponse</node>
+    <node x="1132.5" y="953.0">io.seata.core.event.EventBus</node>
+    <node x="2393.2063034188036" y="168.0">io.seata.core.protocol.MergedWarpMessage</node>
+    <node x="151.15178571428578" y="726.0">io.seata.core.rpc.netty.RmRpcClient</node>
+    <node x="2114.0625" y="0.0">io.seata.core.protocol.MessageTypeAware</node>
+    <node x="1307.0" y="1476.0">io.seata.core.lock.RowLock</node>
+    <node x="171.0" y="1402.0">io.seata.core.store.db.LockStoreSqls</node>
+    <node x="154.0" y="1476.0">io.seata.core.model.BranchType</node>
+    <node x="511.0" y="953.0">io.seata.core.event.Event</node>
+    <node x="125.0" y="1550.0">io.seata.core.store.LockDO</node>
+    <node x="0.0" y="336.0">io.seata.core.protocol.RegisterRMResponse</node>
+    <node x="477.89285714285717" y="568.0">io.seata.core.rpc.netty.AbstractRpcRemoting</node>
+    <node x="995.0" y="1254.0">io.seata.core.rpc.netty.v1.ProtocolV1Decoder</node>
+    <node x="1130.5" y="800.0">io.seata.core.store.db.DataSourceGenerator</node>
+    <node x="577.0" y="1328.0">io.seata.core.rpc.netty.v1.HeadMapSerializer</node>
+    <node x="0.0" y="1550.0">io.seata.core.constants.DBType</node>
+    <node x="574.5" y="415.0">io.seata.core.protocol.transaction.GlobalCommitResponse</node>
+    <node x="205.0" y="1254.0">io.seata.core.model.TransactionManager</node>
+    <node x="305.0" y="1476.0">io.seata.core.rpc.RpcContext</node>
+    <node x="677.1517857142858" y="568.0">io.seata.core.rpc.RemotingServer</node>
+    <node x="374.0" y="1550.0">io.seata.core.codec.Codec</node>
+    <node x="2546.3313034188036" y="79.0">io.seata.core.protocol.MergeMessage</node>
+    <node x="1190.0" y="1254.0">io.seata.core.protocol.ProtocolConstants</node>
+    <node x="454.0" y="1476.0">io.seata.core.protocol.ResultCode</node>
+    <node x="2864.5" y="415.0">io.seata.core.protocol.transaction.GlobalCommitRequest</node>
+    <node x="1486.0" y="336.0">io.seata.core.protocol.transaction.BranchReportResponse</node>
+    <node x="2578.2063034188036" y="168.0">io.seata.core.protocol.MergeResultMessage</node>
+    <node x="362.0" y="336.0">io.seata.core.protocol.transaction.BranchRegisterResponse</node>
+    <node x="547.5" y="800.0">io.seata.core.rpc.netty.NettyBaseConfig</node>
+    <node x="213.0" y="800.0">io.seata.core.model.ResourceManagerOutbound</node>
+    <node x="2290.0" y="336.0">io.seata.core.protocol.transaction.BranchRegisterRequest</node>
+    <node x="571.0" y="647.0">io.seata.core.rpc.netty.AbstractRpcRemotingServer</node>
+    <node x="2707.5525641025642" y="336.0">io.seata.core.protocol.transaction.AbstractGlobalEndRequest</node>
+    <node x="230.0" y="1032.0">io.seata.core.store.db.LockStoreDataBaseDAO</node>
+    <node x="1245.6358974358975" y="247.0">io.seata.core.protocol.RegisterRMRequest</node>
+    <node x="1312.0" y="1328.0">io.seata.core.rpc.netty.ShutdownHook</node>
+    <node x="1368.5" y="415.0">io.seata.core.protocol.transaction.BranchRollbackResponse</node>
+    <node x="280.1517857142858" y="726.0">io.seata.core.rpc.netty.TmRpcClient</node>
+    <node x="0.0" y="568.0">io.seata.core.rpc.ClientMessageSender</node>
+    <node x="501.0" y="1106.0">io.seata.core.rpc.netty.ChannelAuthHealthChecker</node>
+    <node x="250.0" y="1550.0">io.seata.core.protocol.Version</node>
+    <node x="0.0" y="1328.0">io.seata.core.protocol.transaction.TCInboundHandler</node>
+    <node x="2284.5" y="415.0">io.seata.core.protocol.transaction.GlobalLockQueryRequest</node>
+    <node x="408.0" y="1254.0">io.seata.core.context.ContextCoreLoader</node>
+    <node x="0.0" y="1180.0">io.seata.core.constants.ClientTableColumnsName</node>
+    <node x="193.0" y="1328.0">io.seata.core.constants.ConfigurationKeys</node>
+    <node x="1683.0" y="336.0">io.seata.core.protocol.transaction.AbstractBranchEndRequest</node>
+    <node x="1113.0" y="1032.0">io.seata.core.event.GuavaEventBus</node>
+    <node x="568.0" y="336.0">io.seata.core.protocol.transaction.GlobalBeginResponse</node>
+    <node x="754.0000000000001" y="336.0">io.seata.core.protocol.transaction.AbstractGlobalEndResponse</node>
+    <node x="906.0" y="1032.0">io.seata.core.rpc.netty.RmMessageListener</node>
+    <node x="981.0" y="1402.0">io.seata.core.store.db.LogStoreSqls</node>
+    <node x="1173.0" y="1476.0">io.seata.core.model.Resource</node>
+    <node x="994.0" y="1106.0">io.seata.core.rpc.netty.RegisterCheckAuthHandler</node>
+    <node x="135.0" y="879.0">io.seata.core.model.ResourceManager</node>
+    <node x="162.0" y="647.0">io.seata.core.rpc.netty.AbstractRpcRemotingClient</node>
+    <node x="490.0" y="1550.0">io.seata.core.model.Result</node>
+    <node x="0.0" y="1032.0">io.seata.core.context.ThreadLocalContextCore</node>
+    <node x="767.0" y="1328.0">io.seata.core.rpc.netty.RpcClientHandler</node>
+    <node x="0.0" y="1402.0">io.seata.core.protocol.MessageFuture</node>
+    <node x="2103.0" y="336.0">io.seata.core.protocol.transaction.BranchReportRequest</node>
+    <node x="1906.0" y="336.0">io.seata.core.protocol.transaction.UndoLogDeleteRequest</node>
+    <node x="454.0" y="1180.0">io.seata.core.store.BranchTransactionDO</node>
+    <node x="679.0" y="1032.0">io.seata.core.store.db.LogStoreDataBaseDAO</node>
+    <node x="1011.1517857142858" y="647.0">io.seata.core.lock.LocalDBLocker</node>
+    <node x="1316.1358974358975" y="168.0">io.seata.core.protocol.AbstractIdentifyRequest</node>
+    <node x="898.0" y="953.0">io.seata.core.rpc.ClientMessageListener</node>
+    <node x="1033.0" y="1476.0">io.seata.core.lock.LockMode</node>
+    <node x="743.125" y="489.0">io.seata.core.rpc.RemotingService</node>
+    <node x="878.0" y="1180.0">io.seata.core.rpc.netty.NettyPoolableFactory</node>
+    <node x="273.0" y="953.0">io.seata.core.store.LockStore</node>
+    <node x="2165.2063034188036" y="168.0">io.seata.core.protocol.transaction.AbstractTransactionRequest</node>
+    <node x="2530.0525641025642" y="336.0">io.seata.core.protocol.transaction.GlobalBeginRequest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.seata.core.protocol.RegisterRMResponse" target="io.seata.core.protocol.AbstractIdentifyResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="80.5" y="316.0" />
+      <point x="123.25" y="316.0" />
+      <point x="-47.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.TmRpcClient" target="io.seata.core.rpc.netty.AbstractRpcRemotingClient">
+      <point x="0.0" y="-14.5" />
+      <point x="334.6517857142858" y="701.0" />
+      <point x="312.75" y="701.0" />
+      <point x="50.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalBeginRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToTC">
+      <point x="0.0" y="-14.5" />
+      <point x="2608.0525641025642" y="316.0" />
+      <point x="2515.5861111111117" y="316.0" />
+      <point x="30.125" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalLockQueryRequest" target="io.seata.core.protocol.transaction.BranchRegisterRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractGlobalEndRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToTC">
+      <point x="0.0" y="-14.5" />
+      <point x="2806.5525641025642" y="306.0" />
+      <point x="2575.8361111111117" y="306.0" />
+      <point x="90.375" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.lock.LocalDBLocker" target="io.seata.core.lock.AbstractLocker">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.event.GlobalTransactionEvent" target="io.seata.core.event.Event">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractTransactionRequestToTC" target="io.seata.core.protocol.transaction.AbstractTransactionRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="2485.4611111111117" y="222.0" />
+      <point x="2321.2063034188036" y="222.0" />
+      <point x="52.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.model.ResourceManager" target="io.seata.core.model.ResourceManagerInbound">
+      <point x="-35.5" y="-14.5" />
+      <point x="170.5" y="854.0" />
+      <point x="96.5" y="854.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.event.GuavaEventBus" target="io.seata.core.event.EventBus">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractGlobalEndResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="858.0000000000001" y="316.0" />
+      <point x="1002.7083333333336" y="316.0" />
+      <point x="-18.166666666666515" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalLockQueryResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1132.125" y="316.0" />
+      <point x="1039.0416666666665" y="316.0" />
+      <point x="18.166666666666515" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalRollbackResponse" target="io.seata.core.protocol.transaction.AbstractGlobalEndResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1054.5" y="390.0" />
+      <point x="927.3333333333336" y="390.0" />
+      <point x="69.33333333333348" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.RegisterTMRequest" target="io.seata.core.protocol.AbstractIdentifyRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="1492.1358974358975" y="222.0" />
+      <point x="1451.8858974358975" y="222.0" />
+      <point x="45.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.MergeResultMessage" target="io.seata.core.protocol.MergeMessage">
+      <point x="40.5" y="-14.5" />
+      <point x="2699.7063034188036" y="148.0" />
+      <point x="2639.3313034188036" y="148.0" />
+      <point x="31.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.MergeResultMessage" target="io.seata.core.protocol.AbstractMessage">
+      <point x="-40.5" y="-14.5" />
+      <point x="2618.7063034188036" y="128.0" />
+      <point x="2246.6625" y="128.0" />
+      <point x="55.59999999999991" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemoting" target="io.seata.core.rpc.Disposable">
+      <point x="5.6843418860808015E-14" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchReportRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToTC">
+      <point x="0.0" y="-14.5" />
+      <point x="2186.5" y="306.0" />
+      <point x="2395.0861111111117" y="306.0" />
+      <point x="-90.375" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.context.ThreadLocalContextCore" target="io.seata.core.context.ContextCore">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.NettyServerConfig" target="io.seata.core.rpc.netty.NettyBaseConfig">
+      <point x="0.0" y="-14.5" />
+      <point x="698.0" y="854.0" />
+      <point x="650.25" y="854.0" />
+      <point x="34.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.RmRpcClient" target="io.seata.core.rpc.netty.AbstractRpcRemotingClient">
+      <point x="0.0" y="-14.5" />
+      <point x="205.65178571428578" y="701.0" />
+      <point x="212.25" y="701.0" />
+      <point x="-50.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.RegisterRMRequest" target="io.seata.core.protocol.AbstractIdentifyRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="1321.1358974358975" y="222.0" />
+      <point x="1361.3858974358975" y="222.0" />
+      <point x="-45.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalCommitRequest" target="io.seata.core.protocol.transaction.AbstractGlobalEndRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="2948.5" y="390.0" />
+      <point x="2872.5525641025642" y="390.0" />
+      <point x="66.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.RpcClientBootstrap" target="io.seata.core.rpc.RemotingClient">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalBeginResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="651.0" y="306.0" />
+      <point x="966.3750000000001" y="306.0" />
+      <point x="-54.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchRollbackRequest" target="io.seata.core.protocol.transaction.AbstractBranchEndRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="1882.0" y="390.0" />
+      <point x="1835.25" y="390.0" />
+      <point x="50.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.RpcServer" target="io.seata.core.rpc.netty.AbstractRpcRemotingServer">
+      <point x="23.5" y="-14.5" />
+      <point x="593.75" y="701.0" />
+      <point x="673.5" y="701.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.lock.AbstractLocker" target="io.seata.core.lock.Locker">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.model.ResourceManager" target="io.seata.core.model.ResourceManagerOutbound">
+      <point x="35.5" y="-14.5" />
+      <point x="241.5" y="854.0" />
+      <point x="315.5" y="854.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchRegisterRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToTC">
+      <point x="0.0" y="-14.5" />
+      <point x="2378.0" y="316.0" />
+      <point x="2455.3361111111117" y="316.0" />
+      <point x="-30.125" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalRollbackRequest" target="io.seata.core.protocol.transaction.AbstractGlobalEndRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="2577.5" y="390.0" />
+      <point x="2740.5525641025642" y="390.0" />
+      <point x="-66.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.AbstractIdentifyResponse" target="io.seata.core.protocol.AbstractResultMessage">
+      <point x="0.0" y="-14.5" />
+      <point x="171.0" y="222.0" />
+      <point x="618.2271367521371" y="222.0" />
+      <point x="-44.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractTransactionRequest" target="io.seata.core.protocol.AbstractMessage">
+      <point x="0.0" y="-14.5" />
+      <point x="2269.2063034188036" y="148.0" />
+      <point x="2191.0625" y="148.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.store.db.AbstractDataSourceGenerator" target="io.seata.core.store.db.DataSourceGenerator">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.AbstractIdentifyRequest" target="io.seata.core.protocol.AbstractMessage">
+      <point x="0.0" y="-14.5" />
+      <point x="1406.6358974358975" y="148.0" />
+      <point x="2163.2625" y="148.0" />
+      <point x="-27.800000000000182" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemotingServer" target="io.seata.core.rpc.netty.AbstractRpcRemoting">
+      <point x="-51.25" y="-14.5" />
+      <point x="622.25" y="622.0" />
+      <point x="602.3928571428571" y="622.0" />
+      <point x="41.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemotingClient" target="io.seata.core.rpc.netty.AbstractRpcRemoting">
+      <point x="67.0" y="-14.5" />
+      <point x="329.5" y="622.0" />
+      <point x="519.3928571428571" y="622.0" />
+      <point x="-41.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.RemotingServer" target="io.seata.core.rpc.RemotingService">
+      <point x="0.0" y="-14.5" />
+      <point x="741.6517857142858" y="543.0" />
+      <point x="776.625" y="543.0" />
+      <point x="-33.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchCommitRequest" target="io.seata.core.protocol.transaction.AbstractBranchEndRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="1687.0" y="390.0" />
+      <point x="1733.75" y="390.0" />
+      <point x="-50.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.RegisterTMResponse" target="io.seata.core.protocol.AbstractIdentifyResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="261.5" y="316.0" />
+      <point x="218.75" y="316.0" />
+      <point x="47.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalCommitResponse" target="io.seata.core.protocol.transaction.AbstractGlobalEndResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="663.5" y="390.0" />
+      <point x="788.6666666666666" y="390.0" />
+      <point x="-69.33333333333348" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchRollbackResponse" target="io.seata.core.protocol.transaction.AbstractBranchEndResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1462.0" y="390.0" />
+      <point x="1412.75" y="390.0" />
+      <point x="53.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.RmMessageListener" target="io.seata.core.rpc.ClientMessageListener">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractTransactionRequestToRM" target="io.seata.core.protocol.transaction.AbstractTransactionRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="1889.5" y="222.0" />
+      <point x="2217.2063034188036" y="222.0" />
+      <point x="-52.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractTransactionResponse" target="io.seata.core.protocol.AbstractResultMessage">
+      <point x="0.0" y="-14.5" />
+      <point x="1020.8750000000001" y="222.0" />
+      <point x="706.7271367521371" y="222.0" />
+      <point x="44.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.store.db.LogStoreDataBaseDAO" target="io.seata.core.store.LogStore">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemotingClient" target="io.seata.core.rpc.ClientMessageSender">
+      <point x="-67.0" y="-14.5" />
+      <point x="195.5" y="622.0" />
+      <point x="82.0" y="622.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.MergedWarpMessage" target="io.seata.core.protocol.AbstractMessage">
+      <point x="-41.25" y="-14.5" />
+      <point x="2434.4563034188036" y="138.0" />
+      <point x="2218.8625" y="138.0" />
+      <point x="27.800000000000182" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.NettyClientConfig" target="io.seata.core.rpc.netty.NettyBaseConfig">
+      <point x="0.0" y="-14.5" />
+      <point x="534.0" y="854.0" />
+      <point x="581.75" y="854.0" />
+      <point x="-34.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.store.db.LockStoreDataBaseDAO" target="io.seata.core.store.LockStore">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.AbstractMessage" target="io.seata.core.protocol.MessageTypeAware">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchRegisterResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="455.0" y="296.0" />
+      <point x="930.0416666666666" y="296.0" />
+      <point x="-90.83333333333348" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchReportResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1574.5" y="296.0" />
+      <point x="1111.7083333333335" y="296.0" />
+      <point x="90.83333333333348" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemotingClient" target="io.seata.core.rpc.netty.RegisterMsgListener">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.MergedWarpMessage" target="io.seata.core.protocol.MergeMessage">
+      <point x="41.25" y="-14.5" />
+      <point x="2516.9563034188036" y="148.0" />
+      <point x="2577.3313034188036" y="148.0" />
+      <point x="-31.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.DefaultServerMessageListenerImpl" target="io.seata.core.rpc.ServerMessageListener">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.RemotingClient" target="io.seata.core.rpc.RemotingService">
+      <point x="0.0" y="-14.5" />
+      <point x="888.6517857142858" y="543.0" />
+      <point x="843.625" y="543.0" />
+      <point x="33.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.BranchCommitResponse" target="io.seata.core.protocol.transaction.AbstractBranchEndResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1257.0" y="390.0" />
+      <point x="1306.25" y="390.0" />
+      <point x="-53.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalStatusRequest" target="io.seata.core.protocol.transaction.AbstractGlobalEndRequest">
+      <point x="0.0" y="-14.5" />
+      <point x="2764.0" y="390.0" />
+      <point x="2806.5525641025642" y="390.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractBranchEndRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToRM">
+      <point x="0.0" y="-14.5" />
+      <point x="1784.5" y="316.0" />
+      <point x="1828.75" y="316.0" />
+      <point x="-60.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.AbstractRpcRemotingServer" target="io.seata.core.rpc.RemotingServer">
+      <point x="51.25" y="-14.5" />
+      <point x="724.75" y="622.0" />
+      <point x="741.6517857142858" y="622.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.UndoLogDeleteRequest" target="io.seata.core.protocol.transaction.AbstractTransactionRequestToRM">
+      <point x="0.0" y="-14.5" />
+      <point x="1994.5" y="316.0" />
+      <point x="1950.25" y="316.0" />
+      <point x="60.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.AbstractBranchEndResponse" target="io.seata.core.protocol.transaction.AbstractTransactionResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="1359.5" y="306.0" />
+      <point x="1075.375" y="306.0" />
+      <point x="54.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.rpc.netty.RpcServer" target="io.seata.core.rpc.ServerMessageSender">
+      <point x="-23.5" y="-14.5" />
+      <point x="546.75" y="701.0" />
+      <point x="467.0" y="701.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.transaction.GlobalStatusResponse" target="io.seata.core.protocol.transaction.AbstractGlobalEndResponse">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.core.protocol.AbstractResultMessage" target="io.seata.core.protocol.AbstractMessage">
+      <point x="0.0" y="-14.5" />
+      <point x="662.4771367521371" y="138.0" />
+      <point x="2135.4625" y="138.0" />
+      <point x="-55.59999999999991" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="35.5" y="14.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

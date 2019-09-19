@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.seata.rm.GlobalLockTemplate</OriginalElement>
+  <nodes>
+    <node x="556.3782051282051" y="158.0">io.seata.rm.datasource.sql.SQLUpdateRecognizer</node>
+    <node x="872.0" y="711.0">io.seata.rm.datasource.undo.parser.ProtostuffUndoLogParser</node>
+    <node x="762.6282051282051" y="158.0">io.seata.rm.datasource.sql.SQLDeleteRecognizer</node>
+    <node x="751.0" y="1086.0">io.seata.rm.datasource.exec.ExecuteTemplate</node>
+    <node x="663.0" y="938.0">io.seata.rm.datasource.exec.LockConflictException</node>
+    <node x="446.0" y="938.0">io.seata.rm.datasource.sql.struct.TableMetaCacheOracle</node>
+    <node x="171.0" y="1160.0">io.seata.rm.RMHandlerAT</node>
+    <node x="628.0" y="321.0">io.seata.rm.datasource.AbstractStatementProxy</node>
+    <node x="878.0" y="938.0">io.seata.rm.datasource.undo.UndoExecutorFactory</node>
+    <node x="0.0" y="938.0">io.seata.rm.datasource.undo.KeywordCheckerFactory</node>
+    <node x="152.0" y="558.0">io.seata.rm.datasource.exec.InsertExecutor</node>
+    <node x="0.0" y="785.0">io.seata.rm.datasource.AbstractConnectionProxy</node>
+    <node x="208.7532051282051" y="0.0">io.seata.rm.datasource.sql.SQLRecognizer</node>
+    <node x="26.5" y="864.0">io.seata.rm.datasource.ConnectionProxy</node>
+    <node x="262.5" y="864.0">io.seata.rm.datasource.DataSourceProxy</node>
+    <node x="941.0" y="785.0">io.seata.rm.datasource.undo.UndoLogManagerFactory</node>
+    <node x="750.0" y="1234.0">io.seata.rm.datasource.sql.struct.Null</node>
+    <node x="808.0" y="1012.0">io.seata.rm.datasource.undo.UndoLogConstants</node>
+    <node x="695.0" y="711.0">io.seata.rm.datasource.undo.parser.KryoUndoLogParser</node>
+    <node x="972.0" y="1160.0">io.seata.rm.datasource.sql.struct.ColumnMeta</node>
+    <node x="933.0" y="1086.0">io.seata.rm.datasource.sql.struct.TableMetaCache</node>
+    <node x="571.3782051282051" y="79.0">io.seata.rm.datasource.sql.WhereRecognizer</node>
+    <node x="1045.5" y="400.0">io.seata.rm.datasource.undo.AbstractUndoLogManager</node>
+    <node x="732.0" y="558.0">io.seata.rm.datasource.PreparedStatementProxy</node>
+    <node x="708.3782051282051" y="247.0">io.seata.rm.datasource.sql.druid.MySQLDeleteRecognizer</node>
+    <node x="1126.0" y="1160.0">io.seata.rm.datasource.sql.struct.IndexMeta</node>
+    <node x="813.0" y="1160.0">io.seata.rm.datasource.undo.SQLUndoLog</node>
+    <node x="0.0" y="79.0">io.seata.rm.datasource.sql.SQLInsertRecognizer</node>
+    <node x="356.2532051282051" y="158.0">io.seata.rm.datasource.sql.SQLSelectRecognizer</node>
+    <node x="0.0" y="1234.0">io.seata.rm.datasource.sql.struct.TableMeta</node>
+    <node x="0.0" y="711.0">io.seata.rm.datasource.undo.mysql.MySQLUndoDeleteExecutor</node>
+    <node x="567.0" y="1086.0">io.seata.rm.datasource.sql.struct.SqlSequenceExpr</node>
+    <node x="365.0" y="321.0">io.seata.rm.datasource.exec.Executor</node>
+    <node x="647.0" y="1234.0">io.seata.rm.datasource.sql.struct.Row</node>
+    <node x="1006.0" y="1012.0">io.seata.rm.datasource.ConnectionContext</node>
+    <node x="206.2532051282051" y="158.0">io.seata.rm.datasource.sql.druid.BaseRecognizer</node>
+    <node x="24.557692307692264" y="247.0">io.seata.rm.datasource.sql.druid.MySQLInsertRecognizer</node>
+    <node x="408.0" y="1012.0">io.seata.rm.datasource.DataSourceManager</node>
+    <node x="1050.5" y="479.0">io.seata.rm.datasource.undo.mysql.MySQLUndoLogManager</node>
+    <node x="332.0" y="1160.0">io.seata.rm.datasource.undo.parser.KryoSerializer</node>
+    <node x="542.0" y="1234.0">io.seata.rm.datasource.sql.struct.Field</node>
+    <node x="696.0" y="785.0">io.seata.rm.datasource.exec.LockWaitTimeoutException</node>
+    <node x="113.84375" y="479.0">io.seata.rm.datasource.exec.AbstractDMLBaseExecutor</node>
+    <node x="294.0" y="558.0">io.seata.rm.datasource.exec.DeleteExecutor</node>
+    <node x="654.5" y="400.0">io.seata.rm.datasource.StatementProxy</node>
+    <node x="379.0" y="1086.0">io.seata.rm.datasource.sql.SQLVisitorFactory</node>
+    <node x="439.5" y="400.0">io.seata.rm.datasource.exec.PlainExecutor</node>
+    <node x="451.0" y="711.0">io.seata.rm.datasource.undo.mysql.MySQLUndoInsertExecutor</node>
+    <node x="236.0" y="785.0">io.seata.rm.datasource.AbstractDataSourceProxy</node>
+    <node x="1090.0" y="938.0">io.seata.rm.datasource.sql.SQLParsingException</node>
+    <node x="1084.0" y="711.0">io.seata.rm.datasource.undo.parser.JacksonUndoLogParser</node>
+    <node x="500.3782051282051" y="247.0">io.seata.rm.datasource.sql.druid.MySQLUpdateRecognizer</node>
+    <node x="207.0" y="1012.0">io.seata.rm.GlobalLockTemplate</node>
+    <node x="191.0" y="1086.0">io.seata.rm.datasource.DataCompareUtils</node>
+    <node x="222.0" y="711.0">io.seata.rm.datasource.undo.mysql.MySQLUndoUpdateExecutor</node>
+    <node x="1072.0" y="321.0">io.seata.rm.datasource.undo.UndoLogManager</node>
+    <node x="0.0" y="1086.0">io.seata.rm.datasource.exec.StatementCallback</node>
+    <node x="330.84375" y="479.0">io.seata.rm.datasource.exec.SelectForUpdateExecutor</node>
+    <node x="858.5" y="479.0">io.seata.rm.datasource.ParametersHolder</node>
+    <node x="219.5" y="400.0">io.seata.rm.datasource.exec.BaseTransactionalExecutor</node>
+    <node x="0.0" y="1012.0">io.seata.rm.datasource.undo.parser.KryoSerializerFactory</node>
+    <node x="140.0" y="1234.0">io.seata.rm.datasource.sql.struct.IndexType</node>
+    <node x="412.0" y="1234.0">io.seata.rm.datasource.sql.struct.KeyType</node>
+    <node x="0.0" y="558.0">io.seata.rm.datasource.exec.UpdateExecutor</node>
+    <node x="1111.0" y="1086.0">io.seata.rm.datasource.undo.BranchUndoLog</node>
+    <node x="239.5" y="632.0">io.seata.rm.datasource.undo.AbstractUndoExecutor</node>
+    <node x="600.5" y="479.0">io.seata.rm.datasource.AbstractPreparedStatementProxy</node>
+    <node x="904.0" y="632.0">io.seata.rm.datasource.undo.UndoLogParser</node>
+    <node x="280.0" y="1234.0">io.seata.rm.datasource.sql.SQLType</node>
+    <node x="0.0" y="1160.0">io.seata.rm.datasource.sql.struct.SqlMethodExpr</node>
+    <node x="227.0" y="938.0">io.seata.rm.datasource.undo.UndoLogParserFactory</node>
+    <node x="493.0" y="1160.0">io.seata.rm.datasource.AsyncWorker</node>
+    <node x="653.0" y="1160.0">io.seata.rm.datasource.sql.struct.TableRecords</node>
+    <node x="222.55769230769226" y="247.0">io.seata.rm.datasource.sql.druid.MySQLSelectForUpdateRecognizer</node>
+    <node x="493.5" y="785.0">io.seata.rm.datasource.undo.KeywordChecker</node>
+    <node x="609.0" y="1012.0">io.seata.rm.datasource.exec.LockRetryController</node>
+    <node x="472.0" y="864.0">io.seata.rm.datasource.undo.mysql.keyword.MySQLKeywordChecker</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.seata.rm.datasource.exec.BaseTransactionalExecutor" target="io.seata.rm.datasource.exec.Executor">
+      <point x="0.0" y="-14.5" />
+      <point x="319.5" y="375.0" />
+      <point x="386.75" y="375.0" />
+      <point x="-21.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.InsertExecutor" target="io.seata.rm.datasource.exec.AbstractDMLBaseExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.AbstractUndoLogManager" target="io.seata.rm.datasource.undo.UndoLogManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.DeleteExecutor" target="io.seata.rm.datasource.exec.AbstractDMLBaseExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="356.5" y="533.0" />
+      <point x="278.0104166666667" y="533.0" />
+      <point x="65.66666666666669" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.AbstractDMLBaseExecutor" target="io.seata.rm.datasource.exec.BaseTransactionalExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="212.34375" y="454.0" />
+      <point x="269.5" y="454.0" />
+      <point x="-50.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.parser.JacksonUndoLogParser" target="io.seata.rm.datasource.undo.UndoLogParser">
+      <point x="0.0" y="-14.5" />
+      <point x="1173.5" y="686.0" />
+      <point x="1010.6666666666666" y="686.0" />
+      <point x="42.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.mysql.MySQLUndoUpdateExecutor" target="io.seata.rm.datasource.undo.AbstractUndoExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLUpdateRecognizer" target="io.seata.rm.datasource.sql.druid.BaseRecognizer">
+      <point x="-47.0" y="-14.5" />
+      <point x="547.3782051282051" y="217.0" />
+      <point x="287.5032051282051" y="217.0" />
+      <point x="16.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.PreparedStatementProxy" target="io.seata.rm.datasource.ParametersHolder">
+      <point x="46.25" y="-14.5" />
+      <point x="870.75" y="533.0" />
+      <point x="929.5" y="533.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.PreparedStatementProxy" target="io.seata.rm.datasource.AbstractPreparedStatementProxy">
+      <point x="-46.25" y="-14.5" />
+      <point x="778.25" y="533.0" />
+      <point x="719.5" y="533.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLUpdateRecognizer" target="io.seata.rm.datasource.sql.SQLUpdateRecognizer">
+      <point x="47.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.mysql.MySQLUndoLogManager" target="io.seata.rm.datasource.undo.AbstractUndoLogManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.AbstractPreparedStatementProxy" target="io.seata.rm.datasource.StatementProxy">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.SelectForUpdateExecutor" target="io.seata.rm.datasource.exec.BaseTransactionalExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="425.34375" y="454.0" />
+      <point x="369.5" y="454.0" />
+      <point x="50.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.PlainExecutor" target="io.seata.rm.datasource.exec.Executor">
+      <point x="0.0" y="-14.5" />
+      <point x="497.5" y="375.0" />
+      <point x="430.25" y="375.0" />
+      <point x="21.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.SQLDeleteRecognizer" target="io.seata.rm.datasource.sql.WhereRecognizer">
+      <point x="2.8421709430404007E-14" y="-14.5" />
+      <point x="844.1282051282051" y="133.0" />
+      <point x="688.0448717948717" y="133.0" />
+      <point x="46.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLInsertRecognizer" target="io.seata.rm.datasource.sql.druid.BaseRecognizer">
+      <point x="44.5" y="-14.5" />
+      <point x="158.05769230769226" y="227.0" />
+      <point x="222.5032051282051" y="227.0" />
+      <point x="-48.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.parser.ProtostuffUndoLogParser" target="io.seata.rm.datasource.undo.UndoLogParser">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLDeleteRecognizer" target="io.seata.rm.datasource.sql.druid.BaseRecognizer">
+      <point x="-45.25" y="-14.5" />
+      <point x="753.6282051282051" y="207.0" />
+      <point x="320.0032051282051" y="207.0" />
+      <point x="48.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.ConnectionProxy" target="io.seata.rm.datasource.AbstractConnectionProxy">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.SQLSelectRecognizer" target="io.seata.rm.datasource.sql.WhereRecognizer">
+      <point x="0.0" y="-14.5" />
+      <point x="437.2532051282051" y="133.0" />
+      <point x="594.7115384615385" y="133.0" />
+      <point x="-46.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.mysql.MySQLUndoInsertExecutor" target="io.seata.rm.datasource.undo.AbstractUndoExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="550.5" y="686.0" />
+      <point x="384.5" y="686.0" />
+      <point x="58.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.SQLInsertRecognizer" target="io.seata.rm.datasource.sql.SQLRecognizer">
+      <point x="0.0" y="-14.5" />
+      <point x="80.0" y="54.0" />
+      <point x="229.58653846153842" y="54.0" />
+      <point x="-41.666666666666686" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.BaseRecognizer" target="io.seata.rm.datasource.sql.SQLRecognizer">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLDeleteRecognizer" target="io.seata.rm.datasource.sql.SQLDeleteRecognizer">
+      <point x="45.25" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.SQLUpdateRecognizer" target="io.seata.rm.datasource.sql.WhereRecognizer">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLSelectForUpdateRecognizer" target="io.seata.rm.datasource.sql.SQLSelectRecognizer">
+      <point x="61.25" y="-14.5" />
+      <point x="406.30769230769226" y="227.0" />
+      <point x="437.2532051282051" y="227.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.exec.UpdateExecutor" target="io.seata.rm.datasource.exec.AbstractDMLBaseExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="66.0" y="533.0" />
+      <point x="146.67708333333331" y="533.0" />
+      <point x="-65.66666666666669" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLInsertRecognizer" target="io.seata.rm.datasource.sql.SQLInsertRecognizer">
+      <point x="-44.5" y="-14.5" />
+      <point x="69.05769230769226" y="227.0" />
+      <point x="80.0" y="227.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.mysql.MySQLUndoDeleteExecutor" target="io.seata.rm.datasource.undo.AbstractUndoExecutor">
+      <point x="0.0" y="-14.5" />
+      <point x="101.0" y="686.0" />
+      <point x="268.5" y="686.0" />
+      <point x="-58.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.DataSourceProxy" target="io.seata.rm.datasource.AbstractDataSourceProxy">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.StatementProxy" target="io.seata.rm.datasource.AbstractStatementProxy">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.parser.KryoUndoLogParser" target="io.seata.rm.datasource.undo.UndoLogParser">
+      <point x="0.0" y="-14.5" />
+      <point x="773.5" y="686.0" />
+      <point x="925.3333333333334" y="686.0" />
+      <point x="-42.66666666666663" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.druid.MySQLSelectForUpdateRecognizer" target="io.seata.rm.datasource.sql.druid.BaseRecognizer">
+      <point x="-61.25" y="-14.5" />
+      <point x="283.80769230769226" y="227.0" />
+      <point x="255.0032051282051" y="227.0" />
+      <point x="-16.25" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.undo.mysql.keyword.MySQLKeywordChecker" target="io.seata.rm.datasource.undo.KeywordChecker">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.rm.datasource.sql.WhereRecognizer" target="io.seata.rm.datasource.sql.SQLRecognizer">
+      <point x="0.0" y="-14.5" />
+      <point x="641.3782051282051" y="54.0" />
+      <point x="312.9198717948717" y="54.0" />
+      <point x="41.66666666666663" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="78.5" y="295.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

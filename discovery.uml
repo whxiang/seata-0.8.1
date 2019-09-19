@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>io.seata.discovery.loadbalance.AbstractLoadBalance</OriginalElement>
+  <nodes>
+    <node x="121.25" y="0.0">io.seata.discovery.loadbalance.LoadBalance</node>
+    <node x="180.0" y="158.0">io.seata.discovery.loadbalance.RoundRobinLoadBalance</node>
+    <node x="0.0" y="464.0">io.seata.discovery.registry.zk.ZookeeperRegistryProvider</node>
+    <node x="237.0" y="311.0">io.seata.discovery.registry.FileRegistryServiceImpl</node>
+    <node x="244.0" y="385.0">io.seata.discovery.loadbalance.LoadBalanceFactory</node>
+    <node x="445.0" y="385.0">io.seata.discovery.registry.RegistryFactory</node>
+    <node x="152.5" y="232.0">io.seata.discovery.registry.RegistryService</node>
+    <node x="94.75" y="79.0">io.seata.discovery.loadbalance.AbstractLoadBalance</node>
+    <node x="0.0" y="311.0">io.seata.discovery.registry.zk.ZookeeperRegisterServiceImpl</node>
+    <node x="33.0" y="385.0">io.seata.discovery.registry.RegistryProvider</node>
+    <node x="0.0" y="158.0">io.seata.discovery.loadbalance.RandomLoadBalance</node>
+    <node x="0.0" y="538.0">io.seata.discovery.registry.RegistryType</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="io.seata.discovery.registry.zk.ZookeeperRegisterServiceImpl" target="io.seata.discovery.registry.RegistryService">
+      <point x="0.0" y="-14.5" />
+      <point x="108.5" y="286.0" />
+      <point x="184.0" y="286.0" />
+      <point x="-31.5" y="14.5" />
+    </edge>
+    <edge source="io.seata.discovery.loadbalance.RoundRobinLoadBalance" target="io.seata.discovery.loadbalance.AbstractLoadBalance">
+      <point x="0.0" y="-14.5" />
+      <point x="272.5" y="133.0" />
+      <point x="217.0" y="133.0" />
+      <point x="40.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.discovery.loadbalance.AbstractLoadBalance" target="io.seata.discovery.loadbalance.LoadBalance">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.discovery.registry.zk.ZookeeperRegistryProvider" target="io.seata.discovery.registry.RegistryProvider">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="io.seata.discovery.loadbalance.RandomLoadBalance" target="io.seata.discovery.loadbalance.AbstractLoadBalance">
+      <point x="0.0" y="-14.5" />
+      <point x="80.0" y="133.0" />
+      <point x="135.5" y="133.0" />
+      <point x="-40.75" y="14.5" />
+    </edge>
+    <edge source="io.seata.discovery.registry.FileRegistryServiceImpl" target="io.seata.discovery.registry.RegistryService">
+      <point x="0.0" y="-14.5" />
+      <point x="322.5" y="286.0" />
+      <point x="247.0" y="286.0" />
+      <point x="31.5" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="81.5" y="234.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
