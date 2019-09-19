@@ -3,22 +3,24 @@
   <ID>JAVA</ID>
   <OriginalElement>io.seata.rm.tcc.RMHandlerTCC</OriginalElement>
   <nodes>
+    <node x="0.0" y="158.0">io.seata.rm.tcc.remoting.parser.DubboRemotingParser</node>
     <node x="365.0" y="454.0">io.seata.rm.tcc.RMHandlerTCC</node>
     <node x="431.0" y="380.0">io.seata.rm.tcc.interceptor.ActionContextFilter</node>
-    <node x="0.0" y="306.0">io.seata.rm.tcc.api.BusinessActivityContext</node>
+    <node x="233.0" y="306.0">io.seata.rm.tcc.api.BusinessActivityContext</node>
     <node x="0.0" y="528.0">io.seata.rm.tcc.remoting.RemotingDesc</node>
-    <node x="461.0" y="528.0">io.seata.rm.tcc.api.LocalTCC</node>
-    <node x="236.0" y="232.0">io.seata.rm.tcc.interceptor.ActionInterceptorHandler</node>
+    <node x="0.0" y="602.0">io.seata.rm.tcc.api.LocalTCC</node>
+    <node x="0.0" y="306.0">io.seata.rm.tcc.interceptor.ActionInterceptorHandler</node>
+    <node x="325.0" y="528.0">io.seata.rm.tcc.remoting.parser.DubboUtil</node>
     <node x="218.0" y="380.0">io.seata.rm.tcc.TCCResourceManager</node>
-    <node x="228.0" y="306.0">io.seata.rm.tcc.api.BusinessActionContext</node>
-    <node x="242.0" y="0.0">io.seata.rm.tcc.api.BusinessActionContextParameter</node>
-    <node x="325.0" y="528.0">io.seata.rm.tcc.remoting.Protocols</node>
+    <node x="461.0" y="306.0">io.seata.rm.tcc.api.BusinessActionContext</node>
+    <node x="0.0" y="232.0">io.seata.rm.tcc.api.BusinessActionContextParameter</node>
+    <node x="464.0" y="528.0">io.seata.rm.tcc.remoting.Protocols</node>
     <node x="187.0" y="454.0">io.seata.rm.tcc.TwoPhaseResult</node>
-    <node x="34.0" y="0.0">io.seata.rm.tcc.remoting.RemotingParser</node>
-    <node x="5.0" y="158.0">io.seata.rm.tcc.remoting.parser.LocalTCCRemotingParser</node>
+    <node x="119.75" y="0.0">io.seata.rm.tcc.remoting.RemotingParser</node>
+    <node x="190.0" y="158.0">io.seata.rm.tcc.remoting.parser.LocalTCCRemotingParser</node>
     <node x="165.0" y="528.0">io.seata.rm.tcc.TCCResource</node>
-    <node x="0.0" y="79.0">io.seata.rm.tcc.remoting.parser.AbstractedRemotingParser</node>
-    <node x="0.0" y="232.0">io.seata.rm.tcc.api.TwoPhaseBusinessAction</node>
+    <node x="85.75" y="79.0">io.seata.rm.tcc.remoting.parser.AbstractedRemotingParser</node>
+    <node x="284.0" y="232.0">io.seata.rm.tcc.api.TwoPhaseBusinessAction</node>
     <node x="0.0" y="380.0">io.seata.rm.tcc.remoting.parser.DefaultRemotingParser</node>
     <node x="0.0" y="454.0">io.seata.rm.tcc.interceptor.ActionContextUtil</node>
   </nodes>
@@ -28,12 +30,20 @@
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
+    <edge source="io.seata.rm.tcc.remoting.parser.DubboRemotingParser" target="io.seata.rm.tcc.remoting.parser.AbstractedRemotingParser">
+      <point x="0.0" y="-14.5" />
+      <point x="85.0" y="133.0" />
+      <point x="135.0" y="133.0" />
+      <point x="-49.25" y="14.5" />
+    </edge>
     <edge source="io.seata.rm.tcc.remoting.parser.LocalTCCRemotingParser" target="io.seata.rm.tcc.remoting.parser.AbstractedRemotingParser">
       <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="283.5" y="133.0" />
+      <point x="233.5" y="133.0" />
+      <point x="49.25" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="291.0" y="278.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="291.0" y="279.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
