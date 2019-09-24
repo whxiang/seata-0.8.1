@@ -1,5 +1,3 @@
-<img src="https://github.com/seata/seata-samples/blob/master/doc/img/seata.png"  height="100" width="426">
-
 # Seata: Simple Extensible Autonomous Transaction Architecture
 
 [![Build Status](https://travis-ci.org/seata/seata.svg?branch=develop)](https://travis-ci.org/seata/seata)
@@ -110,29 +108,14 @@ Contributors are welcomed to join the FEATS project. Please check [CONTRIBUTING]
 
 ## Contact
 
-* [Twitter](https://twitter.com/seataio): Follow along for latest Seata news on Twitter.
+**源码解析，公号"天河聊架构"** 
 
-* Mailing list: 
-  * dev-seata@googlegroups.com , for dev/user discussion. [subscribe](mailto:dev-seata+subscribe@googlegroups.com), [unsubscribe](mailto:dev-seata+unsubscribe@googlegroups.com), [archive](https://groups.google.com/forum/#!forum/dev-seata)
-  
-**Dingtalk**
+![微信公众号](gonghao.jpg) 
 
-<img src="https://upload-images.jianshu.io/upload_images/4420767-4e95b186a1a1bfba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  height="300" width="300">
+**技术微信群**
+ 
+![技术微信群](wechat.png) 
 
+**技术钉钉群** 
 
-## Seata ecosystem
-
-* [Seata Ecosystem Entry](https://github.com/seata) - A GitHub group `seata` to gather all Seata relevant projects
-* [Seata Samples](https://github.com/seata/seata-samples) - Samples for Seata
-* [Seata Docker](https://github.com/seata/seata-docker) - Seata integration with docker
-* [Seata K8s](https://github.com/seata/seata-k8s) - Seata integration with k8s
-* [Awesome Seata](https://github.com/seata/awesome-seata) - Description of Seata related projects 
-* [Seata Website](https://github.com/seata/seata.github.io) - Seata official website
-
-## Contributors
-
-This project exists thanks to all the people who contribute. [[Contributors](https://github.com/seata/seata/graphs/contributors)].
-
-## License
-
-Seata is under the Apache 2.0 license. See the [LICENSE](https://github.com/seata/seata/blob/master/LICENSE) file for details.
+![技术钉钉群](dingchat.png) 
