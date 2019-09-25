@@ -15,10 +15,10 @@
  */
 package io.seata.common.thread;
 
+import io.netty.util.concurrent.FastThreadLocalThread;
+
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import io.netty.util.concurrent.FastThreadLocalThread;
 
 /**
  * The type Named thread factory.
@@ -26,6 +26,7 @@ import io.netty.util.concurrent.FastThreadLocalThread;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/12
  */
+//
 public class NamedThreadFactory implements ThreadFactory {
     private final AtomicInteger counter = new AtomicInteger(0);
     private final String prefix;

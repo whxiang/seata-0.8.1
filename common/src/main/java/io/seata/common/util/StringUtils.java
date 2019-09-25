@@ -15,6 +15,9 @@
  */
 package io.seata.common.util;
 
+import io.seata.common.Constants;
+import io.seata.common.exception.ShouldNeverHappenException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -23,15 +26,13 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
-import io.seata.common.Constants;
-import io.seata.common.exception.ShouldNeverHappenException;
-
 /**
  * The type String utils.
  *
  * @author jimin.jm @alibaba-inc.com
  * @author Geng Zhang
  */
+//
 public class StringUtils {
 
     private StringUtils() {

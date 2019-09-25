@@ -28,6 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author zhangsen
  * @author Geng Zhang
  */
+//
 public class CollectionUtils {
 
     /**

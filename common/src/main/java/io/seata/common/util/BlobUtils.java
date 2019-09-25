@@ -15,12 +15,11 @@
  */
 package io.seata.common.util;
 
-import java.sql.Blob;
-
-import javax.sql.rowset.serial.SerialBlob;
-
 import io.seata.common.Constants;
 import io.seata.common.exception.ShouldNeverHappenException;
+
+import javax.sql.rowset.serial.SerialBlob;
+import java.sql.Blob;
 
 /**
  * The type Blob utils.
@@ -28,6 +27,7 @@ import io.seata.common.exception.ShouldNeverHappenException;
  * @author jimin.jm @alibaba-inc.com
  * @author Geng Zhang
  */
+//
 public class BlobUtils {
 
     private BlobUtils() {

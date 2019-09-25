@@ -22,6 +22,7 @@ package io.seata.common.executor;
  *
  * @author zhangsen
  */
+//
 public interface Callback<T> {
 
     /**

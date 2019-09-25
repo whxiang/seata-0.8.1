@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
+//
 public class NetUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(NetUtil.class);
     private static final String LOCALHOST = "127.0.0.1";
@@ -202,6 +203,7 @@ public class NetUtil {
      * @param address
      * @return true if the given address is valid
      */
+//
     private static boolean isValidAddress(InetAddress address) {
         if (address == null || address.isLoopbackAddress()) {
             return false;
@@ -216,6 +218,7 @@ public class NetUtil {
      * @param validLocalAndAny Are 127.0.0.1 and 0.0.0.0 valid IPs?
      * @return true if the given IP is valid
      */
+//
     public static boolean isValidIp(String ip, boolean validLocalAndAny) {
         if (validLocalAndAny) {
             return ip != null && IP_PATTERN.matcher(ip).matches();

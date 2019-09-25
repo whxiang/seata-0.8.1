@@ -21,6 +21,7 @@ package io.seata.common;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
+//
 public class XID {
 
     private static int port;

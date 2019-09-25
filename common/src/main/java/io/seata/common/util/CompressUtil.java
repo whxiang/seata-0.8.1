@@ -25,6 +25,7 @@ import java.util.zip.GZIPOutputStream;
  *
  * @author lizhao
  */
+//
 public class CompressUtil {
 
     /**

@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author Geng Zhang
  */
+//
 public class PositiveAtomicCounter {
     private static final int    MASK = 0x7FFFFFFF;
     private final AtomicInteger atom;

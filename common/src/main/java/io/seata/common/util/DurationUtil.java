@@ -20,6 +20,7 @@ import java.time.Duration;
 /**
  * @author XCXCXCXCX
  */
+//
 public class DurationUtil {
 
     public static final Duration DEFAULT_DURATION = Duration.ofMillis(-1);

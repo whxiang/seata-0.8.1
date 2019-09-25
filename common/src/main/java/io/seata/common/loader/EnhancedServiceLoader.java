@@ -15,20 +15,6 @@
  */
 package io.seata.common.loader;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import io.seata.common.Constants;
 import io.seata.common.executor.Initialize;
 import io.seata.common.util.CollectionUtils;
@@ -38,12 +24,22 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * The type Enhanced service loader.
  *
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
+//
 public class EnhancedServiceLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(EnhancedServiceLoader.class);
     private static final String SERVICES_DIRECTORY = "META-INF/services/";
@@ -60,6 +56,7 @@ public class EnhancedServiceLoader {
      * @return s s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+    //
     public static <S> S load(Class<S> service, ClassLoader loader) throws EnhancedServiceNotFoundException {
         return loadFile(service, null, loader);
     }
@@ -72,6 +69,7 @@ public class EnhancedServiceLoader {
      * @return s s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+//
     public static <S> S load(Class<S> service) throws EnhancedServiceNotFoundException {
         return loadFile(service, null, findClassLoader());
     }
@@ -85,6 +83,7 @@ public class EnhancedServiceLoader {
      * @return s s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+//
     public static <S> S load(Class<S> service, String activateName) throws EnhancedServiceNotFoundException {
         return loadFile(service, activateName, findClassLoader());
     }
@@ -99,6 +98,7 @@ public class EnhancedServiceLoader {
      * @return s s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+//
     public static <S> S load(Class<S> service, String activateName, ClassLoader loader)
         throws EnhancedServiceNotFoundException {
         return loadFile(service, activateName, loader);
@@ -114,6 +114,7 @@ public class EnhancedServiceLoader {
      * @return the s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+//
     public static <S> S load(Class<S> service, String activateName, Object[] args)
         throws EnhancedServiceNotFoundException {
         Class[] argsType = null;
@@ -137,6 +138,7 @@ public class EnhancedServiceLoader {
      * @return the s
      * @throws EnhancedServiceNotFoundException the enhanced service not found exception
      */
+//
     public static <S> S load(Class<S> service, String activateName, Class[] argsType, Object[] args)
         throws EnhancedServiceNotFoundException {
         return loadFile(service, activateName, findClassLoader(), argsType, args);
@@ -149,6 +151,7 @@ public class EnhancedServiceLoader {
      * @param service the service
      * @return list list
      */
+//
     public static <S> List<S> loadAll(Class<S> service) {
         List<S> allInstances = new ArrayList<>();
         List<Class> allClazzs = getAllExtensionClass(service);
@@ -173,6 +176,7 @@ public class EnhancedServiceLoader {
      * @return all extension class
      */
     @SuppressWarnings("rawtypes")
+//
     public static <S> List<Class> getAllExtensionClass(Class<S> service) {
         return findAllExtensionClass(service, null, findClassLoader());
     }
@@ -186,15 +190,18 @@ public class EnhancedServiceLoader {
      * @return all extension class
      */
     @SuppressWarnings("rawtypes")
+//
     public static <S> List<Class> getAllExtensionClass(Class<S> service, ClassLoader loader) {
         return findAllExtensionClass(service, null, loader);
     }
 
+//
     private static <S> S loadFile(Class<S> service, String activateName, ClassLoader loader) {
         return loadFile(service, activateName, loader, null, null);
     }
 
     @SuppressWarnings("rawtypes")
+//
     private static <S> S loadFile(Class<S> service, String activateName, ClassLoader loader, Class[] argTypes,
                                   Object[] args) {
         try {
@@ -250,6 +257,7 @@ public class EnhancedServiceLoader {
     }
 
     @SuppressWarnings("rawtypes")
+//
     private static <S> List<Class> findAllExtensionClass(Class<S> service, String activateName, ClassLoader loader) {
         List<Class> extensions = new ArrayList<Class>();
         try {
@@ -289,6 +297,7 @@ public class EnhancedServiceLoader {
     }
 
     @SuppressWarnings("rawtypes")
+    //
     private static void loadFile(Class<?> service, String dir, ClassLoader classLoader, List<Class> extensions)
         throws IOException {
         String fileName = dir + service.getName();
@@ -348,6 +357,7 @@ public class EnhancedServiceLoader {
      * @throws NoSuchMethodException the no such method exception
      * @throws InvocationTargetException the invocation target exception
      */
+//
     protected static <S> S initInstance(Class<S> service, Class implClazz, Class[] argTypes, Object[] args)
         throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         S s = null;
