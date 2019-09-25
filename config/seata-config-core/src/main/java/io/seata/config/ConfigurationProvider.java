@@ -20,6 +20,7 @@ package io.seata.config;
  * @author xingfudeshi@gmail.com
  * @date 2019/04/12
  */
+//
 public interface ConfigurationProvider {
     /**
      * provide a AbstractConfiguration implementation instance

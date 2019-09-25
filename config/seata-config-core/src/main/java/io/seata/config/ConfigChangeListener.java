@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/20
  */
+//
 public interface ConfigChangeListener {
 
     /**

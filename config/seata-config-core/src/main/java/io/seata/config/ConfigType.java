@@ -21,6 +21,7 @@ package io.seata.config;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /2/1
  */
+//
 public enum ConfigType {
     /**
      * File config type.

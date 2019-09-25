@@ -15,14 +15,6 @@
  */
 package io.seata.config.zk;
 
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
 import io.seata.common.exception.NotSupportYetException;
 import io.seata.common.thread.NamedThreadFactory;
 import io.seata.common.util.StringUtils;
@@ -35,6 +27,9 @@ import org.apache.zookeeper.CreateMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.concurrent.*;
+
 import static io.seata.config.ConfigurationKeys.FILE_CONFIG_SPLIT_CHAR;
 import static io.seata.config.ConfigurationKeys.FILE_ROOT_CONFIG;
 
@@ -42,6 +37,7 @@ import static io.seata.config.ConfigurationKeys.FILE_ROOT_CONFIG;
  * @author crazier.huang
  * @date 2019/2/18
  */
+//
 public class ZookeeperConfiguration extends AbstractConfiguration<IZkDataListener> {
     private final static Logger LOGGER = LoggerFactory.getLogger(ZookeeperConfiguration.class);
 
@@ -107,6 +103,7 @@ public class ZookeeperConfiguration extends AbstractConfiguration<IZkDataListene
 
     @Override
     public boolean putConfig(String dataId, String content, long timeoutMills) {
+//        创建zk节点防止网络抖动，可以采用异步
         FutureTask<Boolean> future = new FutureTask<Boolean>(new Callable<Boolean>() {
             @Override
             public Boolean call() {

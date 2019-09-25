@@ -21,6 +21,7 @@ package io.seata.config;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /02/26
  */
+//
 public final class ConfigurationKeys {
     /**
      * The constant FILE_ROOT_REGISTRY.

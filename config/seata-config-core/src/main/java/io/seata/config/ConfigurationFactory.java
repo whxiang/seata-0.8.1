@@ -26,6 +26,7 @@ import java.util.Objects;
  * @author jimin.jm @alibaba-inc.com
  * @author Geng Zhang
  */
+//
 public final class ConfigurationFactory {
     private static final String REGISTRY_CONF_PREFIX = "registry";
     private static final String REGISTRY_CONF_SUFFIX = ".conf";
@@ -64,6 +65,7 @@ public final class ConfigurationFactory {
      *
      * @return the instance
      */
+//
     public static Configuration getInstance() {
         if (instance == null) {
             synchronized (Configuration.class) {
@@ -75,6 +77,7 @@ public final class ConfigurationFactory {
         return instance;
     }
 
+//
     private static Configuration buildConfiguration() {
         ConfigType configType = null;
         String configTypeName = null;

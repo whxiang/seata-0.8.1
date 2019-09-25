@@ -15,11 +15,11 @@
  */
 package io.seata.config;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The type Config future.
@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/20
  */
+//
 public class ConfigFuture {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigFuture.class);
     private static final long DEFAULT_CONFIG_TIMEOUT = 5 * 1000;
@@ -78,6 +79,7 @@ public class ConfigFuture {
      *
      * @return the object
      */
+//
     public Object get() {
         return get(this.timeoutMills, TimeUnit.MILLISECONDS);
     }
@@ -89,9 +91,11 @@ public class ConfigFuture {
      * @param unit    the unit
      * @return the object
      */
+//
     public Object get(long timeout, TimeUnit unit) {
         this.timeoutMills = unit.toMillis(timeout);
         try {
+//            countDownLatch实现同步
             boolean success = latch.await(timeout, unit);
             if (!success) {
                 LOGGER.error(
@@ -186,6 +190,7 @@ public class ConfigFuture {
     /**
      * The enum Config operation.
      */
+//
     public enum ConfigOperation {
         /**
          * Get config operation.

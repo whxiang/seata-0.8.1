@@ -15,17 +15,6 @@
  */
 package io.seata.config;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import io.seata.common.thread.NamedThreadFactory;
@@ -34,12 +23,19 @@ import org.apache.commons.lang.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.*;
+
 /**
  * The type FileConfiguration.
  *
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/10
  */
+//
 public class FileConfiguration extends AbstractConfiguration<ConfigChangeListener> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileConfiguration.class);
@@ -97,6 +93,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         configChangeExecutor.submit(new ConfigChangeRunnable());
     }
 
+//
     @Override
     public String getConfig(String dataId, String defaultValue, long timeoutMills) {
         String value;
@@ -108,6 +105,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         return (String)configFuture.get();
     }
 
+//
     @Override
     public boolean putConfig(String dataId, String content, long timeoutMills) {
         ConfigFuture configFuture = new ConfigFuture(dataId, content, ConfigOperation.PUT, timeoutMills);
@@ -115,6 +113,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         return (Boolean)configFuture.get();
     }
 
+//
     @Override
     public boolean putConfigIfAbsent(String dataId, String content, long timeoutMills) {
         ConfigFuture configFuture = new ConfigFuture(dataId, content, ConfigOperation.PUTIFABSENT, timeoutMills);
@@ -122,6 +121,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         return (Boolean)configFuture.get();
     }
 
+//
     @Override
     public boolean removeConfig(String dataId, long timeoutMills) {
         ConfigFuture configFuture = new ConfigFuture(dataId, null, ConfigOperation.REMOVE, timeoutMills);
@@ -129,6 +129,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         return (Boolean)configFuture.get();
     }
 
+//
     @Override
     public void addConfigListener(String dataId, ConfigChangeListener listener) {
         configListenersMap.putIfAbsent(dataId, new ArrayList<ConfigChangeListener>());
@@ -140,6 +141,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
         }
     }
 
+//
     @Override
     public void removeConfigListener(String dataId, ConfigChangeListener listener) {
         List<ConfigChangeListener> configChangeListeners = getConfigListeners(dataId);
@@ -188,6 +190,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
             this.configFuture = configFuture;
         }
 
+//
         @Override
         public void run() {
             if (null != configFuture) {
@@ -217,6 +220,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
             }
         }
 
+//
         private void setFailResult(ConfigFuture configFuture) {
             if (configFuture.getOperation() == ConfigOperation.GET) {
                 String result = configFuture.getContent();
@@ -286,6 +290,7 @@ public class FileConfiguration extends AbstractConfiguration<ConfigChangeListene
             }
         }
 
+//
         private void notifyAllListener(String dataId, List<ConfigChangeListener> configChangeListeners) {
             List<ConfigChangeListener> needNotifyListeners = new ArrayList<>();
             if (null != dataId && null != listener) {

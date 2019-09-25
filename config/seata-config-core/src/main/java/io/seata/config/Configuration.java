@@ -25,6 +25,7 @@ import java.util.List;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/20
  */
+//
 public interface Configuration<T> {
 
     /**

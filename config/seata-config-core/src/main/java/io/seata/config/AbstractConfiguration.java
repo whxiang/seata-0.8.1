@@ -27,6 +27,7 @@ import java.time.Duration;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /2/1
  */
+//
 public abstract class AbstractConfiguration<T> implements Configuration<T> {
 
     /**
@@ -119,11 +120,13 @@ public abstract class AbstractConfiguration<T> implements Configuration<T> {
         return getConfig(dataId, defaultValue, DEFAULT_CONFIG_TIMEOUT);
     }
 
+//
     @Override
     public String getConfig(String dataId, long timeoutMills) {
         return getConfig(dataId, null, timeoutMills);
     }
 
+//
     @Override
     public String getConfig(String dataId) {
         return getConfig(dataId, DEFAULT_CONFIG_TIMEOUT);
