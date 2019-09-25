@@ -15,71 +15,20 @@
  */
 package io.seata.codec.seata;
 
+import io.seata.codec.seata.protocol.*;
+import io.seata.codec.seata.protocol.transaction.*;
+import io.seata.core.protocol.*;
+import io.seata.core.protocol.transaction.*;
+
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-
-import io.seata.codec.seata.protocol.MergeResultMessageCodec;
-import io.seata.codec.seata.protocol.MergedWarpMessageCodec;
-import io.seata.codec.seata.protocol.RegisterRMRequestCodec;
-import io.seata.codec.seata.protocol.RegisterRMResponseCodec;
-import io.seata.codec.seata.protocol.RegisterTMRequestCodec;
-import io.seata.codec.seata.protocol.RegisterTMResponseCodec;
-import io.seata.codec.seata.protocol.transaction.BranchCommitRequestCodec;
-import io.seata.codec.seata.protocol.transaction.BranchCommitResponseCodec;
-import io.seata.codec.seata.protocol.transaction.BranchRegisterRequestCodec;
-import io.seata.codec.seata.protocol.transaction.BranchRegisterResponseCodec;
-import io.seata.codec.seata.protocol.transaction.BranchReportRequestCodec;
-import io.seata.codec.seata.protocol.transaction.BranchReportResponseCodec;
-import io.seata.codec.seata.protocol.transaction.BranchRollbackRequestCodec;
-import io.seata.codec.seata.protocol.transaction.BranchRollbackResponseCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalBeginRequestCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalBeginResponseCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalCommitRequestCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalCommitResponseCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalLockQueryRequestCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalLockQueryResponseCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalRollbackRequestCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalRollbackResponseCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalStatusRequestCodec;
-import io.seata.codec.seata.protocol.transaction.GlobalStatusResponseCodec;
-import io.seata.codec.seata.protocol.transaction.UndoLogDeleteRequestCodec;
-import io.seata.core.protocol.AbstractIdentifyRequest;
-import io.seata.core.protocol.AbstractMessage;
-import io.seata.core.protocol.AbstractResultMessage;
-import io.seata.core.protocol.MergeResultMessage;
-import io.seata.core.protocol.MergedWarpMessage;
-import io.seata.core.protocol.MessageType;
-import io.seata.core.protocol.RegisterRMRequest;
-import io.seata.core.protocol.RegisterRMResponse;
-import io.seata.core.protocol.RegisterTMRequest;
-import io.seata.core.protocol.RegisterTMResponse;
-import io.seata.core.protocol.transaction.AbstractBranchEndRequest;
-import io.seata.core.protocol.transaction.AbstractGlobalEndRequest;
-import io.seata.core.protocol.transaction.BranchCommitRequest;
-import io.seata.core.protocol.transaction.BranchCommitResponse;
-import io.seata.core.protocol.transaction.BranchRegisterRequest;
-import io.seata.core.protocol.transaction.BranchRegisterResponse;
-import io.seata.core.protocol.transaction.BranchReportRequest;
-import io.seata.core.protocol.transaction.BranchReportResponse;
-import io.seata.core.protocol.transaction.BranchRollbackRequest;
-import io.seata.core.protocol.transaction.BranchRollbackResponse;
-import io.seata.core.protocol.transaction.GlobalBeginRequest;
-import io.seata.core.protocol.transaction.GlobalBeginResponse;
-import io.seata.core.protocol.transaction.GlobalCommitRequest;
-import io.seata.core.protocol.transaction.GlobalCommitResponse;
-import io.seata.core.protocol.transaction.GlobalLockQueryRequest;
-import io.seata.core.protocol.transaction.GlobalLockQueryResponse;
-import io.seata.core.protocol.transaction.GlobalRollbackRequest;
-import io.seata.core.protocol.transaction.GlobalRollbackResponse;
-import io.seata.core.protocol.transaction.GlobalStatusRequest;
-import io.seata.core.protocol.transaction.GlobalStatusResponse;
-import io.seata.core.protocol.transaction.UndoLogDeleteRequest;
 
 /**
  * The type Message codec factory.
  *
  * @author zhangsen
  */
+//
 public class MessageCodecFactory {
 
     /**
@@ -103,6 +52,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the msg instance by code
      */
+//    静态工厂方法模式
     public static MessageSeataCodec getMessageCodec(short typeCode) {
         MessageSeataCodec msgCodec = null;
         switch (typeCode) {
@@ -157,6 +107,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the merge request instance by code
      */
+//
     protected static MessageSeataCodec getMergeRequestMessageSeataCodec(int typeCode) {
         switch (typeCode) {
             case MessageType.TYPE_GLOBAL_BEGIN:
@@ -184,6 +135,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the merge response instance by code
      */
+//
     protected static MessageSeataCodec getMergeResponseMessageSeataCodec(int typeCode) {
         switch (typeCode) {
             case MessageType.TYPE_GLOBAL_BEGIN_RESULT:
@@ -217,6 +169,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the message
      */
+//
     public static AbstractMessage getMessage(short typeCode) {
         AbstractMessage abstractMessage = null;
         switch (typeCode) {
@@ -272,6 +225,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the merge request instance by code
      */
+//
     protected static AbstractMessage getMergeRequestInstanceByCode(int typeCode) {
         switch (typeCode) {
             case MessageType.TYPE_GLOBAL_BEGIN:
@@ -299,6 +253,7 @@ public class MessageCodecFactory {
      * @param typeCode the type code
      * @return the merge response instance by code
      */
+//
     protected static AbstractMessage getMergeResponseInstanceByCode(int typeCode) {
         switch (typeCode) {
             case MessageType.TYPE_GLOBAL_BEGIN_RESULT:
@@ -330,6 +285,7 @@ public class MessageCodecFactory {
      * @param abstractMessage the abstract message
      * @return the byte buffer
      */
+//
     public static ByteBuffer getByteBuffer(AbstractMessage abstractMessage) {
         int bufferSize = 1024;
         if (abstractMessage instanceof MergedWarpMessage) {

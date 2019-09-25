@@ -23,6 +23,7 @@ import io.seata.core.protocol.transaction.GlobalCommitRequest;
  *
  * @author zhangsen
  */
+//
 public class GlobalCommitRequestCodec extends AbstractGlobalEndRequestCodec {
 
     @Override

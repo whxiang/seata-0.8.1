@@ -15,13 +15,13 @@
  */
 package io.seata.codec.seata;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.seata.common.loader.LoadLevel;
 import io.seata.core.codec.Codec;
 import io.seata.core.protocol.AbstractMessage;
+
+import java.nio.ByteBuffer;
 
 /**
  * The Seata codec.
@@ -29,9 +29,11 @@ import io.seata.core.protocol.AbstractMessage;
  * @author zhangsen
  * @data 2019 /5/6
  */
+//
 @LoadLevel(name = "SEATA")
 public class SeataCodec implements Codec {
 
+//
     @Override
     public <T> byte[] encode(T t) {
         if (t == null || !(t instanceof AbstractMessage)) {
@@ -60,6 +62,7 @@ public class SeataCodec implements Codec {
         return content;
     }
 
+//
     @Override
     public <T> T decode(byte[] bytes) {
         if (bytes == null || bytes.length == 0) {

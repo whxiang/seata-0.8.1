@@ -23,6 +23,7 @@ import io.seata.core.protocol.transaction.GlobalRollbackResponse;
  *
  * @author zhangsen
  */
+//
 public class GlobalRollbackResponseCodec extends AbstractGlobalEndResponseCodec {
 
     @Override

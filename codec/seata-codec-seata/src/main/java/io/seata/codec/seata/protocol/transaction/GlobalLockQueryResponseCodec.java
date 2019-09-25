@@ -15,16 +15,17 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.transaction.GlobalLockQueryResponse;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Global lock query response codec.
  *
  * @author zhangsen
  */
+//
 public class GlobalLockQueryResponseCodec extends AbstractTransactionResponseCodec {
 
     @Override
@@ -32,6 +33,7 @@ public class GlobalLockQueryResponseCodec extends AbstractTransactionResponseCod
         return GlobalLockQueryResponse.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         super.encode(t, out);
@@ -41,6 +43,7 @@ public class GlobalLockQueryResponseCodec extends AbstractTransactionResponseCod
         out.writeShort((short)(lockable ? 1 : 0));
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         super.decode(t, in);

@@ -15,14 +15,14 @@
  */
 package io.seata.codec.protobuf;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-
 import com.google.protobuf.GeneratedMessageV3;
 import io.seata.codec.protobuf.convertor.PbConvertor;
 import io.seata.codec.protobuf.manager.ProtobufConvertManager;
 import io.seata.common.loader.LoadLevel;
 import io.seata.core.codec.Codec;
+
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * The type Protobuf codec.
@@ -30,11 +30,13 @@ import io.seata.core.codec.Codec;
  * @author leizhiyuan
  * @date 2019 /5/6
  */
+//
 @LoadLevel(name = "PROTOBUF", order = 0)
 public class ProtobufCodec implements Codec {
 
     protected static final Charset UTF8 = Charset.forName("utf-8");
 
+//
     @Override
     public <T> byte[] encode(T t) {
         if (t == null) {
@@ -59,6 +61,7 @@ public class ProtobufCodec implements Codec {
         return content;
     }
 
+//
     @Override
     public <T> T decode(byte[] bytes) {
         if (bytes == null) {

@@ -153,6 +153,7 @@ public enum GlobalStatus {
      * @param code the code
      * @return the global status
      */
+//
     public static GlobalStatus get(byte code) {
         return get((int)code);
     }
@@ -163,6 +164,7 @@ public enum GlobalStatus {
      * @param code the code
      * @return the global status
      */
+//
     public static GlobalStatus get(int code) {
         GlobalStatus status = MAP.get(code);
 

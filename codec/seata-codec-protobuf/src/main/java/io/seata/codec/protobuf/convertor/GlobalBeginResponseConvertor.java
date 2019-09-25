@@ -29,7 +29,10 @@ import io.seata.core.protocol.transaction.GlobalBeginResponse;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalBeginResponseConvertor implements PbConvertor<GlobalBeginResponse, GlobalBeginResponseProto> {
+
+//
     @Override
     public GlobalBeginResponseProto convert2Proto(GlobalBeginResponse globalBeginResponse) {
         final short typeCode = globalBeginResponse.getTypeCode();
@@ -58,6 +61,7 @@ public class GlobalBeginResponseConvertor implements PbConvertor<GlobalBeginResp
         return result;
     }
 
+//
     @Override
     public GlobalBeginResponse convert2Model(GlobalBeginResponseProto globalBeginResponseProto) {
         GlobalBeginResponse branchCommitResponse = new GlobalBeginResponse();

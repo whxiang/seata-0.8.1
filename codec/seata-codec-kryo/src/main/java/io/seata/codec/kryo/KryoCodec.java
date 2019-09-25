@@ -22,9 +22,11 @@ import io.seata.core.protocol.AbstractMessage;
 /**
  * @author jsbxyyx
  */
+//
 @LoadLevel(name = "KRYO")
 public class KryoCodec implements Codec {
 
+//
     @Override
     public <T> byte[] encode(T t) {
         if (t == null || !(t instanceof AbstractMessage)) {
@@ -38,6 +40,7 @@ public class KryoCodec implements Codec {
         }
     }
 
+//
     @Override
     public <T> T decode(byte[] bytes) {
         if (bytes == null || bytes.length == 0) {

@@ -15,14 +15,15 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.AbstractIdentifyRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Abstract identify request codec.
  */
+//
 public abstract class AbstractIdentifyRequestCodec extends AbstractMessageCodec {
 
     @Override
@@ -37,6 +38,7 @@ public abstract class AbstractIdentifyRequestCodec extends AbstractMessageCodec 
      * @param t   the t
      * @param out the out
      */
+//
     protected <T> void doEncode(T t, ByteBuf out) {
         AbstractIdentifyRequest abstractIdentifyRequest = (AbstractIdentifyRequest)t;
         String version = abstractIdentifyRequest.getVersion();
@@ -86,11 +88,13 @@ public abstract class AbstractIdentifyRequestCodec extends AbstractMessageCodec 
 
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         doEncode(t, out);
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         AbstractIdentifyRequest abstractIdentifyRequest = (AbstractIdentifyRequest)t;

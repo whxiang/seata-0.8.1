@@ -15,17 +15,18 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.model.BranchType;
 import io.seata.core.protocol.transaction.AbstractBranchEndRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Abstract branch end request codec.
  *
  * @author zhangsen
  */
+//
 public abstract class AbstractBranchEndRequestCodec extends AbstractTransactionRequestToRMCodec {
 
     @Override
@@ -33,6 +34,7 @@ public abstract class AbstractBranchEndRequestCodec extends AbstractTransactionR
         return AbstractBranchEndRequest.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         AbstractBranchEndRequest abstractBranchEndRequest = (AbstractBranchEndRequest)t;
@@ -80,6 +82,7 @@ public abstract class AbstractBranchEndRequestCodec extends AbstractTransactionR
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         AbstractBranchEndRequest abstractBranchEndRequest = (AbstractBranchEndRequest)t;

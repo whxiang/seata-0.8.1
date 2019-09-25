@@ -24,6 +24,7 @@ import io.seata.core.rpc.RpcContext;
  *
  * @author sharajava
  */
+//
 public class BranchRegisterRequest extends AbstractTransactionRequestToTC  {
 
     private String xid;

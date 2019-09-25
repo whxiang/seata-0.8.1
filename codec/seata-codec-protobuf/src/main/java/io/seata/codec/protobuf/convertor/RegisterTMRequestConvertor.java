@@ -24,7 +24,10 @@ import io.seata.codec.protobuf.generated.RegisterTMRequestProto;
 /**
  * @author leizhiyuan
  */
+//
 public class RegisterTMRequestConvertor implements PbConvertor<RegisterTMRequest, RegisterTMRequestProto> {
+
+//
     @Override
     public RegisterTMRequestProto convert2Proto(RegisterTMRequest registerTMRequest) {
         final short typeCode = registerTMRequest.getTypeCode();
@@ -37,6 +40,7 @@ public class RegisterTMRequestConvertor implements PbConvertor<RegisterTMRequest
             .setAbstractMessage(abstractMessage)
             .setApplicationId(registerTMRequest.getApplicationId())
             .setExtraData(extraData==null?"":extraData)
+//                事务组
             .setTransactionServiceGroup(registerTMRequest.getTransactionServiceGroup())
             .setVersion(registerTMRequest.getVersion())
             .build();
@@ -47,6 +51,7 @@ public class RegisterTMRequestConvertor implements PbConvertor<RegisterTMRequest
         return result;
     }
 
+//
     @Override
     public RegisterTMRequest convert2Model(RegisterTMRequestProto registerTMRequestProto) {
         RegisterTMRequest registerRMRequest = new RegisterTMRequest();

@@ -15,16 +15,17 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.transaction.GlobalBeginRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Global begin request codec.
  *
  * @author zhangsen
  */
+//
 public class GlobalBeginRequestCodec extends AbstractTransactionRequestToTCCodec {
 
     @Override
@@ -32,6 +33,7 @@ public class GlobalBeginRequestCodec extends AbstractTransactionRequestToTCCodec
         return GlobalBeginRequest.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         GlobalBeginRequest globalBeginRequest = (GlobalBeginRequest)t;
@@ -50,6 +52,7 @@ public class GlobalBeginRequestCodec extends AbstractTransactionRequestToTCCodec
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         GlobalBeginRequest globalBeginRequest = (GlobalBeginRequest)t;

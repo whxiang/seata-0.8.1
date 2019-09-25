@@ -23,6 +23,7 @@ import io.seata.core.protocol.transaction.GlobalLockQueryRequest;
  *
  * @author zhangsen
  */
+//
 public class GlobalLockQueryRequestCodec extends BranchRegisterRequestCodec {
 
     @Override

@@ -15,17 +15,18 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.AbstractResultMessage;
 import io.seata.core.protocol.ResultCode;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Abstract result message codec.
  *
  * @author zhangsen
  */
+//
 public abstract class AbstractResultMessageCodec extends AbstractMessageCodec {
 
     @Override
@@ -33,12 +34,14 @@ public abstract class AbstractResultMessageCodec extends AbstractMessageCodec {
         return AbstractResultMessage.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         AbstractResultMessage abstractResultMessage = (AbstractResultMessage)t;
         ResultCode resultCode = abstractResultMessage.getResultCode();
         String resultMsg = abstractResultMessage.getMsg();
 
+//        resultCode.ordinal() 获得枚举声明的序号，序号从0开始
         out.writeByte(resultCode.ordinal());
         if (resultCode == ResultCode.Failed) {
             if (resultMsg != null) {
@@ -63,6 +66,7 @@ public abstract class AbstractResultMessageCodec extends AbstractMessageCodec {
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         AbstractResultMessage abstractResultMessage = (AbstractResultMessage)t;

@@ -25,7 +25,10 @@ import io.seata.core.protocol.transaction.GlobalStatusRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalStatusRequestConvertor implements PbConvertor<GlobalStatusRequest, GlobalStatusRequestProto> {
+
+//
     @Override
     public GlobalStatusRequestProto convert2Proto(GlobalStatusRequest globalStatusRequest) {
         final short typeCode = globalStatusRequest.getTypeCode();
@@ -50,6 +53,7 @@ public class GlobalStatusRequestConvertor implements PbConvertor<GlobalStatusReq
         return result;
     }
 
+//
     @Override
     public GlobalStatusRequest convert2Model(GlobalStatusRequestProto globalStatusRequestProto) {
         GlobalStatusRequest branchCommitRequest = new GlobalStatusRequest();

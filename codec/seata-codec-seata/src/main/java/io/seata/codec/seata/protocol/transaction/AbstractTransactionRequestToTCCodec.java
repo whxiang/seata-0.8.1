@@ -22,6 +22,7 @@ import io.seata.core.protocol.transaction.AbstractTransactionRequestToTC;
  *
  * @author zhangsen
  */
+//
 public abstract class AbstractTransactionRequestToTCCodec extends AbstractTransactionRequestCodec {
 
     @Override

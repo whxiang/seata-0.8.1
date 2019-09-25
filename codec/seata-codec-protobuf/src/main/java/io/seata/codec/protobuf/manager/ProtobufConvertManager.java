@@ -101,6 +101,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author leizhiyuan
  */
+//
 public class ProtobufConvertManager {
 
     private Map<String, PbConvertor> convertorMap = new ConcurrentHashMap<>();
@@ -109,6 +110,7 @@ public class ProtobufConvertManager {
 
     private Map<String, Class> protoClazzMap = new ConcurrentHashMap<>();
 
+//    单例模式
     private static class SingletonHolder {
         private static final ProtobufConvertManager INSTANCE;
 

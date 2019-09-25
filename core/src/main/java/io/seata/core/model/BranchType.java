@@ -39,6 +39,7 @@ public enum BranchType {
      * @param ordinal the ordinal
      * @return the branch type
      */
+//
     public static BranchType get(byte ordinal) {
         return get((int)ordinal);
     }
@@ -49,6 +50,7 @@ public enum BranchType {
      * @param ordinal the ordinal
      * @return the branch type
      */
+//
     public static BranchType get(int ordinal) {
         for (BranchType branchType : BranchType.values()) {
             if (branchType.ordinal() == ordinal) {

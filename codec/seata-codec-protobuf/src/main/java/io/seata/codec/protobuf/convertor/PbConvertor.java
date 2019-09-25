@@ -18,6 +18,7 @@ package io.seata.codec.protobuf.convertor;
 /**
  * @author leizhiyuan
  */
+//
 public interface PbConvertor<T, S> {
 
     public S convert2Proto(T t);

@@ -15,25 +15,27 @@
  */
 package io.seata.codec.protobuf.convertor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import io.seata.common.exception.ShouldNeverHappenException;
-import io.seata.core.protocol.AbstractMessage;
-import io.seata.core.protocol.MergedWarpMessage;
 import io.seata.codec.protobuf.generated.AbstractMessageProto;
 import io.seata.codec.protobuf.generated.MergedWarpMessageProto;
 import io.seata.codec.protobuf.generated.MessageTypeProto;
 import io.seata.codec.protobuf.manager.ProtobufConvertManager;
+import io.seata.common.exception.ShouldNeverHappenException;
+import io.seata.core.protocol.AbstractMessage;
+import io.seata.core.protocol.MergedWarpMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author leizhiyuan
  */
+//
 public class MergedWarpMessageConvertor implements PbConvertor<MergedWarpMessage, MergedWarpMessageProto> {
 
+//
     @Override
     public MergedWarpMessageProto convert2Proto(MergedWarpMessage mergedWarpMessage) {
 
@@ -59,6 +61,7 @@ public class MergedWarpMessageConvertor implements PbConvertor<MergedWarpMessage
 
     }
 
+//
     @Override
     public MergedWarpMessage convert2Model(MergedWarpMessageProto mergedWarpMessageProto) {
         MergedWarpMessage result = new MergedWarpMessage();
@@ -83,6 +86,7 @@ public class MergedWarpMessageConvertor implements PbConvertor<MergedWarpMessage
         return result;
     }
 
+//
     private static String getTypeNameFromTypeUrl(
         java.lang.String typeUrl) {
         int pos = typeUrl.lastIndexOf('/');

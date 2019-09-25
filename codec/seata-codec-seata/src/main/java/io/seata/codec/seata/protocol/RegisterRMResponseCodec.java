@@ -22,6 +22,7 @@ import io.seata.core.protocol.RegisterRMResponse;
  *
  * @author zhangsen
  */
+//
 public class RegisterRMResponseCodec extends AbstractIdentifyResponseCodec {
 
     @Override

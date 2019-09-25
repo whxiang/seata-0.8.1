@@ -27,7 +27,10 @@ import io.seata.core.protocol.ResultCode;
 /**
  * @author leizhiyuan
  */
+//
 public class RegisterTMResponseConvertor implements PbConvertor<RegisterTMResponse, RegisterTMResponseProto> {
+
+//
     @Override
     public RegisterTMResponseProto convert2Proto(RegisterTMResponse registerTMResponse) {
         final short typeCode = registerTMResponse.getTypeCode();
@@ -65,6 +68,7 @@ public class RegisterTMResponseConvertor implements PbConvertor<RegisterTMRespon
         return result;
     }
 
+//
     @Override
     public RegisterTMResponse convert2Model(RegisterTMResponseProto registerTMResponseProto) {
         RegisterTMResponse registerRMRequest = new RegisterTMResponse();

@@ -76,6 +76,7 @@ import java.util.regex.Pattern;
 /**
  * @author jsbxyyx
  */
+//
 public class KryoSerializerFactory implements KryoFactory {
 
     private static final KryoSerializerFactory FACTORY = new KryoSerializerFactory();

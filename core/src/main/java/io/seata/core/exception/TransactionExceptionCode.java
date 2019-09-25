@@ -130,6 +130,7 @@ public enum TransactionExceptionCode {
      * @param ordinal the ordinal
      * @return the transaction exception code
      */
+//
     public static TransactionExceptionCode get(byte ordinal) {
         return get((int)ordinal);
     }
@@ -140,6 +141,7 @@ public enum TransactionExceptionCode {
      * @param ordinal the ordinal
      * @return the transaction exception code
      */
+//
     public static TransactionExceptionCode get(int ordinal) {
         TransactionExceptionCode code = MAP.get(ordinal);
 

@@ -27,7 +27,10 @@ import io.seata.core.protocol.transaction.BranchRollbackRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class BranchRollbackRequestConvertor implements PbConvertor<BranchRollbackRequest, BranchRollbackRequestProto> {
+
+//
     @Override
     public BranchRollbackRequestProto convert2Proto(BranchRollbackRequest branchRollbackRequest) {
         final short typeCode = branchRollbackRequest.getTypeCode();
@@ -57,6 +60,7 @@ public class BranchRollbackRequestConvertor implements PbConvertor<BranchRollbac
         return result;
     }
 
+//
     @Override
     public BranchRollbackRequest convert2Model(BranchRollbackRequestProto branchRollbackRequestProto) {
         BranchRollbackRequest branchCommitRequest = new BranchRollbackRequest();

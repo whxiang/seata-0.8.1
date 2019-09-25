@@ -27,7 +27,10 @@ import io.seata.core.protocol.transaction.BranchCommitRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class BranchCommitRequestConvertor implements PbConvertor<BranchCommitRequest, BranchCommitRequestProto> {
+
+//
     @Override
     public BranchCommitRequestProto convert2Proto(BranchCommitRequest branchCommitRequest) {
         final short typeCode = branchCommitRequest.getTypeCode();
@@ -56,6 +59,7 @@ public class BranchCommitRequestConvertor implements PbConvertor<BranchCommitReq
         return result;
     }
 
+//
     @Override
     public BranchCommitRequest convert2Model(BranchCommitRequestProto branchCommitRequestProto) {
         BranchCommitRequest branchCommitRequest = new BranchCommitRequest();

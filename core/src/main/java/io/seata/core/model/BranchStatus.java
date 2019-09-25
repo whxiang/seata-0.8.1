@@ -15,10 +15,10 @@
  */
 package io.seata.core.model;
 
+import io.seata.common.exception.ShouldNeverHappenException;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import io.seata.common.exception.ShouldNeverHappenException;
 
 /**
  * Status of branch transaction.
@@ -122,6 +122,7 @@ public enum BranchStatus {
      * @param code the code
      * @return the branch status
      */
+//
     public static BranchStatus get(byte code) {
         return get((int)code);
     }
@@ -132,6 +133,7 @@ public enum BranchStatus {
      * @param code the code
      * @return the branch status
      */
+//
     public static BranchStatus get(int code) {
         BranchStatus status = MAP.get(code);
 

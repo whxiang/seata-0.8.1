@@ -15,8 +15,6 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.codec.seata.MessageCodecFactory;
 import io.seata.codec.seata.MessageSeataCodec;
@@ -24,11 +22,14 @@ import io.seata.core.protocol.AbstractMessage;
 import io.seata.core.protocol.AbstractResultMessage;
 import io.seata.core.protocol.MergeResultMessage;
 
+import java.nio.ByteBuffer;
+
 /**
  * The type Merge result message codec.
  *
  * @author zhangsen
  */
+//
 public class MergeResultMessageCodec extends AbstractMessageCodec {
 
     @Override
@@ -36,6 +37,7 @@ public class MergeResultMessageCodec extends AbstractMessageCodec {
         return MergeResultMessage.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         MergeResultMessage mergeResultMessage = (MergeResultMessage)t;
@@ -61,6 +63,7 @@ public class MergeResultMessageCodec extends AbstractMessageCodec {
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         MergeResultMessage mergeResultMessage = (MergeResultMessage)t;
@@ -84,6 +87,7 @@ public class MergeResultMessageCodec extends AbstractMessageCodec {
      * @param mergeResultMessage the merge result message
      * @param byteBuffer         the byte buffer
      */
+//
     protected void decode(MergeResultMessage mergeResultMessage, ByteBuffer byteBuffer) {
         //msgs size
         short msgNum = byteBuffer.getShort();

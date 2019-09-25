@@ -22,6 +22,7 @@ import io.seata.core.protocol.MessageType;
  *
  * @author sharajava
  */
+//
 public class BranchCommitResponse extends AbstractBranchEndResponse {
 
     @Override

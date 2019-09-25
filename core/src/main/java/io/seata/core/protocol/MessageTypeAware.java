@@ -18,6 +18,7 @@ package io.seata.core.protocol;
 /**
  * @author zhangsen
  */
+//
 public interface MessageTypeAware {
 
     /**

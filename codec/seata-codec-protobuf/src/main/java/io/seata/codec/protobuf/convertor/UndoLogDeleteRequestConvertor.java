@@ -26,7 +26,10 @@ import io.seata.core.protocol.transaction.UndoLogDeleteRequest;
 /**
  * @author yuanguoyao
  */
+//
 public class UndoLogDeleteRequestConvertor implements PbConvertor<UndoLogDeleteRequest, UndoLogDeleteRequestProto> {
+
+//
     @Override
     public UndoLogDeleteRequestProto convert2Proto(UndoLogDeleteRequest undoLogDeleteRequest) {
         final short typeCode = undoLogDeleteRequest.getTypeCode();
@@ -49,6 +52,7 @@ public class UndoLogDeleteRequestConvertor implements PbConvertor<UndoLogDeleteR
         return undoLogDeleteRequestProto;
     }
 
+//
     @Override
     public UndoLogDeleteRequest convert2Model(UndoLogDeleteRequestProto undoLogDeleteRequestProto) {
         UndoLogDeleteRequest undoLogDeleteRequest = new UndoLogDeleteRequest();

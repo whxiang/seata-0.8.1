@@ -40,6 +40,7 @@ public enum  ResultCode {
      * @param ordinal the ordinal
      * @return the result code
      */
+//
     public static ResultCode get(byte ordinal) {
         return get((int)ordinal);
     }
@@ -50,6 +51,7 @@ public enum  ResultCode {
      * @param ordinal the ordinal
      * @return the result code
      */
+//
     public static ResultCode get(int ordinal) {
         for (ResultCode resultCode : ResultCode.values()) {
             if (resultCode.ordinal() == ordinal) {

@@ -22,6 +22,7 @@ import io.seata.core.protocol.transaction.BranchCommitRequest;
  *
  * @author zhangsen
  */
+//
 public class BranchCommitRequestCodec extends AbstractBranchEndRequestCodec {
 
     @Override

@@ -15,25 +15,28 @@
  */
 package io.seata.codec.protobuf.convertor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import io.seata.common.exception.ShouldNeverHappenException;
-import io.seata.core.protocol.AbstractMessage;
-import io.seata.core.protocol.AbstractResultMessage;
-import io.seata.core.protocol.MergeResultMessage;
 import io.seata.codec.protobuf.generated.AbstractMessageProto;
 import io.seata.codec.protobuf.generated.MergedResultMessageProto;
 import io.seata.codec.protobuf.generated.MessageTypeProto;
 import io.seata.codec.protobuf.manager.ProtobufConvertManager;
+import io.seata.common.exception.ShouldNeverHappenException;
+import io.seata.core.protocol.AbstractMessage;
+import io.seata.core.protocol.AbstractResultMessage;
+import io.seata.core.protocol.MergeResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author leizhiyuan
  */
+//
 public class MergeResultMessageConvertor implements PbConvertor<MergeResultMessage, MergedResultMessageProto> {
+
+//
     @Override
     public MergedResultMessageProto convert2Proto(MergeResultMessage mergeResultMessage) {
         final short typeCode = mergeResultMessage.getTypeCode();
@@ -56,6 +59,7 @@ public class MergeResultMessageConvertor implements PbConvertor<MergeResultMessa
         return mergedWarpMessageProto;
     }
 
+//
     @Override
     public MergeResultMessage convert2Model(MergedResultMessageProto mergedResultMessageProto) {
         MergeResultMessage result = new MergeResultMessage();
@@ -82,6 +86,7 @@ public class MergeResultMessageConvertor implements PbConvertor<MergeResultMessa
         return result;
     }
 
+//
     private static String getTypeNameFromTypeUrl(
         java.lang.String typeUrl) {
         int pos = typeUrl.lastIndexOf('/');

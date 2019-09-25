@@ -25,7 +25,10 @@ import io.seata.core.protocol.transaction.GlobalCommitRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalCommitRequestConvertor implements PbConvertor<GlobalCommitRequest, GlobalCommitRequestProto> {
+
+//
     @Override
     public GlobalCommitRequestProto convert2Proto(GlobalCommitRequest globalCommitRequest) {
         final short typeCode = globalCommitRequest.getTypeCode();
@@ -51,6 +54,7 @@ public class GlobalCommitRequestConvertor implements PbConvertor<GlobalCommitReq
 
     }
 
+//
     @Override
     public GlobalCommitRequest convert2Model(GlobalCommitRequestProto globalCommitRequestProto) {
         GlobalCommitRequest branchCommitRequest = new GlobalCommitRequest();

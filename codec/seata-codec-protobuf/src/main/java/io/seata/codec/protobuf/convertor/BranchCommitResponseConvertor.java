@@ -32,7 +32,10 @@ import io.seata.core.protocol.transaction.BranchCommitResponse;
 /**
  * @author leizhiyuan
  */
+//
 public class BranchCommitResponseConvertor implements PbConvertor<BranchCommitResponse, BranchCommitResponseProto> {
+
+//
     @Override
     public BranchCommitResponseProto convert2Proto(BranchCommitResponse branchCommitResponse) {
         final short typeCode = branchCommitResponse.getTypeCode();
@@ -67,6 +70,7 @@ public class BranchCommitResponseConvertor implements PbConvertor<BranchCommitRe
         return result;
     }
 
+//
     @Override
     public BranchCommitResponse convert2Model(BranchCommitResponseProto branchCommitResponseProto) {
 

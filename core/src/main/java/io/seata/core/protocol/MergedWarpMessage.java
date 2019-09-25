@@ -25,6 +25,7 @@ import java.util.List;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/9
  */
+//
 public class MergedWarpMessage extends AbstractMessage implements Serializable, MergeMessage {
 
     /**

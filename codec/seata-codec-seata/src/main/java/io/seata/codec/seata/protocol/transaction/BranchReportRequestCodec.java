@@ -15,18 +15,19 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.model.BranchStatus;
 import io.seata.core.model.BranchType;
 import io.seata.core.protocol.transaction.BranchReportRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Branch report request codec.
  *
  * @author zhangsen
  */
+//
 public class BranchReportRequestCodec extends AbstractTransactionRequestToTCCodec {
 
     @Override
@@ -34,14 +35,17 @@ public class BranchReportRequestCodec extends AbstractTransactionRequestToTCCode
         return BranchReportRequest.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         BranchReportRequest branchReportRequest = (BranchReportRequest)t;
         String xid = branchReportRequest.getXid();
         long branchId = branchReportRequest.getBranchId();
+//        分支事务状态
         BranchStatus status = branchReportRequest.getStatus();
         String resourceId = branchReportRequest.getResourceId();
         String applicationData = branchReportRequest.getApplicationData();
+//        分支事务类型
         BranchType branchType = branchReportRequest.getBranchType();
 
         byte[] applicationDataBytes = null;
@@ -87,6 +91,7 @@ public class BranchReportRequestCodec extends AbstractTransactionRequestToTCCode
         out.writeByte(branchType.ordinal());
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         BranchReportRequest branchReportRequest = (BranchReportRequest)t;

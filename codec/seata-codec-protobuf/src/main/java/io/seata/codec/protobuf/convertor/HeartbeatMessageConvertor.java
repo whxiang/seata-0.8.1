@@ -21,7 +21,10 @@ import io.seata.core.protocol.HeartbeatMessage;
 /**
  * @author leizhiyuan
  */
+//
 public class HeartbeatMessageConvertor implements PbConvertor<HeartbeatMessage, HeartbeatMessageProto> {
+
+//
     @Override
     public HeartbeatMessageProto convert2Proto(HeartbeatMessage heartbeatMessage) {
         HeartbeatMessageProto result = HeartbeatMessageProto.newBuilder().setPing(heartbeatMessage.isPing())
@@ -29,6 +32,7 @@ public class HeartbeatMessageConvertor implements PbConvertor<HeartbeatMessage, 
         return result;
     }
 
+//
     @Override
     public HeartbeatMessage convert2Model(HeartbeatMessageProto heartbeatMessageProto) {
         return heartbeatMessageProto.getPing() ? HeartbeatMessage.PING : HeartbeatMessage.PONG;

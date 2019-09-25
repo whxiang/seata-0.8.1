@@ -24,8 +24,10 @@ import io.seata.core.protocol.transaction.GlobalBeginRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalBeginRequestConvertor implements PbConvertor<GlobalBeginRequest, GlobalBeginRequestProto> {
 
+//
     @Override
     public GlobalBeginRequestProto convert2Proto(GlobalBeginRequest globalBeginRequest) {
         final short typeCode = globalBeginRequest.getTypeCode();
@@ -45,6 +47,7 @@ public class GlobalBeginRequestConvertor implements PbConvertor<GlobalBeginReque
         return result;
     }
 
+//
     @Override
     public GlobalBeginRequest convert2Model(GlobalBeginRequestProto globalBeginRequestProto) {
         GlobalBeginRequest globalBeginRequest = new GlobalBeginRequest();

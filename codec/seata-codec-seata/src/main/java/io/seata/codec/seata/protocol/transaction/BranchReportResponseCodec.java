@@ -22,6 +22,7 @@ import io.seata.core.protocol.transaction.BranchReportResponse;
  *
  * @author zhangsen
  */
+//
 public class BranchReportResponseCodec extends AbstractTransactionResponseCodec {
 
     @Override

@@ -32,7 +32,10 @@ import io.seata.core.protocol.transaction.GlobalStatusResponse;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalStatusResponseConvertor implements PbConvertor<GlobalStatusResponse, GlobalStatusResponseProto> {
+
+//
     @Override
     public GlobalStatusResponseProto convert2Proto(GlobalStatusResponse globalStatusResponse) {
         final short typeCode = globalStatusResponse.getTypeCode();
@@ -62,6 +65,7 @@ public class GlobalStatusResponseConvertor implements PbConvertor<GlobalStatusRe
         return result;
     }
 
+//
     @Override
     public GlobalStatusResponse convert2Model(GlobalStatusResponseProto globalStatusResponseProto) {
         GlobalStatusResponse branchRegisterResponse = new GlobalStatusResponse();
@@ -75,6 +79,7 @@ public class GlobalStatusResponseConvertor implements PbConvertor<GlobalStatusRe
             ResultCode.valueOf(abstractResultMessage.getAbstractResultMessage().getResultCode().name()));
         branchRegisterResponse.setTransactionExceptionCode(TransactionExceptionCode.valueOf(
             abstractResultMessage.getTransactionExceptionCode().name()));
+//        全局事务状态
         branchRegisterResponse.setGlobalStatus(
             GlobalStatus.valueOf(abstractGlobalEndResponse.getGlobalStatus().name()));
 

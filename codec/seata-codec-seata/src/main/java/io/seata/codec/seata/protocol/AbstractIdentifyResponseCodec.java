@@ -15,16 +15,17 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.AbstractIdentifyResponse;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Abstract identify response.
  *
  * @author sharajava
  */
+//
 public abstract class AbstractIdentifyResponseCodec extends AbstractResultMessageCodec {
 
     @Override
@@ -32,6 +33,7 @@ public abstract class AbstractIdentifyResponseCodec extends AbstractResultMessag
         return AbstractIdentifyResponse.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         AbstractIdentifyResponse abstractIdentifyResponse = (AbstractIdentifyResponse)t;
@@ -50,6 +52,7 @@ public abstract class AbstractIdentifyResponseCodec extends AbstractResultMessag
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         AbstractIdentifyResponse abstractIdentifyResponse = (AbstractIdentifyResponse)t;

@@ -27,8 +27,11 @@ import io.seata.core.protocol.transaction.GlobalLockQueryRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalLockQueryRequestConvertor
     implements PbConvertor<GlobalLockQueryRequest, GlobalLockQueryRequestProto> {
+
+//
     @Override
     public GlobalLockQueryRequestProto convert2Proto(GlobalLockQueryRequest globalLockQueryRequest) {
         final short typeCode = globalLockQueryRequest.getTypeCode();
@@ -57,6 +60,7 @@ public class GlobalLockQueryRequestConvertor
         return result;
     }
 
+//
     @Override
     public GlobalLockQueryRequest convert2Model(GlobalLockQueryRequestProto globalLockQueryRequestProto) {
         GlobalLockQueryRequest branchRegisterRequest = new GlobalLockQueryRequest();

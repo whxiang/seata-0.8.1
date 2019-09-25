@@ -23,6 +23,7 @@ import io.seata.core.protocol.transaction.BranchRollbackResponse;
  *
  * @author zhangsen
  */
+//
 public class BranchRollbackResponseCodec extends AbstractBranchEndResponseCodec {
 
     @Override

@@ -15,17 +15,18 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.transaction.BranchRegisterResponse;
+
+import java.io.Serializable;
+import java.nio.ByteBuffer;
 
 /**
  * The type Branch register response codec.
  *
  * @author zhangsen
  */
+//
 public class BranchRegisterResponseCodec extends AbstractTransactionResponseCodec implements Serializable {
 
     @Override
@@ -33,6 +34,7 @@ public class BranchRegisterResponseCodec extends AbstractTransactionResponseCode
         return BranchRegisterResponse.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         super.encode(t, out);
@@ -42,6 +44,7 @@ public class BranchRegisterResponseCodec extends AbstractTransactionResponseCode
         out.writeLong(branchId);
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         super.decode(t, in);

@@ -15,16 +15,17 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.protocol.RegisterRMRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Register rm request codec.
  *
  * @author zhangsen
  */
+//
 public class RegisterRMRequestCodec extends AbstractIdentifyRequestCodec {
 
     @Override
@@ -32,6 +33,7 @@ public class RegisterRMRequestCodec extends AbstractIdentifyRequestCodec {
         return RegisterRMRequest.class;
     }
 
+//
     @Override
     protected <T> void doEncode(T t, ByteBuf out) {
         super.doEncode(t, out);
@@ -50,6 +52,7 @@ public class RegisterRMRequestCodec extends AbstractIdentifyRequestCodec {
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         RegisterRMRequest registerRMRequest = (RegisterRMRequest)t;

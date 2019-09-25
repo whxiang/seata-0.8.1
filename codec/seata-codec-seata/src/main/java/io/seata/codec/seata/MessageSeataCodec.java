@@ -16,15 +16,16 @@
 package io.seata.codec.seata;
 
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
+
+import java.nio.ByteBuffer;
 
 /**
  * The interface Message seata codec.
  *
  * @author zhangsen
  */
+//
 public interface MessageSeataCodec {
 
     /**

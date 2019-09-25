@@ -22,6 +22,7 @@ import io.seata.core.protocol.transaction.GlobalStatusRequest;
  *
  * @author zhangsen
  */
+//
 public class GlobalStatusRequestCodec extends AbstractGlobalEndRequestCodec {
 
     @Override

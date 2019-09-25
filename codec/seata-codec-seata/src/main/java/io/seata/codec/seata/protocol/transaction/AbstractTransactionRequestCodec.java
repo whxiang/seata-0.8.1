@@ -23,6 +23,7 @@ import io.seata.core.protocol.transaction.AbstractTransactionRequest;
  *
  * @author zhangsen
  */
+//
 public abstract class AbstractTransactionRequestCodec extends AbstractMessageCodec {
 
     @Override

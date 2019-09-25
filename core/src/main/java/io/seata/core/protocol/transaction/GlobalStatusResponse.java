@@ -22,6 +22,7 @@ import io.seata.core.protocol.MessageType;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class GlobalStatusResponse extends AbstractGlobalEndResponse {
 
     @Override

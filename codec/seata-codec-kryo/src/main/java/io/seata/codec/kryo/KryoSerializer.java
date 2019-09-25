@@ -26,6 +26,7 @@ import java.util.Objects;
 /**
  * @author jsbxyyx
  */
+//
 public class KryoSerializer {
 
     private final Kryo kryo;

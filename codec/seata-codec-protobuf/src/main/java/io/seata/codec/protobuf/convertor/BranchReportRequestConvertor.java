@@ -28,7 +28,10 @@ import io.seata.core.protocol.transaction.BranchReportRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class BranchReportRequestConvertor implements PbConvertor<BranchReportRequest, BranchReportRequestProto> {
+
+//
     @Override
     public BranchReportRequestProto convert2Proto(BranchReportRequest branchReportRequest) {
         final short typeCode = branchReportRequest.getTypeCode();
@@ -55,6 +58,7 @@ public class BranchReportRequestConvertor implements PbConvertor<BranchReportReq
         return result;
     }
 
+//
     @Override
     public BranchReportRequest convert2Model(BranchReportRequestProto branchReportRequestProto) {
         BranchReportRequest branchReportRequest = new BranchReportRequest();

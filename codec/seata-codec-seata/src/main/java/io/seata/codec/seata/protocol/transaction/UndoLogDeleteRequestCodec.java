@@ -15,17 +15,18 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.model.BranchType;
 import io.seata.core.protocol.transaction.UndoLogDeleteRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type UndoLog Delete end request codec.
  *
  * @author yuanguoyao
  */
+//
 public class UndoLogDeleteRequestCodec extends AbstractTransactionRequestToRMCodec {
 
     @Override
@@ -33,6 +34,7 @@ public class UndoLogDeleteRequestCodec extends AbstractTransactionRequestToRMCod
         return UndoLogDeleteRequest.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         UndoLogDeleteRequest undoLogDeleteRequest = (UndoLogDeleteRequest)t;
@@ -58,6 +60,7 @@ public class UndoLogDeleteRequestCodec extends AbstractTransactionRequestToRMCod
         out.writeShort(saveDays);
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         UndoLogDeleteRequest undoLogDeleteRequest = (UndoLogDeleteRequest)t;

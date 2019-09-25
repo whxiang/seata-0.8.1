@@ -15,17 +15,18 @@
  */
 package io.seata.codec.seata.protocol.transaction;
 
-import java.nio.ByteBuffer;
-
 import io.netty.buffer.ByteBuf;
 import io.seata.core.model.BranchType;
 import io.seata.core.protocol.transaction.BranchRegisterRequest;
+
+import java.nio.ByteBuffer;
 
 /**
  * The type Branch register request codec.
  *
  * @author zhangsen
  */
+//
 public class BranchRegisterRequestCodec extends AbstractTransactionRequestToTCCodec {
 
     @Override
@@ -33,11 +34,14 @@ public class BranchRegisterRequestCodec extends AbstractTransactionRequestToTCCo
         return BranchRegisterRequest.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         BranchRegisterRequest branchRegisterRequest = (BranchRegisterRequest)t;
 
+//        事务组id
         String xid = branchRegisterRequest.getXid();
+//        分支事务id
         BranchType branchType = branchRegisterRequest.getBranchType();
         String resourceId = branchRegisterRequest.getResourceId();
         String lockKey = branchRegisterRequest.getLockKey();
@@ -97,6 +101,7 @@ public class BranchRegisterRequestCodec extends AbstractTransactionRequestToTCCo
         }
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         BranchRegisterRequest branchRegisterRequest = (BranchRegisterRequest)t;
@@ -112,6 +117,7 @@ public class BranchRegisterRequestCodec extends AbstractTransactionRequestToTCCo
         if (len > 0) {
             byte[] bs = new byte[len];
             in.get(bs);
+//            资源id
             branchRegisterRequest.setResourceId(new String(bs, UTF8));
         }
 
@@ -119,6 +125,7 @@ public class BranchRegisterRequestCodec extends AbstractTransactionRequestToTCCo
         if (iLen > 0) {
             byte[] bs = new byte[iLen];
             in.get(bs);
+//            全局锁
             branchRegisterRequest.setLockKey(new String(bs, UTF8));
         }
 

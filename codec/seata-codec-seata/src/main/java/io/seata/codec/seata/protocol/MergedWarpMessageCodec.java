@@ -15,10 +15,6 @@
  */
 package io.seata.codec.seata.protocol;
 
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.seata.codec.seata.MessageCodecFactory;
@@ -26,11 +22,16 @@ import io.seata.codec.seata.MessageSeataCodec;
 import io.seata.core.protocol.AbstractMessage;
 import io.seata.core.protocol.MergedWarpMessage;
 
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type Merged warp message codec.
  *
  * @author zhangsen
  */
+//
 public class MergedWarpMessageCodec extends AbstractMessageCodec {
 
     @Override
@@ -38,13 +39,14 @@ public class MergedWarpMessageCodec extends AbstractMessageCodec {
         return MergedWarpMessage.class;
     }
 
+//
     @Override
     public <T> void encode(T t, ByteBuf out) {
         MergedWarpMessage mergedWarpMessage = (MergedWarpMessage)t;
         List<AbstractMessage> msgs = mergedWarpMessage.msgs;
 
         final ByteBuf buffer = Unpooled.buffer(1024);
-        buffer.writeInt(0); // write placeholder for content length
+        buffer.writeInt(0); // write placeholder for content length为内容长度编写占位符
 
         buffer.writeShort((short)msgs.size());
         for (final AbstractMessage msg : msgs) {
@@ -58,7 +60,7 @@ public class MergedWarpMessageCodec extends AbstractMessageCodec {
 
         final int length = buffer.readableBytes();
         final byte[] content = new byte[length];
-        buffer.setInt(0, length - 4);  // minus the placeholder length itself
+        buffer.setInt(0, length - 4);  // minus the placeholder length itself减去占位符长度本身
         buffer.readBytes(content);
 
         if (msgs.size() > 20) {
@@ -69,6 +71,7 @@ public class MergedWarpMessageCodec extends AbstractMessageCodec {
         out.writeBytes(content);
     }
 
+//
     @Override
     public <T> void decode(T t, ByteBuffer in) {
         MergedWarpMessage mergedWarpMessage = (MergedWarpMessage)t;
@@ -86,6 +89,7 @@ public class MergedWarpMessageCodec extends AbstractMessageCodec {
         doDecode(mergedWarpMessage, byteBuffer);
     }
 
+//
     private void doDecode(MergedWarpMessage mergedWarpMessage, ByteBuffer byteBuffer) {
         short msgNum = byteBuffer.getShort();
         List<AbstractMessage> msgs = new ArrayList<AbstractMessage>();

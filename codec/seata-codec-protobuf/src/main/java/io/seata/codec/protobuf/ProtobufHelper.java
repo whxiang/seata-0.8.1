@@ -15,16 +15,17 @@
  */
 package io.seata.codec.protobuf;
 
+import com.google.protobuf.MessageLite;
+import io.seata.common.exception.ShouldNeverHappenException;
+
 import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import com.google.protobuf.MessageLite;
-import io.seata.common.exception.ShouldNeverHappenException;
-
 /**
  * @author leizhiyuan
  */
+//
 public class ProtobufHelper {
 
     /**
@@ -47,6 +48,7 @@ public class ProtobufHelper {
      * @param clazzName
      * @return
      */
+//
     public Class getPbClass(String clazzName) {
         Class reqClass = requestClassCache.get(clazzName);
         if (reqClass == null) {
@@ -68,6 +70,7 @@ public class ProtobufHelper {
      * @param key
      * @param clazz
      */
+//
     private void loadProtoClassToCache(String key, Class clazz) {
         if (clazz == void.class || !isProtoBufMessageClass(clazz)) {
             throw new ShouldNeverHappenException("class based protobuf: " + clazz.getName()
@@ -82,6 +85,7 @@ public class ProtobufHelper {
      * @param clazz unknown class
      * @return is assignable from MessageLite
      */
+//
     boolean isProtoBufMessageClass(Class clazz) {
         return clazz != null && MessageLite.class.isAssignableFrom(clazz);
     }

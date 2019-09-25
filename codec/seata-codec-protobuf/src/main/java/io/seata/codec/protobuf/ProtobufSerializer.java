@@ -15,14 +15,15 @@
  */
 package io.seata.codec.protobuf;
 
+import io.seata.common.exception.ShouldNeverHappenException;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-
-import io.seata.common.exception.ShouldNeverHappenException;
 
 /**
  * @author leizhiyuan
  */
+//
 public class ProtobufSerializer {
 
     private static final ProtobufHelper PROTOBUF_HELPER = new ProtobufHelper();
@@ -36,6 +37,7 @@ public class ProtobufSerializer {
      */
     private static final String METHOD_PARSEFROM = "parseFrom";
 
+//
     public static byte[] serializeContent(Object request) {
 
         Class clazz = request.getClass();
@@ -60,6 +62,7 @@ public class ProtobufSerializer {
         return bytes;
     }
 
+//
     public static <T> T deserializeContent(String responseClazz, byte[] content) {
         if (content == null || content.length == 0) {
             return null;

@@ -25,6 +25,7 @@ import io.seata.core.protocol.MessageType;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class BranchReportRequest extends AbstractTransactionRequestToTC {
 
     private String xid;
@@ -37,6 +38,7 @@ public class BranchReportRequest extends AbstractTransactionRequestToTC {
 
     private String applicationData;
 
+//    seata官方推荐at模式
     private BranchType branchType = BranchType.AT;
 
     /**

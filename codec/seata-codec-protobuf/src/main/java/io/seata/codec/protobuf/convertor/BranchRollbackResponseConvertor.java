@@ -32,8 +32,11 @@ import io.seata.core.protocol.transaction.BranchRollbackResponse;
 /**
  * @author leizhiyuan
  */
+//
 public class BranchRollbackResponseConvertor
     implements PbConvertor<BranchRollbackResponse, BranchRollbackResponseProto> {
+
+//
     @Override
     public BranchRollbackResponseProto convert2Proto(BranchRollbackResponse branchRollbackResponse) {
         final short typeCode = branchRollbackResponse.getTypeCode();
@@ -68,12 +71,16 @@ public class BranchRollbackResponseConvertor
         return result;
     }
 
+//
     @Override
     public BranchRollbackResponse convert2Model(BranchRollbackResponseProto branchRollbackResponseProto) {
         BranchRollbackResponse branchCommitResponse = new BranchRollbackResponse();
+//        分支事务id
         branchCommitResponse.setBranchId(branchRollbackResponseProto.getAbstractBranchEndResponse().getBranchId());
         branchCommitResponse.setBranchStatus(
+//                分支事务状态
             BranchStatus.get(branchRollbackResponseProto.getAbstractBranchEndResponse().getBranchStatusValue()));
+//        全局事务id
         branchCommitResponse.setXid(branchRollbackResponseProto.getAbstractBranchEndResponse().getXid());
         branchCommitResponse.setMsg(
             branchRollbackResponseProto.getAbstractBranchEndResponse().getAbstractTransactionResponse()

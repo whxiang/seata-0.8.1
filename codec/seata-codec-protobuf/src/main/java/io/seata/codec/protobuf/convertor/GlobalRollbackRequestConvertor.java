@@ -25,7 +25,10 @@ import io.seata.core.protocol.transaction.GlobalRollbackRequest;
 /**
  * @author leizhiyuan
  */
+//
 public class GlobalRollbackRequestConvertor implements PbConvertor<GlobalRollbackRequest, GlobalRollbackRequestProto> {
+
+//
     @Override
     public GlobalRollbackRequestProto convert2Proto(GlobalRollbackRequest globalRollbackRequest) {
         final short typeCode = globalRollbackRequest.getTypeCode();
@@ -50,6 +53,7 @@ public class GlobalRollbackRequestConvertor implements PbConvertor<GlobalRollbac
         return result;
     }
 
+//
     @Override
     public GlobalRollbackRequest convert2Model(GlobalRollbackRequestProto globalRollbackRequestProto) {
         GlobalRollbackRequest branchCommitRequest = new GlobalRollbackRequest();
