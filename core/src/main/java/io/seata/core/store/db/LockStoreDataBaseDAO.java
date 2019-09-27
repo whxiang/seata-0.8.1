@@ -15,18 +15,6 @@
  */
 package io.seata.core.store.db;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.sql.DataSource;
-
 import io.seata.common.exception.StoreException;
 import io.seata.common.executor.Initialize;
 import io.seata.common.loader.LoadLevel;
@@ -41,12 +29,24 @@ import io.seata.core.store.LockStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * The type Data base lock store.
  *
  * @author zhangsen
  * @date 2019 /4/25
  */
+//
 @LoadLevel(name = "db")
 public class LockStoreDataBaseDAO implements LockStore, Initialize {
 
@@ -81,6 +81,7 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
         this.logStoreDataSource = logStoreDataSource;
     }
 
+//
     @Override
     public void init() {
         lockTable = CONFIG.getConfig(ConfigurationKeys.LOCK_DB_TABLE, ConfigurationKeys.LOCK_DB_DEFAULT_TABLE);
@@ -93,11 +94,13 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean acquireLock(LockDO lockDO) {
         return acquireLock(Collections.singletonList(lockDO));
     }
 
+//
     @Override
     public boolean acquireLock(List<LockDO> lockDOs) {
         Connection conn = null;
@@ -199,11 +202,13 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean unLock(LockDO lockDO) {
         return unLock(Collections.singletonList(lockDO));
     }
 
+//
     @Override
     public boolean unLock(List<LockDO> lockDOs) {
         Connection conn = null;
@@ -245,6 +250,7 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean isLockable(List<LockDO> lockDOs) {
         Connection conn = null;
@@ -274,6 +280,7 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
      * @param lockDO the lock do
      * @return the boolean
      */
+//
     protected boolean doAcquireLock(Connection conn, LockDO lockDO) {
         PreparedStatement ps = null;
         try {
@@ -307,6 +314,7 @@ public class LockStoreDataBaseDAO implements LockStore, Initialize {
      * @param lockDOs the lock do
      * @return the boolean
      */
+//
     protected boolean checkLockable(Connection conn, List<LockDO> lockDOs) {
         PreparedStatement ps = null;
         ResultSet rs = null;

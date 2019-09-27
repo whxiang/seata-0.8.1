@@ -20,6 +20,7 @@ package io.seata.core.codec;
  *
  * @author leizhiyuan
  */
+//
 public enum CodecType {
 
     /**
@@ -56,6 +57,7 @@ public enum CodecType {
      * @param code the code
      * @return the result code
      */
+//
     public static CodecType getByCode(int code) {
         for (CodecType b : CodecType.values()) {
             if (code == b.code) {

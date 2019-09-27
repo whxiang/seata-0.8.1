@@ -21,6 +21,7 @@ package io.seata.core.protocol;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractIdentifyRequest extends AbstractMessage {
 
     /**

@@ -15,6 +15,16 @@
  */
 package io.seata.rm.datasource.exec;
 
+import io.seata.common.exception.NotSupportYetException;
+import io.seata.common.exception.ShouldNeverHappenException;
+import io.seata.rm.datasource.PreparedStatementProxy;
+import io.seata.rm.datasource.StatementProxy;
+import io.seata.rm.datasource.sql.SQLInsertRecognizer;
+import io.seata.rm.datasource.sql.SQLRecognizer;
+import io.seata.rm.datasource.sql.struct.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,21 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import io.seata.common.exception.NotSupportYetException;
-import io.seata.common.exception.ShouldNeverHappenException;
-import io.seata.rm.datasource.PreparedStatementProxy;
-import io.seata.rm.datasource.StatementProxy;
-import io.seata.rm.datasource.sql.SQLInsertRecognizer;
-import io.seata.rm.datasource.sql.SQLRecognizer;
-import io.seata.rm.datasource.sql.struct.ColumnMeta;
-import io.seata.rm.datasource.sql.struct.Null;
-import io.seata.rm.datasource.sql.struct.SqlMethodExpr;
-import io.seata.rm.datasource.sql.struct.SqlSequenceExpr;
-import io.seata.rm.datasource.sql.struct.TableMeta;
-import io.seata.rm.datasource.sql.struct.TableRecords;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The type Insert executor.
@@ -46,6 +41,7 @@ import org.slf4j.LoggerFactory;
  * @author yuanguoyao
  * @date 2019-03-21 21:30:02
  */
+//
 public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InsertExecutor.class);
@@ -70,6 +66,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return TableRecords.empty(getTableMeta());
     }
 
+//
     @Override
     protected TableRecords afterImage(TableRecords beforeImage) throws SQLException {
         //Pk column exists or PK is just auto generated
@@ -85,6 +82,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return afterImage;
     }
 
+//
     protected boolean containsPK() {
         SQLInsertRecognizer recognizer = (SQLInsertRecognizer) sqlRecognizer;
         List<String> insertColumns = recognizer.getInsertColumns();
@@ -92,12 +90,14 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return tmeta.containsPK(insertColumns);
     }
 
+//
     protected boolean containsColumns() {
         SQLInsertRecognizer recognizer = (SQLInsertRecognizer) sqlRecognizer;
         List<String> insertColumns = recognizer.getInsertColumns();
         return insertColumns != null && !insertColumns.isEmpty();
     }
 
+//
     protected List<Object> getPkValuesByColumn() throws SQLException {
         // insert values including PK
         SQLInsertRecognizer recognizer = (SQLInsertRecognizer) sqlRecognizer;
@@ -175,6 +175,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return pkValues;
     }
 
+//
     protected List<Object> getPkValuesBySequence(Object expr) throws SQLException {
         ResultSet genKeys = null;
         if (expr instanceof SqlSequenceExpr) {
@@ -193,6 +194,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return pkValues;
     }
 
+//
     protected List<Object> getPkValuesByAuto() throws SQLException {
         // PK is just auto generated
         Map<String, ColumnMeta> pkMetaMap = getTableMeta().getPrimaryKeyMap();
@@ -230,6 +232,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
      * get pk index
      * @return -1 not found pk index
      */
+//
     protected int getPkIndex() {
         SQLInsertRecognizer recognizer = (SQLInsertRecognizer) sqlRecognizer;
         String pkName = getTableMeta().getPkName();
@@ -261,6 +264,7 @@ public class InsertExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
      * @param pkValues
      * @return true support false not support
      */
+//
     private boolean checkPkValues(List<Object> pkValues) {
         boolean pkParameterHasNull = false;
         boolean pkParameterHasNotNull = false;

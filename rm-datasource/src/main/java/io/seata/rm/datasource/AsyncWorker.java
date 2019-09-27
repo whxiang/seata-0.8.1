@@ -15,7 +15,6 @@
  */
 package io.seata.rm.datasource;
 
-import com.alibaba.druid.util.JdbcConstants;
 import io.seata.common.exception.NotSupportYetException;
 import io.seata.common.exception.ShouldNeverHappenException;
 import io.seata.common.thread.NamedThreadFactory;
@@ -32,17 +31,8 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 
 import static io.seata.core.constants.ConfigurationKeys.CLIENT_ASYNC_COMMIT_BUFFER_LIMIT;
 
@@ -51,6 +41,7 @@ import static io.seata.core.constants.ConfigurationKeys.CLIENT_ASYNC_COMMIT_BUFF
  *
  * @author sharajava
  */
+//
 public class AsyncWorker implements ResourceManagerInbound {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AsyncWorker.class);
@@ -120,6 +111,7 @@ public class AsyncWorker implements ResourceManagerInbound {
     /**
      * Init.
      */
+//
     public synchronized void init() {
         LOGGER.info("Async Commit Buffer Limit: " + ASYNC_COMMIT_BUFFER_LIMIT);
         timerExecutor = new ScheduledThreadPoolExecutor(1,
@@ -139,6 +131,7 @@ public class AsyncWorker implements ResourceManagerInbound {
         }, 10, 1000 * 1, TimeUnit.MILLISECONDS);
     }
 
+//
     private void doBranchCommits() {
         if (ASYNC_COMMIT_BUFFER.size() == 0) {
             return;

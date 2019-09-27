@@ -20,6 +20,7 @@ package io.seata.core.protocol;
  *
  * @author sharajava
  */
+//
 public enum  ResultCode {
 
     /**

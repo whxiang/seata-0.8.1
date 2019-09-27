@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class RootContext {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RootContext.class);
@@ -52,6 +53,7 @@ public class RootContext {
      *
      * @param xid the xid
      */
+//
     public static void bind(String xid) {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("bind " + xid);
@@ -62,6 +64,7 @@ public class RootContext {
     /**
      * declare local transactions will use global lock check for update/delete/insert/selectForUpdate SQL
      */
+//
     public static void bindGlobalLockFlag() {
 
         if (LOGGER.isDebugEnabled()) {
@@ -77,6 +80,7 @@ public class RootContext {
      *
      * @return the string
      */
+//
     public static String unbind() {
         String xid = CONTEXT_HOLDER.remove(KEY_XID);
         if (LOGGER.isDebugEnabled()) {
@@ -85,6 +89,7 @@ public class RootContext {
         return xid;
     }
 
+//
     public static void unbindGlobalLockFlag() {
         String lockFlag = CONTEXT_HOLDER.remove(KEY_GLOBAL_LOCK_FLAG);
         if (LOGGER.isDebugEnabled() && lockFlag != null) {
@@ -97,6 +102,7 @@ public class RootContext {
      *
      * @return the boolean
      */
+//
     public static boolean inGlobalTransaction() {
         return CONTEXT_HOLDER.get(KEY_XID) != null;
     }
@@ -113,6 +119,7 @@ public class RootContext {
     /**
      * Assert not in global transaction.
      */
+//
     public static void assertNotInGlobalTransaction() {
         if (inGlobalTransaction()) {
             throw new ShouldNeverHappenException();

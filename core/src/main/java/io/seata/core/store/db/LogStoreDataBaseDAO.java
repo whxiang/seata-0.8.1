@@ -15,16 +15,6 @@
  */
 package io.seata.core.store.db;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sql.DataSource;
-
 import io.seata.common.exception.StoreException;
 import io.seata.common.executor.Initialize;
 import io.seata.common.loader.LoadLevel;
@@ -39,12 +29,18 @@ import io.seata.core.store.LogStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type Log store data base dao.
  *
  * @author zhangsen
  * @date 2019 /4/2
  */
+//
 @LoadLevel(name = "db")
 public class LogStoreDataBaseDAO implements LogStore, Initialize {
 
@@ -98,6 +94,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         this.logStoreDataSource = logStoreDataSource;
     }
 
+//
     @Override
     public void init() {
         globalTable = CONFIG.getConfig(ConfigurationKeys.STORE_DB_GLOBAL_TABLE,
@@ -115,6 +112,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         initTransactionNameSize();
     }
 
+//
     @Override
     public GlobalTransactionDO queryGlobalTransactionDO(String xid) {
         String sql = LogStoreSqls.getQueryGlobalTransactionSQL(globalTable, dbType);
@@ -156,6 +154,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public GlobalTransactionDO queryGlobalTransactionDO(long transactionId) {
         String sql = LogStoreSqls.getQueryGlobalTransactionSQLByTransactionId(globalTable, dbType);
@@ -197,6 +196,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public List<GlobalTransactionDO> queryGlobalTransactionDO(int[] statuses, int limit) {
         List<GlobalTransactionDO> ret = new ArrayList<GlobalTransactionDO>();
@@ -251,6 +251,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean insertGlobalTransactionDO(GlobalTransactionDO globalTransactionDO) {
         String sql = LogStoreSqls.getInsertGlobalTransactionSQL(globalTable, dbType);
@@ -291,6 +292,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean updateGlobalTransactionDO(GlobalTransactionDO globalTransactionDO) {
         String sql = LogStoreSqls.getUpdateGlobalTransactionStatusSQL(globalTable, dbType);
@@ -321,6 +323,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean deleteGlobalTransactionDO(GlobalTransactionDO globalTransactionDO) {
         String sql = LogStoreSqls.getDeleteGlobalTransactionSQL(globalTable, dbType);
@@ -350,6 +353,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public List<BranchTransactionDO> queryBranchTransactionDO(String xid) {
         List<BranchTransactionDO> rets = new ArrayList<>();
@@ -386,6 +390,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean insertBranchTransactionDO(BranchTransactionDO branchTransactionDO) {
         String sql = LogStoreSqls.getInsertBranchTransactionSQL(brachTable, dbType);
@@ -424,6 +429,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean updateBranchTransactionDO(BranchTransactionDO branchTransactionDO) {
         String sql = LogStoreSqls.getUpdateBranchTransactionStatusSQL(brachTable, dbType);
@@ -455,6 +461,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     @Override
     public boolean deleteBranchTransactionDO(BranchTransactionDO branchTransactionDO) {
         String sql = LogStoreSqls.getDeleteBranchTransactionByBranchIdSQL(brachTable, dbType);
@@ -485,6 +492,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         }
     }
 
+//
     private GlobalTransactionDO convertGlobalTransactionDO(ResultSet rs) throws SQLException {
         GlobalTransactionDO globalTransactionDO = new GlobalTransactionDO();
         globalTransactionDO.setXid(rs.getString(ServerTableColumnsName.GLOBAL_TABLE_XID));
@@ -501,6 +509,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         return globalTransactionDO;
     }
 
+//
     private BranchTransactionDO convertBranchTransactionDO(ResultSet rs) throws SQLException {
         BranchTransactionDO branchTransactionDO = new BranchTransactionDO();
         branchTransactionDO.setResourceGroupId(rs.getString(ServerTableColumnsName.BRANCH_TABLE_RESOURCE_GROUP_ID));
@@ -521,6 +530,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
     /**
      * the public modifier only for test
      */
+//
     public void initTransactionNameSize() {
         ColumnInfo columnInfo = queryTableStructure(globalTable, TRANSACTION_NAME_KEY);
         if (columnInfo == null) {
@@ -536,6 +546,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
      * @param colName the column name
      * @return the column info
      */
+//
     private ColumnInfo queryTableStructure(final String tableName, String colName) {
         try(Connection conn = logStoreDataSource.getConnection()) {
             DatabaseMetaData dbmd = conn.getMetaData();
@@ -568,6 +579,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
         return null;
     }
 
+//
     private String getSchema(Connection conn) throws SQLException {
         if ("h2".equalsIgnoreCase(dbType)) {
             return null;
@@ -618,6 +630,7 @@ public class LogStoreDataBaseDAO implements LogStore, Initialize {
     /**
      * column info
      */
+//
     private static class ColumnInfo {
         private String columnName;
         private String typeName;

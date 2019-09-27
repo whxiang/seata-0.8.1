@@ -20,6 +20,7 @@ package io.seata.core.constants;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class ConfigurationKeys {
 
     /**

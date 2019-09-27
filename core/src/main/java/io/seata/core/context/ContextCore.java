@@ -20,6 +20,7 @@ package io.seata.core.context;
  *
  * @author sharajava
  */
+//
 public interface ContextCore {
 
     /**

@@ -15,12 +15,6 @@
  */
 package io.seata.rm.datasource;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import javax.sql.DataSource;
 import com.alibaba.druid.util.JdbcUtils;
 import io.seata.common.thread.NamedThreadFactory;
 import io.seata.config.ConfigurationFactory;
@@ -32,11 +26,19 @@ import io.seata.rm.datasource.sql.struct.TableMetaCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * The type Data source proxy.
  *
  * @author sharajava
  */
+//
 public class DataSourceProxy extends AbstractDataSourceProxy implements Resource {
 
     private static final Logger logger = LoggerFactory.getLogger(DataSourceProxy.class);
@@ -81,6 +83,7 @@ public class DataSourceProxy extends AbstractDataSourceProxy implements Resource
         init(targetDataSource, resourceGroupId);
     }
 
+//
     private void init(DataSource dataSource, String resourceGroupId) {
         this.resourceGroupId = resourceGroupId;
         try (Connection connection = dataSource.getConnection()) {
@@ -106,6 +109,7 @@ public class DataSourceProxy extends AbstractDataSourceProxy implements Resource
      * @return the plain connection
      * @throws SQLException the sql exception
      */
+//
     public Connection getPlainConnection() throws SQLException {
         return targetDataSource.getConnection();
     }
@@ -136,6 +140,7 @@ public class DataSourceProxy extends AbstractDataSourceProxy implements Resource
         return resourceGroupId;
     }
 
+//
     @Override
     public String getResourceId() {
         if (jdbcUrl.contains("?")) {

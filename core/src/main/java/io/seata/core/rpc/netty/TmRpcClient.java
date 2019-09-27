@@ -72,6 +72,7 @@ public final class TmRpcClient extends AbstractRpcRemotingClient {
      * @param transactionServiceGroup the transaction service group
      * @return the instance
      */
+//
     public static TmRpcClient getInstance(String applicationId, String transactionServiceGroup) {
         TmRpcClient tmRpcClient = getInstance();
         tmRpcClient.setApplicationId(applicationId);
@@ -84,6 +85,7 @@ public final class TmRpcClient extends AbstractRpcRemotingClient {
      *
      * @return the instance
      */
+//
     public static TmRpcClient getInstance() {
         if (null == instance) {
             synchronized (TmRpcClient.class) {
@@ -120,7 +122,8 @@ public final class TmRpcClient extends AbstractRpcRemotingClient {
     public void setTransactionServiceGroup(String transactionServiceGroup) {
         this.transactionServiceGroup = transactionServiceGroup;
     }
-    
+
+//
     @Override
     public void init() {
         if (initialized.compareAndSet(false, true)) {
@@ -128,7 +131,8 @@ public final class TmRpcClient extends AbstractRpcRemotingClient {
             super.init();
         }
     }
-    
+
+//
     @Override
     public void destroy() {
         super.destroy();
@@ -148,13 +152,15 @@ public final class TmRpcClient extends AbstractRpcRemotingClient {
     public String getTransactionServiceGroup() {
         return transactionServiceGroup;
     }
-    
+
+//
     @Override
     public void onRegisterMsgSuccess(String serverAddress, Channel channel, Object response,
                                      AbstractMessage requestMessage) {
         getClientChannelManager().registerChannel(serverAddress, channel);
     }
 
+//
     @Override
     public void onRegisterMsgFail(String serverAddress, Channel channel, Object response,
                                   AbstractMessage requestMessage) {

@@ -44,6 +44,7 @@ import java.util.concurrent.TimeoutException;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/15
  */
+//
 @Sharable
 public class RpcServer extends AbstractRpcRemotingServer implements ServerMessageSender {
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcServer.class);
@@ -118,6 +119,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
     /**
      * Init.
      */
+//
     @Override
     public void init() {
         super.init();
@@ -131,6 +133,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
 
     }
 
+//
     private void closeChannelHandlerContext(ChannelHandlerContext ctx) {
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info("closeChannelHandlerContext channel:" + ctx.channel());
@@ -146,6 +149,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param evt the evt
      * @throws Exception the exception
      */
+//
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
         if (evt instanceof IdleStateEvent) {
@@ -168,6 +172,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
     /**
      * Destroy.
      */
+//
     @Override
     public void destroy() {
         super.destroy();
@@ -185,6 +190,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param channel the channel
      * @param msg     the msg
      */
+//
     @Override
     public void sendResponse(RpcMessage request, Channel channel, Object msg) {
         Channel clientChannel = channel;
@@ -209,6 +215,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+//
     @Override
     public Object sendSyncRequest(String resourceId, String clientId, Object message,
                                   long timeout) throws TimeoutException {
@@ -230,6 +237,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+//
     @Override
     public Object sendSyncRequest(String resourceId, String clientId, Object message)
         throws TimeoutException {
@@ -244,6 +252,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+//
     @Override
     public Object sendASyncRequest(Channel channel, Object message) throws IOException, TimeoutException {
        return sendAsyncRequestWithoutResponse(channel, message);
@@ -255,6 +264,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param request the request
      * @param ctx   the ctx
      */
+//
     @Override
     public void dispatch(RpcMessage request, ChannelHandlerContext ctx) {
         Object msg = request.getBody();
@@ -283,6 +293,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param ctx the ctx
      * @throws Exception the exception
      */
+//
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         debugLog("inactive:" + ctx);
@@ -293,6 +304,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
         super.channelInactive(ctx);
     }
 
+//
     private void handleDisconnect(ChannelHandlerContext ctx) {
         final String ipAndPort = NetUtil.toStringAddress(ctx.channel().remoteAddress());
         RpcContext rpcContext = ChannelManager.getContextFromIdentified(ctx.channel());
@@ -318,6 +330,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param msg the msg
      * @throws Exception the exception
      */
+//
     @Override
     public void channelRead(final ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof RpcMessage) {
@@ -342,6 +355,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
      * @param cause the cause
      * @throws Exception the exception
      */
+//
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         if (LOGGER.isInfoEnabled()) {

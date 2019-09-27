@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
  * @author xingfudeshi@gmail.com
  * @date 2019/3/5 MySQL keyword checker
  */
+//
 public class MySQLKeywordChecker implements KeywordChecker {
     private static volatile KeywordChecker keywordChecker = null;
     private Set<String> keywordSet;
@@ -40,6 +41,7 @@ public class MySQLKeywordChecker implements KeywordChecker {
      *
      * @return instance
      */
+//
     public static KeywordChecker getInstance() {
         if (keywordChecker == null) {
             synchronized (MySQLKeywordChecker.class) {
@@ -54,6 +56,7 @@ public class MySQLKeywordChecker implements KeywordChecker {
     /**
      * MySQL keyword
      */
+//
     private enum MySQLKeyword {
         /**
          * ACCESSIBLE is mysql keyword.
@@ -1117,7 +1120,7 @@ public class MySQLKeywordChecker implements KeywordChecker {
         }
     }
 
-
+//
     @Override
     public boolean check(String fieldOrTableName) {
         if (keywordSet.contains(fieldOrTableName)) {
@@ -1130,6 +1133,7 @@ public class MySQLKeywordChecker implements KeywordChecker {
 
     }
 
+//
     @Override
     public String checkAndReplace(String fieldOrTableName) {
         return check(fieldOrTableName) ? "`" + fieldOrTableName + "`" : fieldOrTableName;

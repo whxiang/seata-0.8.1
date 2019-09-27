@@ -23,6 +23,7 @@ import io.seata.core.model.GlobalStatus;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractGlobalEndResponse extends AbstractTransactionResponse {
 
     /**

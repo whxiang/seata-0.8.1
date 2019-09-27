@@ -22,6 +22,7 @@ import java.util.Map;
  *
  * @author sharajava
  */
+//
 public interface ResourceManager extends ResourceManagerInbound, ResourceManagerOutbound {
 
     /**

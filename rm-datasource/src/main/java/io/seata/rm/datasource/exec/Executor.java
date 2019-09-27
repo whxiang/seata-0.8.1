@@ -22,6 +22,7 @@ package io.seata.rm.datasource.exec;
  *
  * @param <T> the type parameter
  */
+//
 public interface Executor<T> {
 
     /**

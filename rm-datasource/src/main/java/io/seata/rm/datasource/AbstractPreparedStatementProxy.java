@@ -15,37 +15,23 @@
  */
 package io.seata.rm.datasource;
 
-import io.seata.common.exception.NotSupportYetException;
-import io.seata.core.context.RootContext;
+import io.seata.rm.datasource.sql.struct.Null;
+
 import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.Clob;
-import java.sql.Date;
-import java.sql.NClob;
-import java.sql.ParameterMetaData;
-import java.sql.PreparedStatement;
-import java.sql.Ref;
-import java.sql.ResultSetMetaData;
-import java.sql.RowId;
-import java.sql.SQLException;
-import java.sql.SQLXML;
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import io.seata.rm.datasource.sql.struct.Null;
 
 /**
  * The type Abstract prepared statement proxy.
  *
  * @author sharajava
  */
+//
 public abstract class AbstractPreparedStatementProxy extends StatementProxy<PreparedStatement>
     implements PreparedStatement {
 
@@ -54,6 +40,7 @@ public abstract class AbstractPreparedStatementProxy extends StatementProxy<Prep
      */
     protected ArrayList<Object>[] parameters;
 
+//
     private void initParameterHolder() throws SQLException {
         int paramCount = targetStatement.getParameterMetaData().getParameterCount();
         this.parameters = new ArrayList[paramCount];

@@ -33,10 +33,12 @@ import java.util.Set;
  * @author jsbxyyx
  * @date 2019/09/07
  */
+//
 public abstract class AbstractUndoLogManager implements UndoLogManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractUndoLogManager.class);
 
+//
     protected enum State {
         /**
          * This state can be properly rolled back by services
@@ -96,6 +98,7 @@ public abstract class AbstractUndoLogManager implements UndoLogManager {
      * @param conn     the conn
      * @throws SQLException the sql exception
      */
+//
     @Override
     public void deleteUndoLog(String xid, long branchId, Connection conn) throws SQLException {
         PreparedStatement deletePST = null;
@@ -123,6 +126,7 @@ public abstract class AbstractUndoLogManager implements UndoLogManager {
      * @param branchIds
      * @param conn
      */
+//
     @Override
     public void batchDeleteUndoLog(Set<String> xids, Set<Long> branchIds, Connection conn) throws SQLException {
         if (CollectionUtils.isEmpty(xids) || CollectionUtils.isEmpty(branchIds)) {
@@ -158,6 +162,7 @@ public abstract class AbstractUndoLogManager implements UndoLogManager {
 
     }
 
+//
     protected static String toBatchDeleteUndoLogSql(int xidSize, int branchIdSize) {
         StringBuilder sqlBuilder = new StringBuilder(64);
         sqlBuilder.append("DELETE FROM ")
@@ -169,6 +174,7 @@ public abstract class AbstractUndoLogManager implements UndoLogManager {
         return sqlBuilder.toString();
     }
 
+//
     protected static void appendInParam(int size, StringBuilder sqlBuilder) {
         sqlBuilder.append(" (");
         for (int i = 0; i < size; i++) {
@@ -184,12 +190,14 @@ public abstract class AbstractUndoLogManager implements UndoLogManager {
         return state == State.Normal.getValue();
     }
 
+//
     protected static String buildContext(String serializer) {
         Map<String, String> map = new HashMap<>();
         map.put(UndoLogConstants.SERIALIZER_KEY, serializer);
         return CollectionUtils.encodeMap(map);
     }
 
+//
     protected static Map<String, String> parseContext(String data) {
         return CollectionUtils.decodeMap(data);
     }

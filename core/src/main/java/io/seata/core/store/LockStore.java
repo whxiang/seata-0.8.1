@@ -23,6 +23,7 @@ import java.util.List;
  * @author zhangsen
  * @data 2019 /4/25
  */
+//
 public interface LockStore {
 
     /**

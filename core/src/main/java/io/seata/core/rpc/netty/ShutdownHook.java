@@ -15,15 +15,15 @@
  */
 package io.seata.core.rpc.netty;
 
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import io.seata.common.util.CollectionUtils;
 import io.seata.core.rpc.Disposable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * ensure the shutdownHook is singleton
@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
  * @author 563868273@qq.com
  * @date 2019/3/29
  */
+//
 public class ShutdownHook extends Thread {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ShutdownHook.class);
@@ -71,6 +72,7 @@ public class ShutdownHook extends Thread {
         destroyAll();
     }
 
+//
     public void destroyAll() {
 
         if (LOGGER.isDebugEnabled()) {
@@ -89,8 +91,10 @@ public class ShutdownHook extends Thread {
      */
     public static void removeRuntimeShutdownHook() {
         Runtime.getRuntime().removeShutdownHook(SHUTDOWN_HOOK);
+
     }
 
+//
     private class DisposablePriorityWrapper implements Comparable<DisposablePriorityWrapper>, Disposable {
 
         private Disposable disposable;

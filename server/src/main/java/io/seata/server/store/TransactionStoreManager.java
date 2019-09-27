@@ -25,6 +25,7 @@ import java.util.List;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public interface TransactionStoreManager {
 
     /**
@@ -62,6 +63,7 @@ public interface TransactionStoreManager {
     /**
      * The enum Log operation.
      */
+//
     enum LogOperation {
 
         /**

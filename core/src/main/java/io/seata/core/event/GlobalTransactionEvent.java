@@ -22,6 +22,7 @@ import io.seata.core.model.GlobalStatus;
  *
  * @author zhengyangyong
  */
+//
 public class GlobalTransactionEvent implements Event {
     public static final String ROLE_TC = "tc";
 

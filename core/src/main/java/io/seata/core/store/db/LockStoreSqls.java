@@ -25,6 +25,7 @@ import io.seata.core.constants.ServerTableColumnsName;
  * @author zhangsen
  * @date 2019 /4/26
  */
+//
 public class LockStoreSqls {
 
     /**
@@ -92,6 +93,7 @@ public class LockStoreSqls {
      * @param dbType    the db type
      * @return the string
      */
+//
     public static String getInsertLockSQL(String lockTable, String dbType) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
             || DBType.OCEANBASE.name().equalsIgnoreCase(dbType)
@@ -123,6 +125,7 @@ public class LockStoreSqls {
      * @param dbType         the db type
      * @return the string
      */
+//
     public static String getBatchDeleteLockSql(String lockTable, String paramPlaceHold, String dbType) {
         return BATCH_DELETE_LOCK_SQL.replace(LOCK_TABLE_PLACEHOLD, lockTable).replace(IN_PARAMS_PLACEHOLD,
             paramPlaceHold);
@@ -147,6 +150,7 @@ public class LockStoreSqls {
      * @param dbType         the db type
      * @return the string
      */
+//
     public static String getCheckLockableSql(String lockTable, String paramPlaceHold, String dbType) {
         return CHECK_LOCK_SQL.replace(LOCK_TABLE_PLACEHOLD, lockTable).replace(IN_PARAMS_PLACEHOLD, paramPlaceHold);
     }

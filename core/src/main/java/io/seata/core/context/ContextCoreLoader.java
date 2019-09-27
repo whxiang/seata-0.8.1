@@ -22,6 +22,7 @@ import io.seata.common.loader.EnhancedServiceLoader;
  *
  * @author sharajava
  */
+//静态内部类实现的单例模式
 public class ContextCoreLoader {
 
     private static class ContextCoreHolder {
@@ -42,6 +43,7 @@ public class ContextCoreLoader {
      *
      * @return the context core
      */
+//
     public static ContextCore load() {
         return ContextCoreHolder.instance;
     }

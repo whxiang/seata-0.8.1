@@ -15,18 +15,18 @@
  */
 package io.seata.rm.datasource.exec;
 
-import java.sql.Connection;
-import java.sql.Savepoint;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 import io.seata.common.util.StringUtils;
 import io.seata.core.context.RootContext;
 import io.seata.rm.datasource.StatementProxy;
 import io.seata.rm.datasource.sql.SQLRecognizer;
 import io.seata.rm.datasource.sql.SQLSelectRecognizer;
 import io.seata.rm.datasource.sql.struct.TableRecords;
+
+import java.sql.Connection;
+import java.sql.Savepoint;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Select for update executor.
@@ -35,6 +35,7 @@ import io.seata.rm.datasource.sql.struct.TableRecords;
  *
  * @param <S> the type parameter
  */
+//
 public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransactionalExecutor<T, S> {
 
     /**
@@ -49,6 +50,7 @@ public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransac
         super(statementProxy, statementCallback, sqlRecognizer);
     }
 
+//
     @Override
     public T doExecute(Object... args) throws Throwable {
         Connection conn = statementProxy.getConnection();
@@ -83,7 +85,7 @@ public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransac
                         statementProxy.getConnectionProxy().checkLock(lockKeys);
                     } else if (RootContext.requireGlobalLock()) {
                         //check lock key before commit just like DML to avoid reentrant lock problem(no xid thus can
-                        // not reentrant)
+                        // not reentrant) 像DML一样，在提交之前检查锁键，以避免重入锁问题(因此没有xid可以不可重入的)
                         statementProxy.getConnectionProxy().appendLockKey(lockKeys);
                     } else {
                         throw new RuntimeException("Unknown situation!");
@@ -105,6 +107,7 @@ public class SelectForUpdateExecutor<T, S extends Statement> extends BaseTransac
         return rs;
     }
 
+//
     private String buildSelectSQL(ArrayList<List<Object>> paramAppenderList){
         SQLSelectRecognizer recognizer = (SQLSelectRecognizer)sqlRecognizer;
         StringBuilder selectSQLAppender = new StringBuilder("SELECT ");

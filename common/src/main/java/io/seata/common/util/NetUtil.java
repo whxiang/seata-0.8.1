@@ -48,6 +48,7 @@ public class NetUtil {
      * @param address the address
      * @return the string
      */
+//
     public static String toStringAddress(SocketAddress address) {
         return toStringAddress((InetSocketAddress) address);
     }
@@ -58,6 +59,7 @@ public class NetUtil {
      * @param address the address
      * @return the string
      */
+//
     public static String toIpAddress(SocketAddress address) {
         InetSocketAddress inetSocketAddress = (InetSocketAddress) address;
         return inetSocketAddress.getAddress().getHostAddress();
@@ -69,6 +71,7 @@ public class NetUtil {
      * @param address the address
      * @return the string
      */
+//
     public static String toStringAddress(InetSocketAddress address) {
         return address.getAddress().getHostAddress() + ":" + address.getPort();
     }
@@ -79,6 +82,7 @@ public class NetUtil {
      * @param address the address
      * @return the inet socket address
      */
+//
     public static InetSocketAddress toInetSocketAddress(String address) {
         int i = address.indexOf(':');
         String host;
@@ -191,6 +195,7 @@ public class NetUtil {
      *
      * @param address the address
      */
+//
     public static void validAddress(InetSocketAddress address) {
         if (null == address.getHostName() || 0 == address.getPort()) {
             throw new IllegalArgumentException("invalid address:" + address);

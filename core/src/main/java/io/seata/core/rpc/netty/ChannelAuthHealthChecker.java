@@ -26,6 +26,7 @@ import io.netty.util.concurrent.Future;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/25
  */
+//
 public interface ChannelAuthHealthChecker extends ChannelHealthChecker {
     /**
      * The constant ACTIVE.

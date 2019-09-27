@@ -15,11 +15,6 @@
  */
 package io.seata.rm;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-
 import io.seata.core.model.BranchType;
 import io.seata.core.model.ResourceManager;
 import io.seata.core.protocol.transaction.UndoLogDeleteRequest;
@@ -29,17 +24,24 @@ import io.seata.rm.datasource.undo.UndoLogManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * The type Rm handler at.
  *
  * @author sharajava
  */
+//
 public class RMHandlerAT extends AbstractRMHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RMHandlerAT.class);
 
     private static final int LIMIT_ROWS = 3000;
 
+//
     @Override
     public void handle(UndoLogDeleteRequest request) {
         DataSourceManager dataSourceManager = (DataSourceManager)getResourceManager();
@@ -80,6 +82,7 @@ public class RMHandlerAT extends AbstractRMHandler {
         }
     }
 
+//
     private Date getLogCreated(int saveDays) {
         if (saveDays <= 0) {
             saveDays = UndoLogDeleteRequest.DEFAULT_SAVE_DAYS;
@@ -94,6 +97,7 @@ public class RMHandlerAT extends AbstractRMHandler {
      *
      * @return
      */
+//
     @Override
     protected ResourceManager getResourceManager() {
         return DefaultResourceManager.get().getResourceManager(BranchType.AT);

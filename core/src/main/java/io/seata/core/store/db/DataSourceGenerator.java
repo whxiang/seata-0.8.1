@@ -23,6 +23,7 @@ import javax.sql.DataSource;
  * @author zhangsen
  * @date 2019 /4/24
  */
+//
 public interface DataSourceGenerator {
 
     /**

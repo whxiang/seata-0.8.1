@@ -31,6 +31,7 @@ import java.util.Objects;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /2/1
  */
+//
 public class RegistryFactory {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistryFactory.class);
 
@@ -39,6 +40,7 @@ public class RegistryFactory {
      *
      * @return the instance
      */
+//
     public static RegistryService getInstance() {
         RegistryType registryType;
         String registryTypeName = ConfigurationFactory.CURRENT_FILE_INSTANCE.getConfig(

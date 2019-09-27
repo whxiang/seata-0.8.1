@@ -24,6 +24,7 @@ import io.seata.core.protocol.AbstractResultMessage;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractTransactionResponse extends AbstractResultMessage {
 
     private TransactionExceptionCode transactionExceptionCode = TransactionExceptionCode.Unknown;

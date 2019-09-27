@@ -15,30 +15,15 @@
  */
 package io.seata.core.rpc;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
+import io.netty.channel.ChannelHandlerContext;
 import io.seata.common.thread.NamedThreadFactory;
 import io.seata.common.util.NetUtil;
-import io.seata.core.protocol.AbstractMessage;
-import io.seata.core.protocol.AbstractResultMessage;
-import io.seata.core.protocol.HeartbeatMessage;
-import io.seata.core.protocol.MergeResultMessage;
-import io.seata.core.protocol.MergedWarpMessage;
-import io.seata.core.protocol.RegisterRMRequest;
-import io.seata.core.protocol.RegisterRMResponse;
-import io.seata.core.protocol.RegisterTMRequest;
-import io.seata.core.protocol.RegisterTMResponse;
-import io.seata.core.protocol.RpcMessage;
-import io.seata.core.protocol.Version;
+import io.seata.core.protocol.*;
 import io.seata.core.rpc.netty.RegisterCheckAuthHandler;
-
-import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.*;
 
 /**
  * The type Default server message listener.
@@ -46,6 +31,7 @@ import org.slf4j.LoggerFactory;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/18
  */
+//
 public class DefaultServerMessageListenerImpl implements ServerMessageListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultServerMessageListenerImpl.class);
     private static BlockingQueue<String> messageStrings = new LinkedBlockingQueue<String>();
@@ -66,6 +52,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
         this.transactionMessageHandler = transactionMessageHandler;
     }
 
+//
     @Override
     public void onTrxMessage(RpcMessage request, ChannelHandlerContext ctx, ServerMessageSender sender) {
         Object message = request.getBody();
@@ -94,6 +81,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
         }
     }
 
+//
     @Override
     public void onRegRmMessage(RpcMessage request, ChannelHandlerContext ctx,
                                ServerMessageSender sender, RegisterCheckAuthHandler checkAuthHandler) {
@@ -115,6 +103,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
         }
     }
 
+//
     @Override
     public void onRegTmMessage(RpcMessage request, ChannelHandlerContext ctx,
                                ServerMessageSender sender, RegisterCheckAuthHandler checkAuthHandler) {
@@ -142,6 +131,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
             new RegisterTMResponse(isSuccess));
     }
 
+//
     @Override
     public void onCheckMessage(RpcMessage request, ChannelHandlerContext ctx, ServerMessageSender sender) {
         try {
@@ -157,6 +147,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
     /**
      * Init.
      */
+//
     public void init() {
         ExecutorService mergeSendExecutorService = new ThreadPoolExecutor(MAX_LOG_SEND_THREAD, MAX_LOG_SEND_THREAD,
             KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(),
@@ -187,6 +178,7 @@ public class DefaultServerMessageListenerImpl implements ServerMessageListener {
      */
     class BatchLogRunnable implements Runnable {
 
+//
         @Override
         public void run() {
             while (true) {

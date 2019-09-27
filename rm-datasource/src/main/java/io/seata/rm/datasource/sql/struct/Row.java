@@ -15,16 +15,17 @@
  */
 package io.seata.rm.datasource.sql.struct;
 
+import io.seata.common.exception.NotSupportYetException;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import io.seata.common.exception.NotSupportYetException;
 
 /**
  * The type Row.
  *
  * @author sharajava
  */
+//
 public class Row {
 
     private List<Field> fields = new ArrayList<Field>();
@@ -67,6 +68,7 @@ public class Row {
      *
      * @return the Primary keys list
      */
+//
     public List<Field> primaryKeys() {
         List<Field> pkFields = new ArrayList<>();
         for (Field field : fields) {
@@ -85,6 +87,7 @@ public class Row {
      *
      * @return the non-primary list
      */
+//
     public List<Field> nonPrimaryKeys() {
         List<Field> nonPkFields = new ArrayList<>();
         for (Field field : fields) {

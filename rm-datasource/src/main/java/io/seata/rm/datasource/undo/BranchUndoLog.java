@@ -22,6 +22,7 @@ import java.util.List;
  *
  * @author sharajava
  */
+//
 public class BranchUndoLog {
 
     private String xid;

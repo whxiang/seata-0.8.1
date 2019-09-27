@@ -25,6 +25,7 @@ import io.seata.core.constants.ServerTableColumnsName;
  * @author zhangsen
  * @date 2019 /4/2
  */
+//
 public class LogStoreSqls {
 
     /**
@@ -101,6 +102,7 @@ public class LogStoreSqls {
     /**
      * The constant QUERY_GLOBAL_TRANSACTION.
      */
+//
     public static final String QUERY_GLOBAL_TRANSACTION = "select " + ALL_GLOBAL_COLUMNS + " from "
         + GLOBAL_TABLE_PLACEHOLD + " where " + ServerTableColumnsName.GLOBAL_TABLE_XID + " = ?";
 
@@ -191,6 +193,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getInsertGlobalTransactionSQL(String globalTable, String dbType) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
             || DBType.OCEANBASE.name().equalsIgnoreCase(dbType)
@@ -210,6 +213,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getUpdateGlobalTransactionStatusSQL(String globalTable, String dbType) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
             || DBType.OCEANBASE.name().equalsIgnoreCase(dbType)
@@ -229,6 +233,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getDeleteGlobalTransactionSQL(String globalTable, String dbType) {
         return DELETE_GLOBAL_TRANSACTION.replace(GLOBAL_TABLE_PLACEHOLD, globalTable);
     }
@@ -240,6 +245,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getQueryGlobalTransactionSQL(String globalTable, String dbType) {
         return QUERY_GLOBAL_TRANSACTION.replace(GLOBAL_TABLE_PLACEHOLD, globalTable);
     }
@@ -251,6 +257,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getQueryGlobalTransactionSQLByTransactionId(String globalTable, String dbType) {
         return QUERY_GLOBAL_TRANSACTION_BY_ID.replace(GLOBAL_TABLE_PLACEHOLD, globalTable);
     }
@@ -263,6 +270,7 @@ public class LogStoreSqls {
      * @param paramsPlaceHolder the params place holder
      * @return the string
      */
+//
     public static String getQueryGlobalTransactionSQLByStatus(String globalTable, String dbType,
                                                               String paramsPlaceHolder) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
@@ -304,6 +312,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getInsertBranchTransactionSQL(String branchTable, String dbType) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
             || DBType.OCEANBASE.name().equalsIgnoreCase(dbType)
@@ -323,6 +332,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getUpdateBranchTransactionStatusSQL(String branchTable, String dbType) {
         if (DBType.MYSQL.name().equalsIgnoreCase(dbType)
             || DBType.OCEANBASE.name().equalsIgnoreCase(dbType)
@@ -364,6 +374,7 @@ public class LogStoreSqls {
      * @param dbType      the db type
      * @return the string
      */
+//
     public static String getQureyBranchTransaction(String branchTable, String dbType) {
         return QUREY_BRANCH_TRANSACTION.replace(BRANCH_TABLE_PLACEHOLD, branchTable);
     }

@@ -23,6 +23,7 @@ import io.seata.rm.datasource.undo.UndoLogParser;
  * kryo serializer
  * @author jsbxyyx
  */
+//
 @LoadLevel(name = KryoUndoLogParser.NAME)
 public class KryoUndoLogParser implements UndoLogParser {
 
@@ -33,6 +34,7 @@ public class KryoUndoLogParser implements UndoLogParser {
         return NAME;
     }
 
+//
     @Override
     public byte[] getDefaultContent() {
         KryoSerializer kryoSerializer = KryoSerializerFactory.getInstance().get();
@@ -43,6 +45,7 @@ public class KryoUndoLogParser implements UndoLogParser {
         }
     }
 
+//
     @Override
     public byte[] encode(BranchUndoLog branchUndoLog) {
         KryoSerializer kryoSerializer = KryoSerializerFactory.getInstance().get();
@@ -53,6 +56,7 @@ public class KryoUndoLogParser implements UndoLogParser {
         }
     }
 
+//
     @Override
     public BranchUndoLog decode(byte[] bytes) {
         KryoSerializer kryoSerializer = KryoSerializerFactory.getInstance().get();

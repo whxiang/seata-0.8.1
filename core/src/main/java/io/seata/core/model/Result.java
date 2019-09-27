@@ -20,6 +20,7 @@ package io.seata.core.model;
  *
  * @author zjinlei
  */
+//
 public class Result<T> {
 
     private T result;

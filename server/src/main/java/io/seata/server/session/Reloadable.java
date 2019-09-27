@@ -20,6 +20,7 @@ package io.seata.server.session;
  *
  * @author sharajava
  */
+//
 public interface Reloadable {
 
     /**

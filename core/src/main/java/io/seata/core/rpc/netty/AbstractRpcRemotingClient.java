@@ -15,16 +15,6 @@
  */
 package io.seata.core.rpc.netty;
 
-import java.net.InetSocketAddress;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleState;
@@ -34,18 +24,18 @@ import io.seata.common.exception.FrameworkErrorCode;
 import io.seata.common.exception.FrameworkException;
 import io.seata.common.thread.NamedThreadFactory;
 import io.seata.common.util.NetUtil;
-import io.seata.core.protocol.AbstractMessage;
-import io.seata.core.protocol.HeartbeatMessage;
-import io.seata.core.protocol.MergeResultMessage;
-import io.seata.core.protocol.MergedWarpMessage;
-import io.seata.core.protocol.MessageFuture;
-import io.seata.core.protocol.RpcMessage;
+import io.seata.core.protocol.*;
 import io.seata.core.rpc.ClientMessageListener;
 import io.seata.core.rpc.ClientMessageSender;
 import io.seata.discovery.loadbalance.LoadBalanceFactory;
 import io.seata.discovery.registry.RegistryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.net.InetSocketAddress;
+import java.util.List;
+import java.util.concurrent.*;
+import java.util.function.Function;
 
 import static io.seata.common.exception.FrameworkErrorCode.NoAvailableService;
 
@@ -56,6 +46,7 @@ import static io.seata.common.exception.FrameworkErrorCode.NoAvailableService;
  * @author zhaojun
  * @date 2018 /9/12
  */
+//
 public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
     implements RegisterMsgListener, ClientMessageSender {
 
@@ -104,6 +95,7 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
      */
     protected abstract String getTransactionServiceGroup();
 
+//
     @Override
     public void init() {
         clientBootstrap.start();
@@ -121,13 +113,15 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         mergeSendExecutorService.submit(new MergedSendRunnable());
         super.init();
     }
-    
+
+//
     @Override
     public void destroy() {
         clientBootstrap.shutdown();
         mergeSendExecutorService.shutdown();
     }
-    
+
+//
     @Override
     public void channelRead(final ChannelHandlerContext ctx, Object msg) throws Exception {
         if (!(msg instanceof RpcMessage)) {
@@ -158,7 +152,8 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         }
         super.channelRead(ctx, msg);
     }
-    
+
+//
     @Override
     public void dispatch(RpcMessage request, ChannelHandlerContext ctx) {
         if (clientMessageListener != null) {
@@ -167,6 +162,7 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         }
     }
 
+//
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         if (messageExecutor.isShutdown()) {
@@ -178,7 +174,8 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         clientChannelManager.releaseChannel(ctx.channel(), NetUtil.toStringAddress(ctx.channel().remoteAddress()));
         super.channelInactive(ctx);
     }
-    
+
+//
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
         if (evt instanceof IdleStateEvent) {
@@ -208,7 +205,8 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
             }
         }
     }
-    
+
+//
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         LOGGER.error(FrameworkErrorCode.ExceptionCaught.getErrCode(),
@@ -219,7 +217,8 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         }
         super.exceptionCaught(ctx, cause);
     }
-    
+
+//
     @Override
     public Object sendMsgWithResponse(Object msg, long timeout) throws TimeoutException {
         String validAddress = loadBalance(getTransactionServiceGroup());
@@ -227,12 +226,14 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         Object result = super.sendAsyncRequestWithResponse(validAddress, channel, msg, timeout);
         return result;
     }
-    
+
+//
     @Override
     public Object sendMsgWithResponse(Object msg) throws TimeoutException {
         return sendMsgWithResponse(msg, NettyClientConfig.getRpcRequestTimeout());
     }
-    
+
+//
     @Override
     public Object sendMsgWithResponse(String serverAddress, Object msg, long timeout)
         throws TimeoutException {
@@ -262,11 +263,13 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
         this.clientMessageListener = clientMessageListener;
     }
 
+//
     @Override
     public void destroyChannel(String serverAddress, Channel channel) {
         clientChannelManager.destroyChannel(serverAddress, channel);
     }
-    
+
+//
     private String loadBalance(String transactionServiceGroup) {
         InetSocketAddress address = null;
         try {
@@ -290,6 +293,7 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
      */
     private class MergedSendRunnable implements Runnable {
 
+//
         @Override
         public void run() {
             while (true) {
@@ -337,6 +341,7 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
             }
         }
 
+//
         private void printMergeMessageLog(MergedWarpMessage mergeMessage) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("merge msg size:" + mergeMessage.msgIds.size());

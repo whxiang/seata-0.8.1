@@ -22,7 +22,6 @@ import io.seata.core.protocol.MessageType;
  *
  * @author jimin.jm @alibaba-inc.com
  */
-//
 public class GlobalBeginResponse extends AbstractTransactionResponse {
 
     private String xid;

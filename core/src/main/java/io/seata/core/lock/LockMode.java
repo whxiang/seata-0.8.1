@@ -21,6 +21,7 @@ package io.seata.core.lock;
  * @author zhangsen
  * @date 2019 /4/25
  */
+//
 public enum LockMode {
 
     /**

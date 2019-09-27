@@ -15,6 +15,14 @@
  */
 package io.seata.rm.datasource.exec;
 
+import io.seata.rm.datasource.StatementProxy;
+import io.seata.rm.datasource.sql.SQLRecognizer;
+import io.seata.rm.datasource.sql.SQLUpdateRecognizer;
+import io.seata.rm.datasource.sql.struct.Field;
+import io.seata.rm.datasource.sql.struct.TableMeta;
+import io.seata.rm.datasource.sql.struct.TableRecords;
+import org.apache.commons.lang.StringUtils;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,15 +30,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
-
-import io.seata.rm.datasource.StatementProxy;
-import io.seata.rm.datasource.sql.SQLRecognizer;
-import io.seata.rm.datasource.sql.SQLUpdateRecognizer;
-import io.seata.rm.datasource.sql.struct.Field;
-import io.seata.rm.datasource.sql.struct.TableMeta;
-import io.seata.rm.datasource.sql.struct.TableRecords;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * The type Update executor.
@@ -40,6 +39,7 @@ import org.apache.commons.lang.StringUtils;
  * @param <T> the type parameter
  * @param <S> the type parameter
  */
+//
 public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
 
     /**
@@ -54,6 +54,7 @@ public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         super(statementProxy, statementCallback, sqlRecognizer);
     }
 
+//
     @Override
     protected TableRecords beforeImage() throws SQLException {
 
@@ -63,6 +64,7 @@ public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return buildTableRecords(tmeta, selectSQL, paramAppenderList);
     }
 
+//
     private String buildBeforeImageSQL(TableMeta tableMeta, ArrayList<List<Object>> paramAppenderList) {
         SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer)sqlRecognizer;
         List<String> updateColumns = recognizer.getUpdateColumns();
@@ -83,6 +85,7 @@ public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return selectSQLJoin.toString();
     }
 
+//
     @Override
     protected TableRecords afterImage(TableRecords beforeImage) throws SQLException {
         TableMeta tmeta = getTableMeta();
@@ -114,6 +117,7 @@ public class UpdateExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return afterImage;
     }
 
+//
     private String buildAfterImageSQL(TableMeta tableMeta, TableRecords beforeImage) throws SQLException {
         SQLUpdateRecognizer recognizer = (SQLUpdateRecognizer)sqlRecognizer;
         List<String> updateColumns = recognizer.getUpdateColumns();

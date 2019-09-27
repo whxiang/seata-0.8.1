@@ -23,7 +23,6 @@ import java.io.Serializable;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
-//
 public class RegisterRMRequest extends AbstractIdentifyRequest implements Serializable {
 
     /**

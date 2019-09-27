@@ -76,6 +76,7 @@ public class BlobUtils {
      * @param bytes the byte array
      * @return the blob
      */
+//
     public static Blob bytes2Blob(byte[] bytes) {
         if (bytes == null) {
             return null;

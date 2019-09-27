@@ -15,14 +15,7 @@
  */
 package io.seata.rm.datasource.undo.parser;
 
-import java.io.IOException;
-
-import io.protostuff.Input;
-import io.protostuff.LinkedBuffer;
-import io.protostuff.Output;
-import io.protostuff.Pipe;
-import io.protostuff.ProtostuffIOUtil;
-import io.protostuff.Schema;
+import io.protostuff.*;
 import io.protostuff.WireFormat.FieldType;
 import io.protostuff.runtime.DefaultIdStrategy;
 import io.protostuff.runtime.Delegate;
@@ -31,6 +24,8 @@ import io.protostuff.runtime.RuntimeSchema;
 import io.seata.common.loader.LoadLevel;
 import io.seata.rm.datasource.undo.BranchUndoLog;
 import io.seata.rm.datasource.undo.UndoLogParser;
+
+import java.io.IOException;
 
 /**
  * The type protostuff based undo log parser.
@@ -63,9 +58,10 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
         return new byte[0];
     }
 
+//
     @Override
     public byte[] encode(BranchUndoLog branchUndoLog) {
-        // Re-use (manage) this buffer to avoid allocating on every serialization
+        // Re-use (manage) this buffer to avoid allocating on every serialization重用(管理)这个缓冲区，以避免在每次序列化时分配
         LinkedBuffer buffer = LinkedBuffer.allocate(512);
         // ser
         try {
@@ -75,6 +71,7 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
         }
     }
 
+//
     @Override
     public BranchUndoLog decode(byte[] bytes) {
         if (bytes.length == 0) {
@@ -90,6 +87,7 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
      *
      * @author zhangsen
      */
+//
     public static class TimestampDelegate implements Delegate<java.sql.Timestamp> {
 
         @Override
@@ -123,6 +121,7 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
      *
      * @author zhangsen
      */
+//
     public static class SqlDateDelegate implements Delegate<java.sql.Date> {
 
         @Override
@@ -156,6 +155,7 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
      *
      * @author zhangsen
      */
+//
     public static class TimeDelegate implements Delegate<java.sql.Time> {
 
         @Override
@@ -189,6 +189,7 @@ public class ProtostuffUndoLogParser implements UndoLogParser {
      *
      * @author zhangsen
      */
+//
     public static class DateDelegate implements Delegate<java.util.Date> {
 
         @Override

@@ -38,6 +38,7 @@ public final class UndoLogManagerFactory {
 
     private UndoLogManagerFactory() {}
 
+//
     public static UndoLogManager getUndoLogManager(String dbType) {
         UndoLogManager undoLogManager = UNDO_LOG_MANAGER_MAP.get(dbType);
         if (undoLogManager == null) {

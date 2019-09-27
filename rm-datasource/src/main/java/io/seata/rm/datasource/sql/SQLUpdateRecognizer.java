@@ -22,6 +22,7 @@ import java.util.List;
  *
  * @author sharajava
  */
+//
 public interface SQLUpdateRecognizer extends WhereRecognizer {
 
     /**

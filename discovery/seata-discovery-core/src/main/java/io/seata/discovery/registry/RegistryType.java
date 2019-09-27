@@ -23,6 +23,7 @@ import io.seata.common.exception.NotSupportYetException;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /02/26
  */
+//
 public enum RegistryType {
     /**
      * File registry type.
@@ -63,6 +64,7 @@ public enum RegistryType {
      * @param name the name
      * @return the type
      */
+//
     public static RegistryType getType(String name) {
         if (File.name().equalsIgnoreCase(name)) {
             return File;

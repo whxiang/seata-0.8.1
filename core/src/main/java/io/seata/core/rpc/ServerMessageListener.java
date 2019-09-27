@@ -25,6 +25,7 @@ import io.seata.core.rpc.netty.RegisterCheckAuthHandler;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/15
  */
+//
 public interface ServerMessageListener {
 
     /**

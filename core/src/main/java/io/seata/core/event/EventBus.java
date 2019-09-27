@@ -20,6 +20,7 @@ package io.seata.core.event;
  *
  * @author zhengyangyong
  */
+//
 public interface EventBus {
     void register(Object subscriber);
 

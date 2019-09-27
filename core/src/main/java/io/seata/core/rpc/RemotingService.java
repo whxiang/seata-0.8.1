@@ -21,6 +21,7 @@ package io.seata.core.rpc;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/5
  */
+//
 public interface RemotingService {
     /**
      * Start.

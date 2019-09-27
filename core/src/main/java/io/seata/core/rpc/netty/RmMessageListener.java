@@ -35,6 +35,7 @@ import org.slf4j.LoggerFactory;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/11
  */
+//
 public class RmMessageListener implements ClientMessageListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RmMessageListener.class);
@@ -59,6 +60,7 @@ public class RmMessageListener implements ClientMessageListener {
         this.handler = handler;
     }
 
+//
     @Override
     public void onMessage(RpcMessage request, String serverAddress, ClientMessageSender sender) {
         Object msg = request.getBody();
@@ -74,6 +76,7 @@ public class RmMessageListener implements ClientMessageListener {
         }
     }
 
+//
     private void handleBranchRollback(RpcMessage request, String serverAddress,
                                       BranchRollbackRequest branchRollbackRequest,
                                       ClientMessageSender sender) {
@@ -89,6 +92,7 @@ public class RmMessageListener implements ClientMessageListener {
         }
     }
 
+//
     private void handleBranchCommit(RpcMessage request, String serverAddress,
                                     BranchCommitRequest branchCommitRequest,
                                     ClientMessageSender sender) {
@@ -108,6 +112,7 @@ public class RmMessageListener implements ClientMessageListener {
         }
     }
 
+//
     private void handleUndoLogDelete(UndoLogDeleteRequest undoLogDeleteRequest) {
         try {
             handler.onRequest(undoLogDeleteRequest, null);

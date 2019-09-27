@@ -23,6 +23,7 @@ import io.seata.core.rpc.RpcContext;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class GlobalCommitRequest extends AbstractGlobalEndRequest {
     @Override
     public short getTypeCode() {

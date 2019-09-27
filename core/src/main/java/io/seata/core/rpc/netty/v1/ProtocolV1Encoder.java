@@ -54,10 +54,12 @@ import java.util.Map;
  * @see ProtocolV1Decoder
  * @since 0.7.0
  */
+//
 public class ProtocolV1Encoder extends MessageToByteEncoder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProtocolV1Encoder.class);
 
+//
     @Override
     public void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) {
         try {

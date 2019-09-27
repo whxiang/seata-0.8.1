@@ -20,5 +20,6 @@ package io.seata.core.rpc;
  *
  * @author zhaojun
  */
+//
 public interface RemotingClient extends RemotingService {
 }

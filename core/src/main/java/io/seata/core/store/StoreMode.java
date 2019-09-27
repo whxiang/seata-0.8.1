@@ -21,6 +21,7 @@ package io.seata.core.store;
  * @author zhangsen
  * @date 2019 /4/2
  */
+//
 public enum StoreMode {
 
     /**

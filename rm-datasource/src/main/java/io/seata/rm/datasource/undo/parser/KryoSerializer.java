@@ -26,6 +26,7 @@ import java.util.Objects;
 /**
  * @author jsbxyyx
  */
+//
 public class KryoSerializer {
 
     private final Kryo kryo;
@@ -38,6 +39,7 @@ public class KryoSerializer {
         return kryo;
     }
 
+//
     public <T> byte[] serialize(T t) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Output output = new Output(baos);
@@ -46,6 +48,7 @@ public class KryoSerializer {
         return baos.toByteArray();
     }
 
+//
     public <T> T deserialize(byte[] bytes) {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Input input = new Input(bais);

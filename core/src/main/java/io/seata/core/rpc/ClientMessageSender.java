@@ -25,6 +25,7 @@ import java.util.concurrent.TimeoutException;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
+//
 public interface ClientMessageSender {
     /**
      * Send msg with response object.

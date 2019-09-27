@@ -26,6 +26,7 @@ import io.netty.channel.epoll.EpollServerSocketChannel;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/12
  */
+//
 public class NettyServerConfig extends NettyBaseConfig {
 
     private int serverSelectorThreads = WORKER_THREAD_SIZE;
@@ -58,6 +59,7 @@ public class NettyServerConfig extends NettyBaseConfig {
     /**
      * The constant DIRECT_BYTE_BUF_ALLOCATOR.
      */
+//
     public static final PooledByteBufAllocator DIRECT_BYTE_BUF_ALLOCATOR =
         new PooledByteBufAllocator(
             true,
@@ -95,6 +97,7 @@ public class NettyServerConfig extends NettyBaseConfig {
      *
      * @return the boolean
      */
+//
     public static boolean enableEpoll() {
         return NettyBaseConfig.SERVER_CHANNEL_CLAZZ.equals(EpollServerSocketChannel.class)
             && Epoll.isAvailable();
@@ -268,6 +271,7 @@ public class NettyServerConfig extends NettyBaseConfig {
      *
      * @return the string
      */
+//
     public String getBossThreadPrefix() {
         return CONFIG.getConfig("transport.thread-factory.boss-thread-prefix", DEFAULT_BOSS_THREAD_PREFIX);
     }
@@ -277,6 +281,7 @@ public class NettyServerConfig extends NettyBaseConfig {
      *
      * @return the string
      */
+//
     public String getWorkerThreadPrefix() {
         return CONFIG.getConfig("transport.thread-factory.worker-thread-prefix",
             enableEpoll() ? EPOLL_WORKER_THREAD_PREFIX : NIO_WORKER_THREAD_PREFIX);
@@ -297,6 +302,7 @@ public class NettyServerConfig extends NettyBaseConfig {
      *
      * @return the int
      */
+//
     public int getBossThreadSize() {
         return CONFIG.getInt("transport.thread-factory.boss-thread-size", DEFAULT_BOSS_THREAD_SIZE);
     }
@@ -306,6 +312,7 @@ public class NettyServerConfig extends NettyBaseConfig {
      *
      * @return the int
      */
+//
     public int getServerShutdownWaitTime() {
         return CONFIG.getInt("transport.shutdown.wait", DEFAULT_SHUTDOWN_TIMEOUT_SEC);
     }

@@ -39,13 +39,16 @@ public class TransactionPropagationFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
+//        获取全局事务id
         String xid = RootContext.getXID();
+//        获取rpc的事务id
         String rpcXid = RpcContext.getContext().getAttachment(RootContext.KEY_XID);
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("xid in RootContext[" + xid + "] xid in RpcContext[" + rpcXid + "]");
         }
         boolean bind = false;
         if (xid != null) {
+//            进行全局事务id传递
             RpcContext.getContext().setAttachment(RootContext.KEY_XID, xid);
         } else {
             if (rpcXid != null) {

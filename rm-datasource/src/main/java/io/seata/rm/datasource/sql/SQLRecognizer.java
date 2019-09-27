@@ -20,6 +20,7 @@ package io.seata.rm.datasource.sql;
  *
  * @author sharajava
  */
+//
 public interface SQLRecognizer {
 
     /**

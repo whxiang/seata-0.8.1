@@ -15,14 +15,6 @@
  */
 package io.seata.rm.datasource.sql.struct;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.concurrent.TimeUnit;
-
-import javax.sql.DataSource;
-
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import io.seata.common.exception.ShouldNeverHappenException;
@@ -32,9 +24,17 @@ import io.seata.rm.datasource.DataSourceProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
+
 /**
  * The type Table meta cache.
  */
+//
 public class TableMetaCacheOracle {
 
     private static final long CACHE_SIZE = 100000;

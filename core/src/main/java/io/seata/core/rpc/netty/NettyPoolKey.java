@@ -23,6 +23,7 @@ import io.seata.core.protocol.AbstractMessage;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /11/29
  */
+//
 public class NettyPoolKey {
 
     private TransactionRole transactionRole;
@@ -129,6 +130,7 @@ public class NettyPoolKey {
     /**
      * The enum Client role.
      */
+//
     public enum TransactionRole {
 
         /**

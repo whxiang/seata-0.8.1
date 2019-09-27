@@ -21,13 +21,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.WritableTypeId;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -39,19 +33,20 @@ import io.seata.rm.datasource.undo.BranchUndoLog;
 import io.seata.rm.datasource.undo.UndoLogParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 
 /**
  * The type Json based undo log parser.
  *
  * @author jsbxyyx
  */
+//
 @LoadLevel(name = JacksonUndoLogParser.NAME)
 public class JacksonUndoLogParser implements UndoLogParser {
 
@@ -116,6 +111,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
         return "{}".getBytes(Constants.DEFAULT_CHARSET);
     }
 
+//
     @Override
     public byte[] encode(BranchUndoLog branchUndoLog) {
         try {
@@ -127,6 +123,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
         }
     }
 
+//
     @Override
     public BranchUndoLog decode(byte[] bytes) {
         try {
@@ -142,6 +139,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
      * if necessary
      * extend {@link ArraySerializerBase}
      */
+//
     private static class TimestampSerializer extends JsonSerializer<Timestamp> {
 
         @Override
@@ -151,6 +149,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
             gen.writeTypeSuffix(typeId);
         }
 
+//
         @Override
         public void serialize(Timestamp timestamp, JsonGenerator gen, SerializerProvider serializers) {
             try {
@@ -169,6 +168,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
      */
     private static class TimestampDeserializer extends JsonDeserializer<Timestamp> {
 
+//
         @Override
         public Timestamp deserialize(JsonParser p, DeserializationContext ctxt) {
             if(p.isExpectedStartArrayToken()){
@@ -192,6 +192,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
      */
     private static class BlobSerializer extends JsonSerializer<SerialBlob> {
 
+//
         @Override
         public void serializeWithType(SerialBlob blob, JsonGenerator gen, SerializerProvider serializers,
                                       TypeSerializer typeSer) throws IOException {
@@ -200,6 +201,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
             typeSer.writeTypeSuffix(gen, typeIdDef);
         }
 
+//
         @Override
         public void serialize(SerialBlob blob, JsonGenerator gen, SerializerProvider serializers) throws IOException {
             try {
@@ -215,6 +217,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
      */
     private static class BlobDeserializer extends JsonDeserializer<SerialBlob> {
 
+//
         @Override
         public SerialBlob deserialize(JsonParser p, DeserializationContext ctxt)
             throws IOException {
@@ -232,6 +235,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
      */
     private static class ClobSerializer extends JsonSerializer<SerialClob> {
 
+//
         @Override
         public void serializeWithType(SerialClob clob, JsonGenerator gen, SerializerProvider serializers,
                                       TypeSerializer typeSer) throws IOException {
@@ -240,6 +244,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
             typeSer.writeTypeSuffix(gen, typeIdDef);
         }
 
+//
         @Override
         public void serialize(SerialClob clob, JsonGenerator gen, SerializerProvider serializers) throws IOException {
             try {
@@ -252,6 +257,7 @@ public class JacksonUndoLogParser implements UndoLogParser {
 
     private static class ClobDeserializer extends JsonDeserializer<SerialClob> {
 
+//
         @Override
         public SerialClob deserialize(JsonParser p, DeserializationContext ctxt)
             throws IOException {

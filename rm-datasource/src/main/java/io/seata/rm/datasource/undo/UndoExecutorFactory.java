@@ -30,6 +30,7 @@ import io.seata.rm.datasource.undo.oracle.OracleUndoUpdateExecutor;
  *
  * @author sharajava
  */
+//
 public class UndoExecutorFactory {
 
     /**
@@ -39,6 +40,7 @@ public class UndoExecutorFactory {
      * @param sqlUndoLog the sql undo log
      * @return the undo executor
      */
+//
     public static AbstractUndoExecutor getUndoExecutor(String dbType, SQLUndoLog sqlUndoLog) {
         if (!dbType.equalsIgnoreCase(JdbcConstants.MYSQL)&&!dbType.equalsIgnoreCase(JdbcConstants.ORACLE)) {
             throw new NotSupportYetException(dbType);

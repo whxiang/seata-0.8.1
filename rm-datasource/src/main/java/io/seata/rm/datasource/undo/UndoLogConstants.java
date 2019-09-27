@@ -21,6 +21,7 @@ import io.seata.core.constants.ConfigurationKeys;
 /**
  * @author Geng Zhang
  */
+//
 public class UndoLogConstants {
 
     public final static String SERIALIZER_KEY = "serializer";

@@ -21,6 +21,7 @@ package io.seata.rm.datasource.undo;
  * @author Wu
  * @date 2019 /3/5 The interface Keyword checker
  */
+//
 public interface KeywordChecker {
     /**
      * check whether given field name and table name use keywords

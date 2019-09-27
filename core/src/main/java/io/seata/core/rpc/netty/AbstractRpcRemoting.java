@@ -58,6 +58,7 @@ import java.util.concurrent.TimeoutException;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/12
  */
+//
 public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implements Disposable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRpcRemoting.class);
@@ -129,6 +130,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
     /**
      * Init.
      */
+//
     public void init() {
         timerExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -156,10 +158,12 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      */
     @Override
     public void destroy() {
+//        正在提交的请求会丢弃，这块是不是加上等待最大时间后在关闭线程池比较合理一点
         timerExecutor.shutdown();
         messageExecutor.shutdown();
     }
 
+//
     @Override
     public void channelWritabilityChanged(ChannelHandlerContext ctx) {
         synchronized (lock) {
@@ -179,6 +183,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+//
     protected Object sendAsyncRequestWithResponse(Channel channel, Object msg) throws TimeoutException {
         return sendAsyncRequestWithResponse(null, channel, msg, NettyClientConfig.getRpcRequestTimeout());
     }
@@ -193,6 +198,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+    //
     protected Object sendAsyncRequestWithResponse(String address, Channel channel, Object msg, long timeout) throws
         TimeoutException {
         if (timeout <= 0) {
@@ -209,11 +215,13 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @return the object
      * @throws TimeoutException the timeout exception
      */
+//
     protected Object sendAsyncRequestWithoutResponse(Channel channel, Object msg) throws
         TimeoutException {
         return sendAsyncRequest(null, channel, msg, 0);
     }
 
+//
     private Object sendAsyncRequest(String address, Channel channel, Object msg, long timeout)
         throws TimeoutException {
         if (channel == null) {
@@ -287,6 +295,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @param channel the channel
      * @param msg     the msg
      */
+//
     protected void sendRequest(Channel channel, Object msg) {
         RpcMessage rpcMessage = new RpcMessage();
         rpcMessage.setMessageType(msg instanceof HeartbeatMessage ?
@@ -314,6 +323,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @param channel the channel
      * @param msg     the msg
      */
+//
     protected void sendResponse(RpcMessage request, Channel channel, Object msg) {
         RpcMessage rpcMessage = new RpcMessage();
         rpcMessage.setMessageType(msg instanceof HeartbeatMessage ?
@@ -330,6 +340,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
         channel.writeAndFlush(rpcMessage);
     }
 
+//
     private void channelWriteableCheck(Channel channel, Object msg) {
         int tryTimes = 0;
         synchronized (lock) {
@@ -350,10 +361,11 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
     }
 
     /**
-     * For testing. When the thread pool is full, you can change this variable and share the stack
+     * For testing. When the thread pool is full, you can change this variable and share the stack进行测试。当线程池已满时，可以更改此变量并共享堆栈
      */
     boolean allowDumpStack = false;
 
+//
     @Override
     public void channelRead(final ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof RpcMessage) {
@@ -382,6 +394,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
                         String pid = name.split("@")[0];
                         int idx = new Random().nextInt(100);
                         try {
+//                            打印异常堆栈
                             Runtime.getRuntime().exec("jstack " + pid + " >d:/" + idx + ".log");
                         } catch (IOException exx) {
                             LOGGER.error(exx.getMessage());
@@ -419,6 +432,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
         }
     }
 
+//
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         LOGGER.error(FrameworkErrorCode.ExceptionCaught.getErrCode(),
@@ -439,6 +453,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      */
     public abstract void dispatch(RpcMessage request, ChannelHandlerContext ctx);
 
+//
     @Override
     public void close(ChannelHandlerContext ctx, ChannelPromise future) throws Exception {
         if (LOGGER.isInfoEnabled()) {
@@ -453,6 +468,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @param channel  the channel
      * @param handlers the handlers
      */
+//
     protected void addChannelPipelineLast(Channel channel, ChannelHandler... handlers) {
         if (null != channel && null != handlers) {
             channel.pipeline().addLast(handlers);
@@ -491,6 +507,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      *
      * @param channel the channel
      */
+//
     public void destroyChannel(Channel channel) {
         destroyChannel(getAddressFromChannel(channel), channel);
     }
@@ -509,6 +526,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @param ctx the ctx
      * @return the address from context
      */
+//
     protected String getAddressFromContext(ChannelHandlerContext ctx) {
         return getAddressFromChannel(ctx.channel());
     }
@@ -519,6 +537,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
      * @param channel the channel
      * @return the address from channel
      */
+//
     protected String getAddressFromChannel(Channel channel) {
         SocketAddress socketAddress = channel.remoteAddress();
         String address = socketAddress.toString();

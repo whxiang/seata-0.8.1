@@ -29,6 +29,7 @@ import java.util.List;
  *
  * @author sharajava
  */
+//
 public abstract class BaseRecognizer implements SQLRecognizer {
 
     /**

@@ -15,10 +15,10 @@
  */
 package io.seata.core.codec;
 
+import io.seata.common.loader.EnhancedServiceLoader;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import io.seata.common.loader.EnhancedServiceLoader;
 
 /**
  * The type Codec factory.
@@ -26,6 +26,7 @@ import io.seata.common.loader.EnhancedServiceLoader;
  * @author zhangsen
  * @date 2019 /5/6
  */
+//
 public class CodecFactory {
 
     /**
@@ -39,6 +40,7 @@ public class CodecFactory {
      * @param codec the code
      * @return the codec
      */
+//
     public static synchronized Codec getCodec(byte codec) {
         CodecType codecType = CodecType.getByCode(codec);
         if (CODEC_MAP.get(codecType) != null) {
@@ -57,6 +59,7 @@ public class CodecFactory {
      * @param t     the t
      * @return the byte [ ]
      */
+//
     public static <T> byte[] encode(byte codec, T t) {
         return getCodec(codec).encode(t);
     }
@@ -69,6 +72,7 @@ public class CodecFactory {
      * @param bytes the bytes
      * @return the t
      */
+//
     public static <T> T decode(byte codec, byte[] bytes) {
         return getCodec(codec).decode(bytes);
     }

@@ -15,11 +15,6 @@
  */
 package io.seata.rm;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import io.seata.common.exception.FrameworkException;
 import io.seata.common.loader.EnhancedServiceLoader;
 import io.seata.common.util.CollectionUtils;
@@ -29,11 +24,17 @@ import io.seata.core.model.BranchType;
 import io.seata.core.model.Resource;
 import io.seata.core.model.ResourceManager;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * default resource manager, adapt all resource managers
  *
  * @author zhangsen
  */
+//
 public class DefaultResourceManager implements ResourceManager {
 
     /**
@@ -42,6 +43,7 @@ public class DefaultResourceManager implements ResourceManager {
     protected static Map<BranchType, ResourceManager> resourceManagers
         = new ConcurrentHashMap<>();
 
+//
     private DefaultResourceManager() {
         initResourceManagers();
     }
@@ -51,8 +53,8 @@ public class DefaultResourceManager implements ResourceManager {
      *
      * @return the resource manager
      */
-    public static DefaultResourceManager get() {
         return SingletonHolder.INSTANCE;
+    public static DefaultResourceManager get() {
     }
 
     /**
@@ -65,6 +67,7 @@ public class DefaultResourceManager implements ResourceManager {
         resourceManagers.put(branchType, rm);
     }
 
+//
     protected void initResourceManagers() {
         //init all resource managers
         List<ResourceManager> allResourceManagers = EnhancedServiceLoader.loadAll(ResourceManager.class);
@@ -75,6 +78,7 @@ public class DefaultResourceManager implements ResourceManager {
         }
     }
 
+//
     @Override
     public BranchStatus branchCommit(BranchType branchType, String xid, long branchId,
                                      String resourceId, String applicationData)
@@ -82,6 +86,7 @@ public class DefaultResourceManager implements ResourceManager {
         return getResourceManager(branchType).branchCommit(branchType, xid, branchId, resourceId, applicationData);
     }
 
+//
     @Override
     public BranchStatus branchRollback(BranchType branchType, String xid, long branchId,
                                        String resourceId, String applicationData)
@@ -89,6 +94,7 @@ public class DefaultResourceManager implements ResourceManager {
         return getResourceManager(branchType).branchRollback(branchType, xid, branchId, resourceId, applicationData);
     }
 
+//
     @Override
     public Long branchRegister(BranchType branchType, String resourceId,
                                String clientId, String xid, String applicationData, String lockKeys)
@@ -97,28 +103,33 @@ public class DefaultResourceManager implements ResourceManager {
             lockKeys);
     }
 
+//
     @Override
     public void branchReport(BranchType branchType, String xid, long branchId, BranchStatus status,
                              String applicationData) throws TransactionException {
         getResourceManager(branchType).branchReport(branchType, xid, branchId, status, applicationData);
     }
 
+//
     @Override
     public boolean lockQuery(BranchType branchType, String resourceId,
                              String xid, String lockKeys) throws TransactionException {
         return getResourceManager(branchType).lockQuery(branchType, resourceId, xid, lockKeys);
     }
 
+//
     @Override
     public void registerResource(Resource resource) {
         getResourceManager(resource.getBranchType()).registerResource(resource);
     }
 
+//
     @Override
     public void unregisterResource(Resource resource) {
         getResourceManager(resource.getBranchType()).unregisterResource(resource);
     }
 
+//
     @Override
     public Map<String, Resource> getManagedResources() {
         Map<String, Resource> allResource = new HashMap<String, Resource>();
@@ -137,6 +148,7 @@ public class DefaultResourceManager implements ResourceManager {
      * @param branchType
      * @return
      */
+//
     public ResourceManager getResourceManager(BranchType branchType) {
         ResourceManager rm = resourceManagers.get(branchType);
         if (rm == null) {
@@ -150,6 +162,7 @@ public class DefaultResourceManager implements ResourceManager {
         throw new FrameworkException("DefaultResourceManager isn't a real ResourceManager");
     }
 
+//
     private static class SingletonHolder {
         private static DefaultResourceManager INSTANCE = new DefaultResourceManager();
     }

@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
  *
  * @author sharajava
  */
+//
 public class MySQLUndoUpdateExecutor extends AbstractUndoExecutor {
 
     /**
@@ -45,6 +46,7 @@ public class MySQLUndoUpdateExecutor extends AbstractUndoExecutor {
      *
      * @return sql
      */
+//
     @Override
     protected String buildUndoSQL() {
         KeywordChecker keywordChecker = KeywordCheckerFactory.getKeywordChecker(JdbcConstants.MYSQL);
@@ -72,6 +74,7 @@ public class MySQLUndoUpdateExecutor extends AbstractUndoExecutor {
         super(sqlUndoLog);
     }
 
+//
     @Override
     protected TableRecords getUndoRows() {
         return sqlUndoLog.getBeforeImage();

@@ -47,6 +47,7 @@ import static io.seata.common.Constants.IP_PORT_SPLIT_CHAR;
  * @author crazier.huang
  * @date 2019/2/15
  */
+//
 public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildListener> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ZookeeperRegisterServiceImpl.class);
 
@@ -76,6 +77,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
     private ZookeeperRegisterServiceImpl() {
     }
 
+//
     static ZookeeperRegisterServiceImpl getInstance() {
         if (null == instance) {
             synchronized (ZookeeperRegisterServiceImpl.class) {
@@ -87,6 +89,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         return instance;
     }
 
+//
     @Override
     public void register(InetSocketAddress address) throws Exception {
         NetUtil.validAddress(address);
@@ -95,6 +98,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         doRegister(path);
     }
 
+//
     private boolean doRegister(String path) {
         if (checkExists(path)) {
             return false;
@@ -105,6 +109,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         return true;
     }
 
+//
     private void createParentIfNotPresent(String path) {
         int i = path.lastIndexOf('/');
         if (i > 0) {
@@ -115,6 +120,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         }
     }
 
+//
     private boolean checkExists(String path) {
         return getClientInstance().exists(path);
     }
@@ -128,6 +134,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         REGISTERED_PATH_SET.remove(path);
     }
 
+//
     @Override
     public void subscribe(String cluster, IZkChildListener listener) throws Exception {
         if (null == cluster) {
@@ -143,6 +150,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         LISTENER_SERVICE_MAP.get(cluster).add(listener);
     }
 
+//
     @Override
     public void unsubscribe(String cluster, IZkChildListener listener) throws Exception {
         if (null == cluster) {
@@ -171,6 +179,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
      * @return
      * @throws Exception
      */
+//
     @Override
     public List<InetSocketAddress> lookup(String key) throws Exception {
         String clusterName = getServiceGroup(key);
@@ -183,6 +192,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
     }
 
     // visible for test.
+//
     List<InetSocketAddress> doLookup(String clusterName) throws Exception {
         boolean exist = getClientInstance().exists(ROOT_PATH + clusterName);
         if (!exist) {
@@ -198,11 +208,13 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         return CLUSTER_ADDRESS_MAP.get(clusterName);
     }
 
+//
     @Override
     public void close() throws Exception {
         getClientInstance().close();
     }
 
+//
     private ZkClient getClientInstance() {
         if (zkClient == null) {
             synchronized (ZookeeperRegisterServiceImpl.class) {
@@ -242,6 +254,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         return zkClient;
     }
 
+//
     private void recover() throws Exception {
         // recover Server
         if (!REGISTERED_PATH_SET.isEmpty()) {
@@ -262,6 +275,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         }
     }
 
+//
     private void subscribeCluster(String clusterName) throws Exception {
         subscribe(clusterName, new IZkChildListener() {
             @Override
@@ -276,6 +290,7 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         });
     }
 
+//
     private void refreshClusterAddressMap(String clusterName, List<String> instances) {
         List<InetSocketAddress> newAddressList = new ArrayList<>();
         if (instances == null) {
@@ -293,18 +308,21 @@ public class ZookeeperRegisterServiceImpl implements RegistryService<IZkChildLis
         CLUSTER_ADDRESS_MAP.put(clusterName, newAddressList);
     }
 
+//
     private String getClusterName() {
         String clusterConfigName = FILE_ROOT_REGISTRY + FILE_CONFIG_SPLIT_CHAR + REGISTRY_TYPE + FILE_CONFIG_SPLIT_CHAR
             + REGISTRY_CLUSTER;
         return FILE_CONFIG.getConfig(clusterConfigName);
     }
 
+//
     private String getServiceGroup(String key) {
         Configuration configuration = ConfigurationFactory.getInstance();
         String clusterNameKey = PREFIX_SERVICE_ROOT + CONFIG_SPLIT_CHAR + PREFIX_SERVICE_MAPPING + key;
         return configuration.getConfig(clusterNameKey);
     }
 
+//
     private String getRegisterPathByPath(InetSocketAddress address) {
         return ROOT_PATH + getClusterName() + ZK_PATH_SPLIT_CHAR + NetUtil.toStringAddress(address);
     }

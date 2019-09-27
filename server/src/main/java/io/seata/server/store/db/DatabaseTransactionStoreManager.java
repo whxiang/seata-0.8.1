@@ -15,12 +15,6 @@
  */
 package io.seata.server.store.db;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import javax.sql.DataSource;
-
 import io.seata.common.exception.StoreException;
 import io.seata.common.executor.Initialize;
 import io.seata.common.loader.EnhancedServiceLoader;
@@ -45,12 +39,18 @@ import io.seata.server.store.AbstractTransactionStoreManager;
 import io.seata.server.store.SessionStorable;
 import io.seata.server.store.TransactionStoreManager;
 
+import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * The type Database transaction store manager.
  *
  * @author zhangsen
  * @data 2019 /4/2
  */
+//
 @LoadLevel(name = "db")
 public class DatabaseTransactionStoreManager extends AbstractTransactionStoreManager
     implements TransactionStoreManager, Initialize {
@@ -86,6 +86,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
     public DatabaseTransactionStoreManager() {
     }
 
+//
     @Override
     public synchronized void init() {
         if (inited.get()) {
@@ -101,6 +102,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         inited.set(true);
     }
 
+//
     @Override
     public boolean writeSession(LogOperation logOperation, SessionStorable session) {
         if (LogOperation.GLOBAL_ADD.equals(logOperation)) {
@@ -127,6 +129,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
      * @param transactionId the transaction id
      * @return the global session
      */
+//
     public GlobalSession readSession(Long transactionId) {
         //global transaction
         GlobalTransactionDO globalTransactionDO = logStore.queryGlobalTransactionDO(transactionId);
@@ -145,6 +148,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
      * @param xid the xid
      * @return the global session
      */
+//
     @Override
     public GlobalSession readSession(String xid) {
         //global transaction
@@ -164,6 +168,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
      * @param statuses the statuses
      * @return the list
      */
+//
     public List<GlobalSession> readSession(GlobalStatus[] statuses) {
         int[] states = new int[statuses.length];
         for (int i = 0; i < statuses.length; i++) {
@@ -183,6 +188,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return globalSessions;
     }
 
+//
     @Override
     public List<GlobalSession> readSession(SessionCondition sessionCondition) {
         if (StringUtils.isNotBlank(sessionCondition.getXid())) {
@@ -205,6 +211,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return null;
     }
 
+//
     private GlobalSession getGlobalSession(GlobalTransactionDO globalTransactionDO,
                                            List<BranchTransactionDO> branchTransactionDOs) {
         GlobalSession globalSession = convertGlobalSession(globalTransactionDO);
@@ -217,6 +224,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return globalSession;
     }
 
+//
     private GlobalSession convertGlobalSession(GlobalTransactionDO globalTransactionDO) {
         GlobalSession session = new GlobalSession(globalTransactionDO.getApplicationId(),
             globalTransactionDO.getTransactionServiceGroup(),
@@ -230,6 +238,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return session;
     }
 
+//
     private BranchSession convertBranchSession(BranchTransactionDO branchTransactionDO) {
         BranchSession branchSession = new BranchSession();
         branchSession.setXid(branchTransactionDO.getXid());
@@ -245,6 +254,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return branchSession;
     }
 
+//
     private GlobalTransactionDO convertGlobalTransactionDO(SessionStorable session) {
         if (session == null || !(session instanceof GlobalSession)) {
             throw new IllegalArgumentException(
@@ -265,6 +275,7 @@ public class DatabaseTransactionStoreManager extends AbstractTransactionStoreMan
         return globalTransactionDO;
     }
 
+//
     private BranchTransactionDO convertBranchTransactionDO(SessionStorable session) {
         if (session == null || !(session instanceof BranchSession)) {
             throw new IllegalArgumentException(

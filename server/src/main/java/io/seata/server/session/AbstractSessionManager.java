@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The type Abstract session manager.
  */
+//
 public abstract class AbstractSessionManager implements SessionManager, SessionLifecycleListener {
 
     /**
@@ -62,6 +63,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         this.name = name;
     }
 
+//
     @Override
     public void addGlobalSession(GlobalSession session) throws TransactionException {
         if (LOGGER.isDebugEnabled()) {
@@ -70,6 +72,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.GLOBAL_ADD, session);
     }
 
+//
     @Override
     public void updateGlobalSessionStatus(GlobalSession session, GlobalStatus status) throws TransactionException {
         if (LOGGER.isDebugEnabled()) {
@@ -78,6 +81,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.GLOBAL_UPDATE, session);
     }
 
+//
     @Override
     public void removeGlobalSession(GlobalSession session) throws TransactionException {
         if (LOGGER.isDebugEnabled()) {
@@ -86,6 +90,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.GLOBAL_REMOVE, session);
     }
 
+//
     @Override
     public void addBranchSession(GlobalSession session, BranchSession branchSession) throws TransactionException {
         if (LOGGER.isDebugEnabled()) {
@@ -94,6 +99,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.BRANCH_ADD, branchSession);
     }
 
+//
     @Override
     public void updateBranchSessionStatus(BranchSession branchSession, BranchStatus status)
         throws TransactionException {
@@ -103,6 +109,7 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.BRANCH_UPDATE, branchSession);
     }
 
+//
     @Override
     public void removeBranchSession(GlobalSession globalSession, BranchSession branchSession)
         throws TransactionException {
@@ -112,27 +119,32 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         writeSession(LogOperation.BRANCH_REMOVE, branchSession);
     }
 
+//
     @Override
     public void onBegin(GlobalSession globalSession) throws TransactionException {
         addGlobalSession(globalSession);
     }
 
+//
     @Override
     public void onStatusChange(GlobalSession globalSession, GlobalStatus status) throws TransactionException {
         updateGlobalSessionStatus(globalSession, status);
     }
 
+//
     @Override
     public void onBranchStatusChange(GlobalSession globalSession, BranchSession branchSession, BranchStatus status)
         throws TransactionException {
         updateBranchSessionStatus(branchSession, status);
     }
 
+//
     @Override
     public void onAddBranch(GlobalSession globalSession, BranchSession branchSession) throws TransactionException {
         addBranchSession(globalSession, branchSession);
     }
 
+//
     @Override
     public void onRemoveBranch(GlobalSession globalSession, BranchSession branchSession) throws TransactionException {
         removeBranchSession(globalSession, branchSession);
@@ -143,11 +155,13 @@ public abstract class AbstractSessionManager implements SessionManager, SessionL
         globalSession.setActive(false);
     }
 
+//
     @Override
     public void onEnd(GlobalSession globalSession) throws TransactionException {
         removeGlobalSession(globalSession);
     }
 
+//
     private void writeSession(LogOperation logOperation, SessionStorable sessionStorable) throws TransactionException {
         if (!transactionStoreManager.writeSession(logOperation, sessionStorable)) {
             if (LogOperation.GLOBAL_ADD.equals(logOperation)) {

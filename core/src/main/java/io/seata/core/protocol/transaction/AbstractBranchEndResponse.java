@@ -22,6 +22,7 @@ import io.seata.core.model.BranchStatus;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractBranchEndResponse extends AbstractTransactionResponse {
 
     /**

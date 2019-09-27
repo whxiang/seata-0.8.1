@@ -15,20 +15,17 @@
  */
 package io.seata.rm.datasource;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import io.seata.common.exception.ShouldNeverHappenException;
 import io.seata.rm.datasource.undo.SQLUndoLog;
+
+import java.util.*;
 
 /**
  * The type Connection context.
  *
  * @author sharajava
  */
+//
 public class ConnectionContext {
     private String xid;
     private Long branchId;
@@ -96,6 +93,7 @@ public class ConnectionContext {
      *
      * @param xid the xid
      */
+//
     void bind(String xid) {
         if (xid == null) {
             throw new IllegalArgumentException("xid should not be null");
@@ -158,6 +156,7 @@ public class ConnectionContext {
     /**
      * Reset.
      */
+//
     public void reset() {
         this.reset(null);
     }
@@ -167,6 +166,7 @@ public class ConnectionContext {
      *
      * @param xid the xid
      */
+//
     void reset(String xid) {
         this.xid = xid;
         branchId = null;
@@ -180,6 +180,7 @@ public class ConnectionContext {
      *
      * @return the string
      */
+//
     public String buildLockKeys() {
         if (lockKeysBuffer.isEmpty()) {
             return null;

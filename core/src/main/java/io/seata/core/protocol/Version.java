@@ -15,17 +15,18 @@
  */
 package io.seata.core.protocol;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import io.netty.channel.Channel;
 import io.seata.common.util.NetUtil;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The type Version.
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class Version {
 
     /**
@@ -48,6 +49,7 @@ public class Version {
      * @param c the c
      * @param v the v
      */
+//
     public static void putChannelVersion(Channel c, String v) {
         VERSION_MAP.put(NetUtil.toStringAddress(c.remoteAddress()), v);
     }

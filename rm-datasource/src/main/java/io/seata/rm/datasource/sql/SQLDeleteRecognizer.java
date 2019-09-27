@@ -20,5 +20,6 @@ package io.seata.rm.datasource.sql;
  *
  * @author sharajava
  */
+//
 public interface SQLDeleteRecognizer extends WhereRecognizer {
 }

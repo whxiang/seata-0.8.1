@@ -38,6 +38,7 @@ import java.util.Objects;
  *
  * @author Geng Zhang
  */
+//
 public class DataCompareUtils {
 
     /**
@@ -47,6 +48,7 @@ public class DataCompareUtils {
      * @param f1 the f1
      * @return the Result<Boolean>
      */
+//
     public static Result<Boolean> isFieldEquals(Field f0, Field f1) {
         if (f0 == null) {
             return Result.build(f1 == null);
@@ -81,6 +83,7 @@ public class DataCompareUtils {
         }
     }
 
+//
     private static void convertType(Field f0, Field f1) {
         int f0Type = f0.getType();
         int f1Type = f1.getType();
@@ -105,6 +108,7 @@ public class DataCompareUtils {
      * @param afterImage  the after image
      * @return Result<Boolean>
      */
+//
     public static Result<Boolean> isRecordsEquals(TableRecords beforeImage, TableRecords afterImage) {
         if (beforeImage == null) {
             return Result.build(afterImage == null, null);
@@ -134,6 +138,7 @@ public class DataCompareUtils {
      * @param newRows       the new rows
      * @return the Result<Boolean>
      */
+//
     public static Result<Boolean> isRowsEquals(TableMeta tableMetaData, List<Row> oldRows, List<Row> newRows) {
         if (!CollectionUtils.isSizeEquals(oldRows, newRows)) {
             return Result.build(false, null);
@@ -141,6 +146,7 @@ public class DataCompareUtils {
         return compareRows(tableMetaData, oldRows, newRows);
     }
 
+//
     private static Result<Boolean> compareRows(TableMeta tableMetaData, List<Row> oldRows, List<Row> newRows) {
         // old row to map
         Map<String, Map<String, Field>> oldRowsMap = rowListToMap(oldRows, tableMetaData.getPkName());
@@ -168,6 +174,7 @@ public class DataCompareUtils {
         return Result.ok();
     }
 
+//
     private static Map<String, Map<String, Field>> rowListToMap(List<Row> rowList, String primaryKey) {
         // {value of primaryKey, value of all columns}
         Map<String, Map<String, Field>> rowMap = new HashMap<>();

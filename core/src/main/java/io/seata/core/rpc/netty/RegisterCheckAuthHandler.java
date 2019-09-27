@@ -24,6 +24,7 @@ import io.seata.core.protocol.RegisterTMRequest;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/7
  */
+//
 public interface RegisterCheckAuthHandler {
 
     /**

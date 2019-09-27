@@ -15,31 +15,27 @@
  */
 package io.seata.rm.datasource.sql.druid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.alibaba.druid.sql.ast.SQLExpr;
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.ast.expr.SQLBetweenExpr;
 import com.alibaba.druid.sql.ast.expr.SQLBinaryOpExpr;
 import com.alibaba.druid.sql.ast.expr.SQLInListExpr;
-import com.alibaba.druid.sql.ast.expr.SQLVariantRefExpr;
-import com.alibaba.druid.sql.ast.statement.SQLExprTableSource;
-import com.alibaba.druid.sql.ast.statement.SQLSelect;
-import com.alibaba.druid.sql.ast.statement.SQLSelectQueryBlock;
-import com.alibaba.druid.sql.ast.statement.SQLSelectStatement;
-import com.alibaba.druid.sql.ast.statement.SQLTableSource;
+import com.alibaba.druid.sql.ast.statement.*;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
 import io.seata.rm.datasource.ParametersHolder;
 import io.seata.rm.datasource.sql.SQLParsingException;
 import io.seata.rm.datasource.sql.SQLSelectRecognizer;
 import io.seata.rm.datasource.sql.SQLType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type My sql select for update recognizer.
  *
  * @author sharajava
  */
+//
 public class MySQLSelectForUpdateRecognizer extends BaseRecognizer implements SQLSelectRecognizer {
 
     private final SQLSelectStatement ast;
@@ -94,6 +90,7 @@ public class MySQLSelectForUpdateRecognizer extends BaseRecognizer implements SQ
         return sb.toString();
     }
 
+//
     private SQLSelectQueryBlock getSelect() {
         SQLSelect select = ast.getSelect();
         if (select == null) {
@@ -106,6 +103,7 @@ public class MySQLSelectForUpdateRecognizer extends BaseRecognizer implements SQ
         return selectQueryBlock;
     }
 
+//
     @Override
     public String getTableAlias() {
         SQLSelectQueryBlock selectQueryBlock = getSelect();
@@ -125,8 +123,8 @@ public class MySQLSelectForUpdateRecognizer extends BaseRecognizer implements SQ
                 printTableSourceExpr(x.getExpr());
                 return false;
             }
-        };
         visitor.visit((SQLExprTableSource) tableSource);
+        };
         return sb.toString();
     }
 

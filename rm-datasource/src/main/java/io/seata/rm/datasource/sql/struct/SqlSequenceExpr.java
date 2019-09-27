@@ -20,6 +20,7 @@ package io.seata.rm.datasource.sql.struct;
  * sql sequence expression
  * @author jsbxyyx
  */
+//
 public class SqlSequenceExpr {
 
     private String sequence;

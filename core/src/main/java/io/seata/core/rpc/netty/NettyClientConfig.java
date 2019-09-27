@@ -22,6 +22,7 @@ import io.netty.channel.Channel;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class NettyClientConfig extends NettyBaseConfig {
 
     private int connectTimeoutMillis = 10000;
@@ -341,6 +342,7 @@ public class NettyClientConfig extends NettyBaseConfig {
      *
      * @return the client selector thread size
      */
+//
     public int getClientSelectorThreadSize() {
         return CONFIG.getInt("transport.thread-factory.client-selector-thread-size", DEFAULT_SELECTOR_THREAD_SIZE);
     }
@@ -359,6 +361,7 @@ public class NettyClientConfig extends NettyBaseConfig {
      *
      * @return the string
      */
+//
     public String getClientSelectorThreadPrefix() {
         return CONFIG.getConfig("transport.thread-factory.client-selector-thread-prefix",
             DEFAULT_SELECTOR_THREAD_PREFIX);
@@ -369,6 +372,7 @@ public class NettyClientConfig extends NettyBaseConfig {
      *
      * @return the string
      */
+//
     public String getClientWorkerThreadPrefix() {
         return CONFIG.getConfig("transport.thread-factory.client-worker-thread-prefix", DEFAULT_WORKER_THREAD_PREFIX);
     }
@@ -432,6 +436,7 @@ public class NettyClientConfig extends NettyBaseConfig {
      *
      * @return the tm dispatch thread prefix
      */
+//
     public String getTmDispatchThreadPrefix() {
         return RPC_DISPATCH_THREAD_PREFIX + "_" + NettyPoolKey.TransactionRole.TMROLE.name();
     }
@@ -441,6 +446,7 @@ public class NettyClientConfig extends NettyBaseConfig {
      *
      * @return the rm dispatch thread prefix
      */
+//
     public String getRmDispatchThreadPrefix() {
         return RPC_DISPATCH_THREAD_PREFIX + "_" + NettyPoolKey.TransactionRole.RMROLE.name();
     }

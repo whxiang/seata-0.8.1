@@ -24,6 +24,7 @@ import java.util.List;
  * @author zhangsen
  * @date 2019 /3/26
  */
+//
 public interface LogStore {
 
     /**

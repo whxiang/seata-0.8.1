@@ -24,6 +24,7 @@ import java.util.Map;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/14
  */
+//
 public class RpcMessage {
 
     private int id;

@@ -24,6 +24,7 @@ import io.seata.rm.datasource.sql.struct.TableRecords;
  *
  * @author sharajava
  */
+//
 public class SQLUndoLog {
 
     private SQLType sqlType;

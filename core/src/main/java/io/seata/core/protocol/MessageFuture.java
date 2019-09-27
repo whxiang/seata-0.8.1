@@ -28,6 +28,7 @@ import java.util.concurrent.TimeoutException;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/9
  */
+//
 public class MessageFuture {
     private RpcMessage requestMessage;
     private long timeout;

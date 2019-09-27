@@ -20,6 +20,7 @@ package io.seata.core.constants;
  *
  * @author zjinlei
  */
+//
 public class ClientTableColumnsName {
 
     /**

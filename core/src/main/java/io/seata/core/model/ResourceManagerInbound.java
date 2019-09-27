@@ -24,6 +24,7 @@ import io.seata.core.exception.TransactionException;
  *
  * @author sharajava
  */
+//
 public interface ResourceManagerInbound {
 
     /**

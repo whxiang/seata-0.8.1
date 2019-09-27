@@ -41,6 +41,7 @@ import java.util.concurrent.ConcurrentMap;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/07
  */
+//
 public class ChannelManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ChannelManager.class);
@@ -67,6 +68,7 @@ public class ChannelManager {
      * @param channel the channel
      * @return the boolean
      */
+//
     public static boolean isRegistered(Channel channel) {
         return IDENTIFIED_CHANNELS.containsKey(channel);
     }
@@ -90,18 +92,22 @@ public class ChannelManager {
      * @param channel the channel
      * @return the get context from identified
      */
+//
     public static RpcContext getContextFromIdentified(Channel channel) {
         return IDENTIFIED_CHANNELS.get(channel);
     }
 
+//
     private static String buildClientId(String applicationId, Channel channel) {
         return applicationId + Constants.CLIENT_ID_SPLIT_CHAR + getAddressFromChannel(channel);
     }
 
+//
     private static String[] readClientId(String clientId) {
         return clientId.split(Constants.CLIENT_ID_SPLIT_CHAR);
     }
 
+//
     private static RpcContext buildChannelHolder(NettyPoolKey.TransactionRole clientRole, String version, String applicationId,
                                                  String txServiceGroup, String dbkeys, Channel channel) {
         RpcContext holder = new RpcContext();
@@ -122,6 +128,7 @@ public class ChannelManager {
      * @param channel the channel
      * @throws IncompatibleVersionException the incompatible version exception
      */
+//
     public static void registerTMChannel(RegisterTMRequest request, Channel channel)
         throws IncompatibleVersionException {
         Version.checkVersion(request.getVersion());
@@ -144,6 +151,7 @@ public class ChannelManager {
      * @param channel                the channel
      * @throws IncompatibleVersionException the incompatible  version exception
      */
+//
     public static void registerRMChannel(RegisterRMRequest resourceManagerRequest, Channel channel)
         throws IncompatibleVersionException {
         Version.checkVersion(resourceManagerRequest.getVersion());
@@ -171,6 +179,7 @@ public class ChannelManager {
 
     }
 
+//
     private static void updateChannelsResource(String resourceId, String clientIp, String applicationId) {
         ConcurrentMap<Integer, RpcContext> sourcePortMap = RM_CHANNELS.get(resourceId).get(applicationId).get(clientIp);
         for (ConcurrentMap.Entry<String, ConcurrentMap<String, ConcurrentMap<String, ConcurrentMap<Integer,
@@ -194,6 +203,7 @@ public class ChannelManager {
         }
     }
 
+//
     private static String getAddressFromChannel(Channel channel) {
         SocketAddress socketAddress = channel.remoteAddress();
         String address = socketAddress.toString();
@@ -203,6 +213,7 @@ public class ChannelManager {
         return address;
     }
 
+//
     private static String getClientIpFromChannel(Channel channel) {
         String address = getAddressFromChannel(channel);
         String clientIp = address;
@@ -212,6 +223,7 @@ public class ChannelManager {
         return clientIp;
     }
 
+//
     private static Integer getClientPortFromChannel(Channel channel) {
         String address = getAddressFromChannel(channel);
         Integer port = 0;
@@ -225,6 +237,7 @@ public class ChannelManager {
         return port;
     }
 
+//
     private static Set<String> dbKeytoSet(String dbkey) {
         if (StringUtils.isNullOrEmpty(dbkey)) {
             return null;
@@ -241,6 +254,7 @@ public class ChannelManager {
      *
      * @param channel the channel
      */
+//
     public static void releaseRpcContext(Channel channel) {
         if (IDENTIFIED_CHANNELS.containsKey(channel)) {
             RpcContext rpcContext = getContextFromIdentified(channel);
@@ -254,6 +268,7 @@ public class ChannelManager {
      * @param channel the channel
      * @return the get same income client channel
      */
+//
     public static Channel getSameClientChannel(Channel channel) {
         if (channel.isActive()) {
             return channel;
@@ -289,6 +304,7 @@ public class ChannelManager {
 
     }
 
+//
     private static Channel getChannelFromSameClientMap(Map<Integer, RpcContext> clientChannelMap, int exclusivePort) {
         if (null != clientChannelMap && !clientChannelMap.isEmpty()) {
             for (ConcurrentMap.Entry<Integer, RpcContext> entry : clientChannelMap.entrySet()) {
@@ -311,6 +327,7 @@ public class ChannelManager {
      * @param clientId   Client ID - ApplicationId:IP:Port
      * @return Corresponding channel, NULL if not found.
      */
+//
     public static Channel getChannel(String resourceId, String clientId) {
         Channel resultChannel = null;
 
@@ -338,7 +355,7 @@ public class ChannelManager {
 
         if (null != ipMap && !ipMap.isEmpty()) {
 
-            // Firstly, try to find the original channel through which the branch was registered.
+            // Firstly, try to find the original channel through which the branch was registered.首先，尝试找到注册分支的原始通道。
             ConcurrentMap<Integer, RpcContext> portMapOnTargetIP = ipMap.get(targetIP);
             if (portMapOnTargetIP != null && !portMapOnTargetIP.isEmpty()) {
 
@@ -359,7 +376,7 @@ public class ChannelManager {
                     }
                 }
 
-                // The original channel was broken, try another one.
+                // The original channel was broken, try another one.原来的频道坏了，换个频道试试。
                 if (resultChannel == null) {
                     for (ConcurrentMap.Entry<Integer, RpcContext> portMapOnTargetIPEntry : portMapOnTargetIP
                         .entrySet()) {
@@ -385,7 +402,7 @@ public class ChannelManager {
                 }
             }
 
-            // No channel on the this app node, try another one.
+            // No channel on the this app node, try another one.此应用程序节点上没有通道，请尝试另一个通道。
             if (resultChannel == null) {
                 for (ConcurrentMap.Entry<String, ConcurrentMap<Integer, RpcContext>> ipMapEntry : ipMap
                     .entrySet()) {
@@ -443,6 +460,7 @@ public class ChannelManager {
 
     }
 
+//
     private static Channel tryOtherApp(ConcurrentMap<String, ConcurrentMap<String, ConcurrentMap<Integer,
         RpcContext>>> applicationIdMap, String myApplicationId) {
         Channel chosenChannel = null;
@@ -490,6 +508,7 @@ public class ChannelManager {
      *
      * @return
      */
+//
     public static Map<String,Channel> getRmChannels() {
         if (RM_CHANNELS.isEmpty()) {
             return null;

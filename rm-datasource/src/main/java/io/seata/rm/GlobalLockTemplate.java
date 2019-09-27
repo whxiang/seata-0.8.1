@@ -15,9 +15,9 @@
  */
 package io.seata.rm;
 
-import java.util.concurrent.Callable;
-
 import io.seata.core.context.RootContext;
+
+import java.util.concurrent.Callable;
 
 /**
  * Template of executing business logic in a local transaction with Global lock.
@@ -26,6 +26,7 @@ import io.seata.core.context.RootContext;
  * @author deyou
  * @date 2019.03.07
  */
+//
 public class GlobalLockTemplate<T> {
 
     /**
@@ -35,6 +36,7 @@ public class GlobalLockTemplate<T> {
      * @return the object
      * @throws Exception
      */
+//
     public Object execute(Callable<T> business) throws Exception {
 
         Object rs = null;

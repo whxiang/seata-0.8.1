@@ -15,9 +15,9 @@
  */
 package io.seata.discovery.loadbalance;
 
-import java.util.List;
-
 import io.seata.common.util.CollectionUtils;
+
+import java.util.List;
 
 /**
  * The type Abstract load balance.
@@ -25,6 +25,7 @@ import io.seata.common.util.CollectionUtils;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /02/12
  */
+//
 public abstract class AbstractLoadBalance implements LoadBalance {
 
     @Override

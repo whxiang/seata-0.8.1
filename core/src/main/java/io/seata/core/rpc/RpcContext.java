@@ -15,6 +15,12 @@
  */
 package io.seata.core.rpc;
 
+import io.netty.channel.Channel;
+import io.seata.common.Constants;
+import io.seata.core.rpc.netty.NettyPoolKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.SocketAddress;
 import java.util.HashSet;
 import java.util.Map;
@@ -22,19 +28,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import io.seata.common.Constants;
-
-import io.netty.channel.Channel;
-import io.seata.core.rpc.netty.NettyPoolKey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * The type rpc context.
  *
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/07
  */
+//
 public class RpcContext {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RpcContext.class);
@@ -71,6 +71,7 @@ public class RpcContext {
     /**
      * Release.
      */
+//
     public void release() {
         Integer clientPort = getClientPortFromChannel(channel);
         if (clientIDHolderMap != null) {
@@ -96,6 +97,7 @@ public class RpcContext {
      *
      * @param clientTMHolderMap the client tm holder map
      */
+//
     public void holdInClientChannels(ConcurrentMap<Integer, RpcContext> clientTMHolderMap) {
         if (this.clientTMHolderMap != null) {
             throw new IllegalStateException();
@@ -110,6 +112,7 @@ public class RpcContext {
      *
      * @param clientIDHolderMap the client id holder map
      */
+//
     public void holdInIdentifiedChannels(ConcurrentMap<Channel, RpcContext> clientIDHolderMap) {
         if (this.clientIDHolderMap != null) {
             throw new IllegalStateException();
@@ -124,6 +127,7 @@ public class RpcContext {
      * @param resourceId the resource id
      * @param portMap    the client rm holder map
      */
+//
     public void holdInResourceManagerChannels(String resourceId, ConcurrentMap<Integer, RpcContext> portMap) {
         if (null == this.clientRMHolderMap) {
             this.clientRMHolderMap = new ConcurrentHashMap<String, ConcurrentMap<Integer, RpcContext>>();
@@ -139,6 +143,7 @@ public class RpcContext {
      * @param resourceId the resource id
      * @param clientPort the client port
      */
+//
     public void holdInResourceManagerChannels(String resourceId, Integer clientPort) {
         if (null == this.clientRMHolderMap) {
             this.clientRMHolderMap = new ConcurrentHashMap<String, ConcurrentMap<Integer, RpcContext>>();
@@ -266,6 +271,7 @@ public class RpcContext {
         this.version = version;
     }
 
+//
     private static String getAddressFromChannel(Channel channel) {
         SocketAddress socketAddress = channel.remoteAddress();
         String address = socketAddress.toString();
@@ -275,6 +281,7 @@ public class RpcContext {
         return address;
     }
 
+//
     private static Integer getClientPortFromChannel(Channel channel) {
         String address = getAddressFromChannel(channel);
         Integer port = 0;

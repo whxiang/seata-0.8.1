@@ -15,16 +15,6 @@
  */
 package io.seata.rm.datasource.sql.struct;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.TimeUnit;
-import javax.sql.DataSource;
 import com.alibaba.druid.util.JdbcConstants;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -38,11 +28,18 @@ import io.seata.rm.datasource.undo.KeywordCheckerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
+import java.sql.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.TimeUnit;
+
 /**
  * The type Table meta cache.
  *
  * @author sharajava
  */
+//
 public class TableMetaCache {
 
     private static final long CACHE_SIZE = 100000;
@@ -63,6 +60,7 @@ public class TableMetaCache {
      * @param tableName       the table name
      * @return the table meta
      */
+//
     public static TableMeta getTableMeta(final DataSourceProxy dataSourceProxy, final String tableName) {
         if (StringUtils.isNullOrEmpty(tableName)) {
             throw new IllegalArgumentException("TableMeta cannot be fetched without tableName");
@@ -98,6 +96,7 @@ public class TableMetaCache {
      *
      * @param dataSourceProxy
      */
+//
     public static void refresh(final DataSourceProxy dataSourceProxy) {
         ConcurrentMap<String, TableMeta> tableMetaMap = TABLE_META_CACHE.asMap();
         for (Entry<String, TableMeta> entry : tableMetaMap.entrySet()) {
@@ -116,10 +115,12 @@ public class TableMetaCache {
         }
     }
 
+//
     private static TableMeta fetchSchema(DataSource dataSource, String tableName) throws SQLException {
         return fetchSchemeInDefaultWay(dataSource, tableName);
     }
 
+//
     private static TableMeta fetchSchemeInDefaultWay(DataSource dataSource, String tableName) throws SQLException {
         Connection conn = null;
         Statement stmt = null;
@@ -154,6 +155,7 @@ public class TableMetaCache {
         }
     }
 
+//
     private static TableMeta resultSetMetaToSchema(java.sql.ResultSet rs2, AbstractConnectionProxy conn,
                                                    String tableName) throws SQLException {
         TableMeta tm = new TableMeta();
@@ -215,6 +217,7 @@ public class TableMetaCache {
         return tm;
     }
 
+//
     private static TableMeta resultSetMetaToSchema(ResultSetMetaData rsmd, DatabaseMetaData dbmd, String tableName)
         throws SQLException {
         String schemaName = rsmd.getSchemaName(1);
@@ -302,6 +305,7 @@ public class TableMetaCache {
      * @param tableName
      * @return
      */
+//
     private static String getCacheKey(DataSourceProxy dataSourceProxy, String tableName) {
         return dataSourceProxy.getResourceId() + "." + tableName;
     }

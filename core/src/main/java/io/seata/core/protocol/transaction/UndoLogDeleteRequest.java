@@ -27,6 +27,7 @@ import java.io.Serializable;
  * @author github-ygy
  * @date 2019-6-14
  */
+//
 public class UndoLogDeleteRequest extends AbstractTransactionRequestToRM implements Serializable {
 
     private static final long serialVersionUID = 7539732523682335742L;

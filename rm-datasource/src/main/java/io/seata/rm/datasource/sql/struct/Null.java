@@ -20,6 +20,7 @@ package io.seata.rm.datasource.sql.struct;
  *
  * @author sharajava
  */
+//
 public class Null {
     private static Null instance = new Null();
 

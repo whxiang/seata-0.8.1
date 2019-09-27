@@ -40,6 +40,7 @@ public class OracleKeywordChecker implements KeywordChecker {
      *
      * @return instance
      */
+//
     public static KeywordChecker getInstance() {
         if (keywordChecker == null) {
             synchronized (OracleKeywordChecker.class) {

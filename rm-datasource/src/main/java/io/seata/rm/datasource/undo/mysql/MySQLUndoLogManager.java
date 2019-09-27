@@ -15,19 +15,7 @@
  */
 package io.seata.rm.datasource.undo.mysql;
 
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import com.alibaba.druid.util.JdbcConstants;
-
 import io.seata.common.Constants;
 import io.seata.common.exception.NotSupportYetException;
 import io.seata.common.util.BlobUtils;
@@ -39,16 +27,15 @@ import io.seata.rm.datasource.ConnectionProxy;
 import io.seata.rm.datasource.DataSourceProxy;
 import io.seata.rm.datasource.sql.struct.TableMeta;
 import io.seata.rm.datasource.sql.struct.TableMetaCache;
-import io.seata.rm.datasource.undo.AbstractUndoExecutor;
-import io.seata.rm.datasource.undo.AbstractUndoLogManager;
-import io.seata.rm.datasource.undo.BranchUndoLog;
-import io.seata.rm.datasource.undo.SQLUndoLog;
-import io.seata.rm.datasource.undo.UndoExecutorFactory;
-import io.seata.rm.datasource.undo.UndoLogConstants;
-import io.seata.rm.datasource.undo.UndoLogParser;
-import io.seata.rm.datasource.undo.UndoLogParserFactory;
+import io.seata.rm.datasource.undo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.sql.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import static io.seata.core.exception.TransactionExceptionCode.BranchRollbackFailed_Retriable;
 
@@ -56,6 +43,7 @@ import static io.seata.core.exception.TransactionExceptionCode.BranchRollbackFai
  * @author jsbxyyx
  * @date 2019/09/07
  */
+//
 public class MySQLUndoLogManager extends AbstractUndoLogManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MySQLUndoLogManager.class);
@@ -84,6 +72,7 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
      * @param cp the cp
      * @throws SQLException the sql exception
      */
+//
     @Override
     public void flushUndoLogs(ConnectionProxy cp) throws SQLException {
         assertDbSupport(cp.getDbType());
@@ -116,6 +105,7 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
      * @param branchId        the branch id
      * @throws TransactionException the transaction exception
      */
+//
     @Override
     public void undo(DataSourceProxy dataSourceProxy, String xid, long branchId) throws TransactionException {
         assertDbSupport(dataSourceProxy.getDbType());
@@ -146,7 +136,9 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
 
                     // It is possible that the server repeatedly sends a rollback request to roll back
                     // the same branch transaction to multiple processes,
-                    // ensuring that only the undo_log in the normal state is processed.
+                    // ensuring that only the undo_log in the normal state is processed.//服务器可能反复发送回滚请求来回滚
+//同一个分支事务到多个进程，
+//确保只处理处于正常状态的undo_log。
                     int state = rs.getInt(ClientTableColumnsName.UNDO_LOG_LOG_STATUS);
                     if (!canUndo(state)) {
                         if (LOGGER.isInfoEnabled()) {
@@ -193,7 +185,13 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
                 // causing undo_log not to be written to the database.
                 // For example, the business processing timeout, the global transaction is the initiator rolls back.
                 // To ensure data consistency, we can insert an undo_log with GlobalFinished state
-                // to prevent the local transaction of the first phase of other programs from being correctly submitted.
+                // to prevent the local transaction of the first phase of other programs from being correctly submitted.//如果存在undo_log，则表示分支事务已完成第一阶段，
+//我们可以直接回滚并清除undo_log
+//否则，表示分支事务中存在异常，
+//导致未将undo_log写入数据库。
+//例如，业务处理超时，全局事务是回滚的发起者。
+//为了确保数据的一致性，我们可以插入一个带有全局完成状态的undo_log
+//防止其他程序的第一阶段本地事务被正确提交。
                 // See https://github.com/seata/seata/issues/489
 
                 if (exists) {
@@ -214,7 +212,7 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
 
                 return;
             } catch (SQLIntegrityConstraintViolationException e) {
-                // Possible undo_log has been inserted into the database by other processes, retrying rollback undo_log
+                // Possible undo_log has been inserted into the database by other processes, retrying rollback undo_log其他进程已将可能的undo_log插入数据库，重新尝试回滚undo_log
                 if (LOGGER.isInfoEnabled()) {
                     LOGGER.info("xid {} branch {}, undo_log inserted, retry rollback",
                             xid, branchId);
@@ -251,6 +249,7 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
         }
     }
 
+//
     @Override
     public int deleteUndoLogByLogCreated(Date logCreated, int limitRows, Connection conn) throws SQLException {
         PreparedStatement deletePST = null;
@@ -276,18 +275,20 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
     }
 
 
-
+//
     private static void insertUndoLogWithNormal(String xid, long branchID, String rollbackCtx,
                                                 byte[] undoLogContent, Connection conn) throws SQLException {
         insertUndoLog(xid, branchID, rollbackCtx, undoLogContent, State.Normal, conn);
     }
 
+//
     private static void insertUndoLogWithGlobalFinished(String xid, long branchID, UndoLogParser parser,
                                                         Connection conn) throws SQLException {
         insertUndoLog(xid, branchID, buildContext(parser.getName()),
                 parser.getDefaultContent(), State.GlobalFinished, conn);
     }
 
+//
     private static void insertUndoLog(String xid, long branchID, String rollbackCtx,
                                       byte[] undoLogContent, State state, Connection conn) throws SQLException {
         PreparedStatement pst = null;
@@ -311,6 +312,7 @@ public class MySQLUndoLogManager extends AbstractUndoLogManager {
         }
     }
 
+//
     private static void assertDbSupport(String dbType) {
         if (!JdbcConstants.MYSQL.equals(dbType)) {
             throw new NotSupportYetException("DbType[" + dbType + "] is not support yet!");

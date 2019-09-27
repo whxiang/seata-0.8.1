@@ -20,6 +20,7 @@ package io.seata.core.protocol;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractIdentifyResponse extends AbstractResultMessage {
 
     private String version = Version.CURRENT;

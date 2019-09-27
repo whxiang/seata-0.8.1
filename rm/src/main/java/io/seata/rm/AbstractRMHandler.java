@@ -40,11 +40,13 @@ import org.slf4j.LoggerFactory;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractRMHandler extends AbstractExceptionHandler
     implements RMInboundHandler, TransactionMessageHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRMHandler.class);
 
+//
     @Override
     public BranchCommitResponse handle(BranchCommitRequest request) {
         BranchCommitResponse response = new BranchCommitResponse();
@@ -85,6 +87,7 @@ public abstract class AbstractRMHandler extends AbstractExceptionHandler
      * @param response the response
      * @throws TransactionException the transaction exception
      */
+//
     protected void doBranchCommit(BranchCommitRequest request, BranchCommitResponse response)
         throws TransactionException {
         String xid = request.getXid();
@@ -112,6 +115,7 @@ public abstract class AbstractRMHandler extends AbstractExceptionHandler
      * @param response the response
      * @throws TransactionException the transaction exception
      */
+//
     protected void doBranchRollback(BranchRollbackRequest request, BranchRollbackResponse response)
         throws TransactionException {
         String xid = request.getXid();

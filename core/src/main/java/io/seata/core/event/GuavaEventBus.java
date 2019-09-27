@@ -20,6 +20,7 @@ package io.seata.core.event;
  *
  * @author zhengyangyong
  */
+//
 public class GuavaEventBus implements EventBus {
     private final com.google.common.eventbus.EventBus eventBus;
 

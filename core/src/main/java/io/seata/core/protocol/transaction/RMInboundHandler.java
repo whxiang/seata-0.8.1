@@ -20,6 +20,7 @@ package io.seata.core.protocol.transaction;
  *
  * @author sharajava
  */
+//
 public interface RMInboundHandler {
 
     /**

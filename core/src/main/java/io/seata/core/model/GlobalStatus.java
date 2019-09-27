@@ -23,6 +23,7 @@ import java.util.Map;
  *
  * @author sharajava
  */
+//
 public enum GlobalStatus {
 
     /**

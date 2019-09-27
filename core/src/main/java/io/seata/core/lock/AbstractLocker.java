@@ -15,13 +15,13 @@
  */
 package io.seata.core.lock;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.seata.common.util.CollectionUtils;
 import io.seata.core.store.LockDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Abstract locker.
@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
  * @author zhangsen
  * @date 2019 -05-15
  */
+//
 public abstract class AbstractLocker implements Locker {
 
     /**
@@ -47,6 +48,7 @@ public abstract class AbstractLocker implements Locker {
      * @param locks the locks
      * @return the list
      */
+//
     protected List<LockDO> convertToLockDO(List<RowLock> locks) {
         List<LockDO> lockDOs = new ArrayList<>();
         if (CollectionUtils.isEmpty(locks)) {
@@ -74,6 +76,7 @@ public abstract class AbstractLocker implements Locker {
      * @param pk         the pk
      * @return the string
      */
+//
     protected String getRowKey(String resourceId, String tableName, String pk) {
         return new StringBuilder().append(resourceId).append(LOCK_SPLIT).append(tableName).append(LOCK_SPLIT).append(pk)
             .toString();

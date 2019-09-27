@@ -23,6 +23,7 @@ import io.seata.common.loader.EnhancedServiceLoader;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /02/12
  */
+//
 public class LoadBalanceFactory {
 
     /**
@@ -30,6 +31,7 @@ public class LoadBalanceFactory {
      *
      * @return the instance
      */
+//
     public static LoadBalance getInstance() {
         LoadBalance loadBalance = EnhancedServiceLoader.load(LoadBalance.class);
         return loadBalance;

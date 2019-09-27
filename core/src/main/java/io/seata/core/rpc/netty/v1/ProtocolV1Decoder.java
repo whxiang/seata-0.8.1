@@ -55,6 +55,7 @@ import java.util.Map;
  * @see ProtocolV1Encoder
  * @since 0.7.0
  */
+//
 public class ProtocolV1Decoder extends LengthFieldBasedFrameDecoder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProtocolV1Decoder.class);
@@ -75,6 +76,7 @@ public class ProtocolV1Decoder extends LengthFieldBasedFrameDecoder {
         super(maxFrameLength, 3, 4, -7, 0);
     }
 
+//
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
         Object decoded = super.decode(ctx, in);
         if (decoded instanceof ByteBuf) {
@@ -91,6 +93,7 @@ public class ProtocolV1Decoder extends LengthFieldBasedFrameDecoder {
         return decoded;
     }
 
+//
     public Object decodeFrame(ByteBuf frame) {
         byte b0 = frame.readByte();
         byte b1 = frame.readByte();

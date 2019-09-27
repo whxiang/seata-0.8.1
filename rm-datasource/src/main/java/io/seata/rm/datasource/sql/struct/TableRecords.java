@@ -17,23 +17,18 @@ package io.seata.rm.datasource.sql.struct;
 
 import io.seata.common.exception.ShouldNeverHappenException;
 
-import java.sql.Blob;
-import java.sql.Clob;
-import java.sql.JDBCType;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Table records.
  *
  * @author sharajava
  */
+//
 public class TableRecords {
 
     private transient TableMeta tableMeta;
@@ -99,6 +94,7 @@ public class TableRecords {
      *
      * @param tableMeta the table meta
      */
+//
     public void setTableMeta(TableMeta tableMeta) {
         if (this.tableMeta != null) {
             throw new ShouldNeverHappenException();
@@ -130,6 +126,7 @@ public class TableRecords {
      *
      * @return the list
      */
+//
     public List<Field> pkRows() {
         final String pkName = getTableMeta().getPkName();
         List<Field> pkRows = new ArrayList<>();
@@ -172,6 +169,7 @@ public class TableRecords {
      * @return the table records
      * @throws SQLException the sql exception
      */
+//
     public static TableRecords buildRecords(TableMeta tmeta, ResultSet resultSet) throws SQLException {
         TableRecords records = new TableRecords(tmeta);
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -216,6 +214,7 @@ public class TableRecords {
         return records;
     }
 
+//
     public static class EmptyTableRecords extends TableRecords {
 
         public EmptyTableRecords() {}

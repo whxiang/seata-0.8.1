@@ -86,6 +86,7 @@ class NettyClientChannelManager {
      * @param serverAddress server address
      * @return netty channel
      */
+//
     Channel acquireChannel(String serverAddress) {
         Channel channelToServer = channels.get(serverAddress);
         if (channelToServer != null) {
@@ -109,12 +110,14 @@ class NettyClientChannelManager {
      * @param channel channel
      * @param serverAddress server address
      */
+//
     void releaseChannel(Channel channel, String serverAddress) {
         if (null == channel || null == serverAddress) { return; }
         try {
             synchronized (channelLocks.get(serverAddress)) {
                 Channel ch = channels.get(serverAddress);
                 if (null == ch) {
+//                    common pool
                     nettyClientKeyPool.returnObject(poolKeyMap.get(serverAddress), channel);
                     return;
                 }
@@ -138,6 +141,7 @@ class NettyClientChannelManager {
      * @param serverAddress server address
      * @param channel channel
      */
+//
     void destroyChannel(String serverAddress, Channel channel) {
         if (null == channel) { return; }
         try {
@@ -155,6 +159,7 @@ class NettyClientChannelManager {
      *
      * @param transactionServiceGroup transaction service group
      */
+//
     void reconnect(String transactionServiceGroup) {
         List<String> availList = null;
         try {
@@ -175,18 +180,21 @@ class NettyClientChannelManager {
             }
         }
     }
-    
+
+//
     void invalidateObject(final String serverAddress, final Channel channel) throws Exception {
         nettyClientKeyPool.invalidateObject(poolKeyMap.get(serverAddress), channel);
     }
-    
+
+//
     void registerChannel(final String serverAddress, final Channel channel) {
         if (null != channels.get(serverAddress) && channels.get(serverAddress).isActive()) {
             return;
         }
         channels.put(serverAddress, channel);
     }
-    
+
+//
     private Channel doConnect(String serverAddress) {
         Channel channelToServer = channels.get(serverAddress);
         if (channelToServer != null && channelToServer.isActive()) {
@@ -208,7 +216,8 @@ class NettyClientChannelManager {
         }
         return channelFromPool;
     }
-    
+
+//
     private List<String> getAvailServerList(String transactionServiceGroup) throws Exception {
         List<String> availList = new ArrayList<>();
         List<InetSocketAddress> availInetSocketAddressList = RegistryFactory.getInstance().lookup(
@@ -220,7 +229,8 @@ class NettyClientChannelManager {
         }
         return availList;
     }
-    
+
+//
     private Channel getExistAliveChannel(Channel rmChannel, String serverAddress) {
         if (rmChannel.isActive()) {
             return rmChannel;
@@ -228,6 +238,7 @@ class NettyClientChannelManager {
             int i = 0;
             for (; i < NettyClientConfig.getMaxCheckAliveRetry(); i++) {
                 try {
+//                    防止cpu load高
                     Thread.sleep(NettyClientConfig.getCheckAliveInternal());
                 } catch (InterruptedException exx) {
                     LOGGER.error(exx.getMessage());

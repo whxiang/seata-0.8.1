@@ -20,5 +20,6 @@ package io.seata.core.event;
  *
  * @author zhengyangyong
  */
+//
 public interface Event {
 }

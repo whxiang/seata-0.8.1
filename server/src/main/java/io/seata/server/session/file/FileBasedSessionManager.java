@@ -15,13 +15,6 @@
  */
 package io.seata.server.session.file;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import io.seata.common.exception.ShouldNeverHappenException;
 import io.seata.common.loader.EnhancedServiceLoader;
 import io.seata.common.loader.LoadLevel;
@@ -30,21 +23,25 @@ import io.seata.core.constants.ConfigurationKeys;
 import io.seata.core.model.GlobalStatus;
 import io.seata.core.store.StoreMode;
 import io.seata.server.UUIDGenerator;
-import io.seata.server.session.BranchSession;
-import io.seata.server.session.DefaultSessionManager;
-import io.seata.server.session.GlobalSession;
-import io.seata.server.session.Reloadable;
-import io.seata.server.session.SessionManager;
+import io.seata.server.session.*;
 import io.seata.server.store.ReloadableStore;
 import io.seata.server.store.SessionStorable;
 import io.seata.server.store.TransactionStoreManager;
 import io.seata.server.store.TransactionWriteStore;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The type File based session manager.
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 @LoadLevel(name = "file")
 public class FileBasedSessionManager extends DefaultSessionManager implements Reloadable {
 
@@ -65,12 +62,14 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
             new Object[] {sessionStoreFilePath + File.separator + name, this});
     }
 
+//
     @Override
     public void reload() {
         restoreSessions();
         washSessions();
     }
 
+//
     private void restoreSessions() {
         Map<Long, BranchSession> unhandledBranchBuffer = new HashMap<>();
 
@@ -100,6 +99,7 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
         }
     }
 
+//
     private void washSessions() {
         if (sessionMap.size() > 0) {
             Iterator<Map.Entry<String, GlobalSession>> iterator = sessionMap.entrySet().iterator();
@@ -126,6 +126,7 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
         }
     }
 
+//
     private void restoreSessions(boolean isHistory, Map<Long, BranchSession> unhandledBranchBuffer) {
         if (!(transactionStoreManager instanceof ReloadableStore)) {
             return;
@@ -137,6 +138,7 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
         }
     }
 
+//
     private void restore(List<TransactionWriteStore> stores, Map<Long, BranchSession> unhandledBranchSessions) {
         long maxRecoverId = UUIDGenerator.getCurrentUUID();
         for (TransactionWriteStore store : stores) {
@@ -237,6 +239,7 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
 
     }
 
+//
     private long getMaxId(long maxRecoverId, SessionStorable sessionStorable) {
         long currentId = 0;
         if (sessionStorable instanceof GlobalSession) {
@@ -248,6 +251,7 @@ public class FileBasedSessionManager extends DefaultSessionManager implements Re
         return maxRecoverId > currentId ? maxRecoverId : currentId;
     }
 
+//
     private void setMaxId(long maxRecoverId) {
         long currentId;
         // will be recover multi-thread later

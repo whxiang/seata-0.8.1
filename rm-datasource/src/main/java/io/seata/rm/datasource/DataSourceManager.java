@@ -53,6 +53,7 @@ import static io.seata.common.exception.FrameworkErrorCode.NoAvailableService;
  *
  * @author sharajava
  */
+//
 public class DataSourceManager extends AbstractResourceManager implements Initialize {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSourceManager.class);
@@ -71,6 +72,7 @@ public class DataSourceManager extends AbstractResourceManager implements Initia
     }
 
     @Override
+//
     public boolean lockQuery(BranchType branchType, String resourceId, String xid, String lockKeys)
         throws TransactionException {
         try {
@@ -102,6 +104,7 @@ public class DataSourceManager extends AbstractResourceManager implements Initia
 
     }
 
+//
     @SuppressWarnings("unchecked")
     private String loadBalance() {
         InetSocketAddress address = null;
@@ -133,6 +136,7 @@ public class DataSourceManager extends AbstractResourceManager implements Initia
     public DataSourceManager() {
     }
 
+//
     @Override
     public void init() {
         AsyncWorker asyncWorker = new AsyncWorker();

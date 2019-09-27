@@ -20,6 +20,7 @@ package io.seata.rm.datasource.sql.struct;
  * sql method invoke expression
  * @author jsbxyyx
  */
+//
 public class SqlMethodExpr {
 
 }

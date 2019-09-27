@@ -20,6 +20,7 @@ package io.seata.core.protocol.transaction;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractGlobalEndRequest extends AbstractTransactionRequestToTC {
 
     private String xid;

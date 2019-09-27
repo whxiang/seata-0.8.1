@@ -15,16 +15,17 @@
  */
 package io.seata.core.context;
 
+import io.seata.common.loader.LoadLevel;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import io.seata.common.loader.LoadLevel;
 
 /**
  * The type Thread local context core.
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 @LoadLevel(name = "ThreadLocalContextCore", order = Integer.MIN_VALUE)
 public class ThreadLocalContextCore implements ContextCore {
 

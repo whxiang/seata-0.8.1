@@ -101,6 +101,7 @@ public class CollectionUtils {
      * @param col1 the col 1
      * @return the boolean
      */
+//
     public static boolean isSizeEquals(Collection col0, Collection col1) {
         if (col0 == null) {
             return col1 == null;
@@ -123,6 +124,7 @@ public class CollectionUtils {
      * @param map origin map
      * @return String string
      */
+//
     public static String encodeMap(Map<String, String> map) {
         if (map == null) {
             return null;
@@ -143,6 +145,7 @@ public class CollectionUtils {
      * @param data data
      * @return map map
      */
+//
     public static Map<String, String> decodeMap(String data) {
         if (data == null) {
             return null;

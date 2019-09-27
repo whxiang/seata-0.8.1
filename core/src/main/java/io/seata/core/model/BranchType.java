@@ -20,6 +20,7 @@ package io.seata.core.model;
  *
  * @author sharajava
  */
+//
 public enum BranchType {
 
     /**

@@ -35,6 +35,7 @@ import java.util.concurrent.Callable;
  * @param <S> the type parameter
  * @author sharajava
  */
+//
 public abstract class AbstractDMLBaseExecutor<T, S extends Statement> extends BaseTransactionalExecutor<T, S> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDMLBaseExecutor.class);
@@ -68,6 +69,7 @@ public abstract class AbstractDMLBaseExecutor<T, S extends Statement> extends Ba
      * @return the t
      * @throws Exception the exception
      */
+//
     protected T executeAutoCommitFalse(Object[] args) throws Exception {
         TableRecords beforeImage = beforeImage();
         T result = statementCallback.execute(statementProxy.getTargetStatement(), args);
@@ -83,6 +85,7 @@ public abstract class AbstractDMLBaseExecutor<T, S extends Statement> extends Ba
      * @return the t
      * @throws Throwable the throwable
      */
+//
     protected T executeAutoCommitTrue(Object[] args) throws Throwable {
         AbstractConnectionProxy connectionProxy = statementProxy.getConnectionProxy();
         try {
@@ -93,7 +96,7 @@ public abstract class AbstractDMLBaseExecutor<T, S extends Statement> extends Ba
                 return result;
             });
         } catch (Exception e) {
-            // when exception occur in finally,this exception will lost, so just print it here
+            // when exception occur in finally,this exception will lost, so just print it here当异常在finally中发生时，这个异常将会丢失，所以在这里打印它
             LOGGER.error("execute executeAutoCommitTrue error:{}", e.getMessage(), e);
             if (!LockRetryPolicy.isLockRetryPolicyBranchRollbackOnConflict()) {
                 connectionProxy.getTargetConnection().rollback();
@@ -129,6 +132,7 @@ public abstract class AbstractDMLBaseExecutor<T, S extends Statement> extends Ba
             this.connection = connection;
         }
 
+//
         @Override
         public <T> T execute(Callable<T> callable) throws Exception {
             if (LOCK_RETRY_POLICY_BRANCH_ROLLBACK_ON_CONFLICT) {

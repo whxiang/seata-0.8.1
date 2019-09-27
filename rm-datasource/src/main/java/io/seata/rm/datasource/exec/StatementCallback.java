@@ -26,6 +26,7 @@ import java.sql.Statement;
  * @param <T> the type parameter
  * @param <S> the type parameter
  */
+//
 public interface StatementCallback<T, S extends Statement> {
 
     /**

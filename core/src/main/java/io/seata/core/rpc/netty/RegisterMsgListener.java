@@ -24,6 +24,7 @@ import io.seata.core.protocol.AbstractMessage;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /11/29
  */
+//
 public interface RegisterMsgListener {
 
     /**

@@ -15,10 +15,10 @@
  */
 package io.seata.core.store;
 
-import java.util.Date;
-
 import io.seata.common.util.StringUtils;
 import io.seata.core.model.BranchStatus;
+
+import java.util.Date;
 
 /**
  * branch transaction data object
@@ -26,6 +26,7 @@ import io.seata.core.model.BranchStatus;
  * @author zhangsen
  * @date 2019 /3/26
  */
+//
 public class BranchTransactionDO {
 
     private String xid;

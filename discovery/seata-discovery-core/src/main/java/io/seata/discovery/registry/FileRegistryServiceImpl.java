@@ -31,6 +31,7 @@ import java.util.List;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /02/12
  */
+//
 public class FileRegistryServiceImpl implements RegistryService<ConfigChangeListener> {
     private static volatile FileRegistryServiceImpl instance;
     private static final Configuration CONFIG = ConfigurationFactory.getInstance();
@@ -46,6 +47,7 @@ public class FileRegistryServiceImpl implements RegistryService<ConfigChangeList
      *
      * @return the instance
      */
+//    懒汉式单例模式
     static FileRegistryServiceImpl getInstance() {
         if (null == instance) {
             synchronized (FileRegistryServiceImpl.class) {
@@ -77,6 +79,7 @@ public class FileRegistryServiceImpl implements RegistryService<ConfigChangeList
 
     }
 
+//
     @Override
     public List<InetSocketAddress> lookup(String key) throws Exception {
         String clusterName = CONFIG.getConfig(PREFIX_SERVICE_ROOT + CONFIG_SPLIT_CHAR + PREFIX_SERVICE_MAPPING + key);

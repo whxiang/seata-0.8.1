@@ -23,6 +23,7 @@ import io.seata.common.util.StringUtils;
  * @author zhangsen
  * @date 2019 -05-15
  */
+//
 public class RowLock {
 
     private String xid;

@@ -28,6 +28,7 @@ import io.seata.core.constants.DBType;
  * @author zhangsen
  * @date 2019 /4/24
  */
+//
 public abstract class AbstractDataSourceGenerator implements DataSourceGenerator {
 
     /**

@@ -52,6 +52,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author jimin.jm @alibaba-inc.com
  * @author zhaojun
  */
+//
 public class RpcClientBootstrap implements RemotingClient {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRpcRemotingClient.class);
@@ -82,7 +83,8 @@ public class RpcClientBootstrap implements RemotingClient {
         this.defaultEventExecutorGroup = eventExecutorGroup;
         this.channelHandler = channelHandler;
     }
-    
+
+//
     @Override
     public void start() {
         if (this.defaultEventExecutorGroup == null) {
@@ -107,6 +109,7 @@ public class RpcClientBootstrap implements RemotingClient {
                     .option(EpollChannelOption.TCP_QUICKACK, true);
             }
         }
+//        使用netty client连接池
         if (nettyClientConfig.isUseConnPool()) {
             clientChannelPool = new AbstractChannelPoolMap<InetSocketAddress, FixedChannelPool>() {
                 @Override
@@ -157,7 +160,8 @@ public class RpcClientBootstrap implements RemotingClient {
             LOGGER.info("RpcClientBootstrap has started");
         }
     }
-    
+
+//
     @Override
     public void shutdown() {
         try {
@@ -179,6 +183,7 @@ public class RpcClientBootstrap implements RemotingClient {
      * @param address the address
      * @return the new channel
      */
+//
     public Channel getNewChannel(InetSocketAddress address) {
         Channel channel;
         ChannelFuture f = this.bootstrap.connect(address);
@@ -203,6 +208,7 @@ public class RpcClientBootstrap implements RemotingClient {
      * @param threadPrefix the thread prefix
      * @return the thread prefix
      */
+//
     private String getThreadPrefix(String threadPrefix) {
         return threadPrefix + THREAD_PREFIX_SPLIT_CHAR + transactionRole.name();
     }

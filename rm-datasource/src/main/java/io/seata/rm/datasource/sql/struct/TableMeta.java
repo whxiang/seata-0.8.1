@@ -15,22 +15,18 @@
  */
 package io.seata.rm.datasource.sql.struct;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-
 import io.seata.common.exception.NotSupportYetException;
 import io.seata.common.util.CollectionUtils;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * The type Table meta.
  *
  * @author sharajava
  */
+//
 public class TableMeta {
     private String tableName;
 
@@ -112,6 +108,7 @@ public class TableMeta {
      *
      * @return the primary key map
      */
+//
     public Map<String, ColumnMeta> getPrimaryKeyMap() {
         Map<String, ColumnMeta> pk = new HashMap<String, ColumnMeta>();
         for (Entry<String, IndexMeta> entry : allIndexes.entrySet()) {
@@ -136,6 +133,7 @@ public class TableMeta {
      * @return the primary key only name
      */
     @SuppressWarnings("serial")
+//
     public List<String> getPrimaryKeyOnlyName() {
         List<String> list = new ArrayList<>();
         for (Entry<String, ColumnMeta> entry : getPrimaryKeyMap().entrySet()) {
@@ -149,6 +147,7 @@ public class TableMeta {
      *
      * @return the pk name
      */
+//
     public String getPkName() {
         return getPrimaryKeyOnlyName().get(0);
     }
@@ -159,6 +158,7 @@ public class TableMeta {
      * @param cols the cols
      * @return the boolean
      */
+//
     public boolean containsPK(List<String> cols) {
         if (cols == null) {
             return false;
@@ -181,6 +181,7 @@ public class TableMeta {
      *
      * @return the create table sql
      */
+//
     public String getCreateTableSQL() {
         StringBuilder sb = new StringBuilder("CREATE TABLE");
         sb.append(String.format(" `%s` ", getTableName()));

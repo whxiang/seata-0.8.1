@@ -36,6 +36,7 @@ public class HeadMapSerializer {
 
     }
 
+//    饿汉式单例模式
     public static HeadMapSerializer getInstance() {
         return INSTANCE;
     }
@@ -70,6 +71,7 @@ public class HeadMapSerializer {
      * @param length of head map bytes
      * @return header map
      */
+//
     public Map<String, String> decode(ByteBuf in, int length) {
         Map<String, String> map = new HashMap<String, String>();
         if (in == null || in.readableBytes() == 0 || length == 0) {

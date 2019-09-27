@@ -26,6 +26,7 @@ import java.util.Date;
  * @author zhangsen
  * @date 2019 /3/26
  */
+//
 public class GlobalTransactionDO {
 
     private String xid;

@@ -15,15 +15,6 @@
  */
 package io.seata.server.session;
 
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import io.seata.common.XID;
 import io.seata.core.exception.GlobalTransactionException;
 import io.seata.core.exception.TransactionException;
@@ -37,6 +28,15 @@ import io.seata.server.store.SessionStorable;
 import io.seata.server.store.StoreConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * The type Global session.
@@ -233,6 +233,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      * @param branchId the branch id
      * @return the branch
      */
+//
     public BranchSession getBranch(long branchId) {
         synchronized (branchSessions) {
             for (BranchSession branchSession : branchSessions) {
@@ -280,6 +281,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      * @param transactionName         the transaction name
      * @param timeout                 the timeout
      */
+//
     public GlobalSession(String applicationId, String transactionServiceGroup, String transactionName, int timeout) {
         this.transactionId = UUIDGenerator.generateUUID();
         this.status = GlobalStatus.Begin;

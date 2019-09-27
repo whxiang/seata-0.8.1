@@ -22,6 +22,7 @@ import io.seata.core.model.BranchType;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractBranchEndRequest extends AbstractTransactionRequestToRM {
 
     /**

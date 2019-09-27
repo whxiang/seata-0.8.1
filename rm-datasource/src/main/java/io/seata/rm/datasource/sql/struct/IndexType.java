@@ -20,6 +20,7 @@ package io.seata.rm.datasource.sql.struct;
  *
  * @author sharajava
  */
+//
 public enum IndexType {
     /**
      * Primary index type.

@@ -48,6 +48,7 @@ import static io.seata.common.Constants.DBKEYS_SPLIT_CHAR;
  * @author zhaojun
  * @date 2018 /10/10
  */
+//
 @Sharable
 public final class RmRpcClient extends AbstractRpcRemotingClient {
 
@@ -73,6 +74,7 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
      * @param transactionServiceGroup the transaction service group
      * @return the instance
      */
+//
     public static RmRpcClient getInstance(String applicationId, String transactionServiceGroup) {
         RmRpcClient rmRpcClient = getInstance();
         rmRpcClient.setApplicationId(applicationId);
@@ -85,6 +87,7 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
      *
      * @return the instance
      */
+//
     public static RmRpcClient getInstance() {
         if (null == instance) {
             synchronized (RmRpcClient.class) {
@@ -148,21 +151,24 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
     public void setCustomerKeys(String customerKeys) {
         this.customerKeys = customerKeys;
     }
-    
+
+//
     @Override
     public void init() {
         if (initialized.compareAndSet(false, true)) {
             super.init();
         }
     }
-    
+
+//
     @Override
     public void destroy() {
         super.destroy();
         initialized.getAndSet(false);
         instance = null;
     }
-    
+
+//
     @Override
     protected Function<String, NettyPoolKey> getPoolKeyFunction() {
         return (serverAddress) -> {
@@ -180,7 +186,8 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
     protected String getTransactionServiceGroup() {
         return transactionServiceGroup;
     }
-    
+
+//
     @Override
     public void onRegisterMsgSuccess(String serverAddress, Channel channel, Object response,
                                      AbstractMessage requestMessage) {
@@ -201,6 +208,7 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
         }
     }
 
+//
     @Override
     public void onRegisterMsgFail(String serverAddress, Channel channel, Object response,
                                   AbstractMessage requestMessage) {
@@ -218,6 +226,7 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
      * @param resourceGroupId the resource group id
      * @param resourceId      the db key
      */
+//
     public void registerResource(String resourceGroupId, String resourceId) {
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info("register to RM resourceId:" + resourceId);
@@ -237,7 +246,8 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
             }
         }
     }
-    
+
+//
     private void sendRegisterMessage(String serverAddress, Channel channel, String dbKey) {
         RegisterRMRequest message = new RegisterRMRequest(applicationId, transactionServiceGroup);
         message.setResourceIds(dbKey);
@@ -257,7 +267,8 @@ public final class RmRpcClient extends AbstractRpcRemotingClient {
             LOGGER.error(e.getMessage());
         }
     }
-    
+
+//
     private String getMergedResourceKeys() {
         Map<String, Resource> managedResources = resourceManager.getManagedResources();
         Set<String> resourceIds = managedResources.keySet();

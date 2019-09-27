@@ -20,6 +20,7 @@ package io.seata.core.rpc;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public enum ClientType {
 
     /**

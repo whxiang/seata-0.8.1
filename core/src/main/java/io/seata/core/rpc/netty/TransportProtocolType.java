@@ -21,6 +21,7 @@ package io.seata.core.rpc.netty;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /9/10
  */
+//
 public enum TransportProtocolType {
     /**
      * Tcp transport protocol type.

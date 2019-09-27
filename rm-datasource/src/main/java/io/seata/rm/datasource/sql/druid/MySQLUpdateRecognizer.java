@@ -15,18 +15,9 @@
  */
 package io.seata.rm.datasource.sql.druid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.alibaba.druid.sql.ast.SQLExpr;
 import com.alibaba.druid.sql.ast.SQLStatement;
-import com.alibaba.druid.sql.ast.expr.SQLBetweenExpr;
-import com.alibaba.druid.sql.ast.expr.SQLBinaryOpExpr;
-import com.alibaba.druid.sql.ast.expr.SQLIdentifierExpr;
-import com.alibaba.druid.sql.ast.expr.SQLInListExpr;
-import com.alibaba.druid.sql.ast.expr.SQLPropertyExpr;
-import com.alibaba.druid.sql.ast.expr.SQLValuableExpr;
-import com.alibaba.druid.sql.ast.expr.SQLVariantRefExpr;
+import com.alibaba.druid.sql.ast.expr.*;
 import com.alibaba.druid.sql.ast.statement.SQLExprTableSource;
 import com.alibaba.druid.sql.ast.statement.SQLUpdateSetItem;
 import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlUpdateStatement;
@@ -36,11 +27,15 @@ import io.seata.rm.datasource.sql.SQLParsingException;
 import io.seata.rm.datasource.sql.SQLType;
 import io.seata.rm.datasource.sql.SQLUpdateRecognizer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type My sql update recognizer.
  *
  * @author sharajava
  */
+//
 public class MySQLUpdateRecognizer extends BaseRecognizer implements SQLUpdateRecognizer {
 
     private MySqlUpdateStatement ast;

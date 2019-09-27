@@ -30,6 +30,7 @@ import java.util.Set;
  * @author sharajava
  * @author Geng Zhang
  */
+//
 public interface UndoLogManager {
 
     /**

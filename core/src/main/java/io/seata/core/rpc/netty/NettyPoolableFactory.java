@@ -32,6 +32,7 @@ import java.net.InetSocketAddress;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /11/19
  */
+//
 public class NettyPoolableFactory implements KeyedPoolableObjectFactory<NettyPoolKey, Channel> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NettyPoolableFactory.class);
@@ -51,6 +52,7 @@ public class NettyPoolableFactory implements KeyedPoolableObjectFactory<NettyPoo
         this.clientBootstrap = clientBootstrap;
     }
 
+//
     @Override
     public Channel makeObject(NettyPoolKey key) {
         InetSocketAddress address = NetUtil.toInetSocketAddress(key.getAddress());
@@ -88,6 +90,7 @@ public class NettyPoolableFactory implements KeyedPoolableObjectFactory<NettyPoo
         return channelToServer;
     }
 
+//
     private boolean isResponseSuccess(Object response, NettyPoolKey.TransactionRole transactionRole) {
         if (null == response) { return false; }
         if (transactionRole.equals(NettyPoolKey.TransactionRole.TMROLE)) {
@@ -112,6 +115,7 @@ public class NettyPoolableFactory implements KeyedPoolableObjectFactory<NettyPoo
         }
     }
 
+//
     @Override
     public void destroyObject(NettyPoolKey key, Channel channel) throws Exception {
 
@@ -124,6 +128,7 @@ public class NettyPoolableFactory implements KeyedPoolableObjectFactory<NettyPoo
         }
     }
 
+//
     @Override
     public boolean validateObject(NettyPoolKey key, Channel obj) {
         if (null != obj && obj.isActive()) {

@@ -15,12 +15,6 @@
  */
 package io.seata.rm.datasource;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.concurrent.Callable;
-
-import com.alibaba.druid.util.JdbcConstants;
-
 import io.seata.common.util.StringUtils;
 import io.seata.config.ConfigurationFactory;
 import io.seata.core.constants.ConfigurationKeys;
@@ -36,11 +30,16 @@ import io.seata.rm.datasource.undo.UndoLogManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.concurrent.Callable;
+
 /**
  * The type Connection proxy.
  *
  * @author sharajava
  */
+//
 public class ConnectionProxy extends AbstractConnectionProxy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionProxy.class);
@@ -104,6 +103,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
      * @param lockKeys the lockKeys
      * @throws SQLException the sql exception
      */
+//
     public void checkLock(String lockKeys) throws SQLException {
         // Just check lock without requiring lock by now.
         try {
@@ -123,6 +123,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
      * @param lockKeys the lock keys
      * @throws SQLException the sql exception
      */
+//
     public boolean lockQuery(String lockKeys) throws SQLException {
         // Just check lock without requiring lock by now.
         boolean result = false;
@@ -139,6 +140,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         recognizeLockKeyConflictException(te, null);
     }
 
+//
     private void recognizeLockKeyConflictException(TransactionException te, String lockKeys) throws SQLException {
         if (te.getCode() == TransactionExceptionCode.LockKeyConflict) {
             StringBuilder reasonBuilder = new StringBuilder("get global lock fail, xid:" + context.getXid());
@@ -170,6 +172,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         context.appendLockKey(lockKey);
     }
 
+//
     @Override
     public void commit() throws SQLException {
         try {
@@ -184,6 +187,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         }
     }
 
+//
     private void doCommit() throws SQLException {
         if (context.inGlobalTransaction()) {
             processGlobalTransactionCommit();
@@ -194,6 +198,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         }
     }
 
+//
     private void processLocalCommitWithGlobalLocks() throws SQLException {
 
         checkLock(context.buildLockKeys());
@@ -205,6 +210,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         context.reset();
     }
 
+//
     private void processGlobalTransactionCommit() throws SQLException {
         try {
             register();
@@ -226,12 +232,14 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         context.reset();
     }
 
+//
     private void register() throws TransactionException {
         Long branchId = DefaultResourceManager.get().branchRegister(BranchType.AT, getDataSourceProxy().getResourceId(),
             null, context.getXid(), null, context.buildLockKeys());
         context.setBranchId(branchId);
     }
 
+//
     @Override
     public void rollback() throws SQLException {
         targetConnection.rollback();
@@ -243,15 +251,17 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         context.reset();
     }
 
+//
     @Override
     public void setAutoCommit(boolean autoCommit) throws SQLException {
         if ((autoCommit) && !getAutoCommit()) {
-            // change autocommit from false to true, we should commit() first according to JDBC spec.
+            // change autocommit from false to true, we should commit() first according to JDBC spec.将autocommit从false更改为true，我们应该首先根据JDBC规范提交()。
             doCommit();
         }
         targetConnection.setAutoCommit(autoCommit);
     }
 
+//
     private void report(boolean commitDone) throws SQLException {
         int retry = REPORT_RETRY_COUNT;
         while (retry > 0) {
@@ -271,10 +281,12 @@ public class ConnectionProxy extends AbstractConnectionProxy {
         }
     }
 
+//
     public static class LockRetryPolicy {
         protected final static boolean LOCK_RETRY_POLICY_BRANCH_ROLLBACK_ON_CONFLICT =
                 ConfigurationFactory.getInstance().getBoolean(ConfigurationKeys.CLIENT_LOCK_RETRY_POLICY_BRANCH_ROLLBACK_ON_CONFLICT, true);
 
+//
         public <T> T execute(Callable<T> callable) throws Exception {
             if (LOCK_RETRY_POLICY_BRANCH_ROLLBACK_ON_CONFLICT) {
                 return callable.call();
@@ -283,6 +295,7 @@ public class ConnectionProxy extends AbstractConnectionProxy {
             }
         }
 
+//
         protected <T> T doRetryOnLockConflict(Callable<T> callable) throws Exception {
             LockRetryController lockRetryController = new LockRetryController();
             while (true) {

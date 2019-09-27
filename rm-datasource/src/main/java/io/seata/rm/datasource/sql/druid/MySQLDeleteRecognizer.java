@@ -15,15 +15,11 @@
  */
 package io.seata.rm.datasource.sql.druid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.alibaba.druid.sql.ast.SQLExpr;
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.ast.expr.SQLBetweenExpr;
 import com.alibaba.druid.sql.ast.expr.SQLBinaryOpExpr;
 import com.alibaba.druid.sql.ast.expr.SQLInListExpr;
-import com.alibaba.druid.sql.ast.expr.SQLVariantRefExpr;
 import com.alibaba.druid.sql.ast.statement.SQLExprTableSource;
 import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlDeleteStatement;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
@@ -31,11 +27,15 @@ import io.seata.rm.datasource.ParametersHolder;
 import io.seata.rm.datasource.sql.SQLDeleteRecognizer;
 import io.seata.rm.datasource.sql.SQLType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type My sql delete recognizer.
  *
  * @author sharajava
  */
+//
 public class MySQLDeleteRecognizer extends BaseRecognizer implements SQLDeleteRecognizer {
 
     private final MySqlDeleteStatement ast;

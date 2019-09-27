@@ -26,6 +26,7 @@ import java.util.List;
  * @author zhangsen
  * @data 2019 /4/25
  */
+//
 public abstract class AbstractTransactionStoreManager implements TransactionStoreManager {
 
     @Override

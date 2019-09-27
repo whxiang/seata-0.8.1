@@ -44,6 +44,7 @@ import java.util.List;
  * @author sharajava
  * @author Geng Zhang
  */
+//
 public abstract class AbstractUndoExecutor {
 
     /**
@@ -100,6 +101,7 @@ public abstract class AbstractUndoExecutor {
      * @param conn the conn
      * @throws SQLException the sql exception
      */
+//
     public void executeOn(Connection conn) throws SQLException {
 
         if (IS_UNDO_DATA_VALIDATION_ENABLE && !dataValidationAndGoOn(conn)) {
@@ -148,6 +150,7 @@ public abstract class AbstractUndoExecutor {
      * @param pkValue    the pk value
      * @throws SQLException the sql exception
      */
+//
     protected void undoPrepare(PreparedStatement undoPST, ArrayList<Field> undoValues, Field pkValue)
         throws SQLException {
         int undoIndex = 0;
@@ -186,13 +189,15 @@ public abstract class AbstractUndoExecutor {
      * @return return true if data validation is ok and need continue undo, and return false if no need continue undo.
      * @throws SQLException the sql exception such as has dirty data
      */
+//
     protected boolean dataValidationAndGoOn(Connection conn) throws SQLException {
 
         TableRecords beforeRecords = sqlUndoLog.getBeforeImage();
         TableRecords afterRecords = sqlUndoLog.getAfterImage();
 
         // Compare current data with before data
-        // No need undo if the before data snapshot is equivalent to the after data snapshot.
+        // No need undo if the before data snapshot is equivalent to the after data snapshot.//比较当前数据和以前的数据
+//如果前数据快照与后数据快照相等，则不需要撤消。
         Result<Boolean> beforeEqualsAfterResult = DataCompareUtils.isRecordsEquals(beforeRecords, afterRecords);
         if (beforeEqualsAfterResult.getResult()) {
             if (LOGGER.isInfoEnabled()) {
@@ -210,7 +215,8 @@ public abstract class AbstractUndoExecutor {
         if (!afterEqualsCurrentResult.getResult()) {
 
             // If current data is not equivalent to the after data, then compare the current data with the before 
-            // data, too. No need continue to undo if current data is equivalent to the before data snapshot
+            // data, too. No need continue to undo if current data is equivalent to the before data snapshot//如果当前数据不等于后数据，那么将当前数据与前数据进行比较
+//数据。如果当前数据等同于数据快照之前的数据，则无需继续撤消
             Result<Boolean> beforeEqualsCurrentResult = DataCompareUtils.isRecordsEquals(beforeRecords, currentRecords);
             if (beforeEqualsCurrentResult.getResult()) {
                 if (LOGGER.isInfoEnabled()) {
@@ -244,6 +250,7 @@ public abstract class AbstractUndoExecutor {
      * @return the table records
      * @throws SQLException the sql exception
      */
+//
     protected TableRecords queryCurrentRecords(Connection conn) throws SQLException {
         TableRecords undoRecords = getUndoRows();
         TableMeta tableMeta = undoRecords.getTableMeta();
@@ -296,6 +303,7 @@ public abstract class AbstractUndoExecutor {
      * @param records the records
      * @return the object [ ]
      */
+//
     protected Object[] parsePkValues(TableRecords records) {
         String pkName = records.getTableMeta().getPkName();
         List<Row> undoRows = records.getRows();

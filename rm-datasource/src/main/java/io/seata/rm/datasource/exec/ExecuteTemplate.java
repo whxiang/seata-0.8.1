@@ -28,6 +28,7 @@ import java.sql.Statement;
  *
  * @author sharajava
  */
+//
 public class ExecuteTemplate {
 
     /**
@@ -41,6 +42,7 @@ public class ExecuteTemplate {
      * @return the t
      * @throws SQLException the sql exception
      */
+//
     public static <T, S extends Statement> T execute(StatementProxy<S> statementProxy,
                                                      StatementCallback<T, S> statementCallback,
                                                      Object... args) throws SQLException {
@@ -59,6 +61,7 @@ public class ExecuteTemplate {
      * @return the t
      * @throws SQLException the sql exception
      */
+//
     public static <T, S extends Statement> T execute(SQLRecognizer sqlRecognizer,
                                                      StatementProxy<S> statementProxy,
                                                      StatementCallback<T, S> statementCallback,

@@ -15,12 +15,6 @@
  */
 package io.seata.rm.datasource.exec;
 
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringJoiner;
-
 import com.alibaba.druid.util.JdbcConstants;
 import io.seata.rm.datasource.StatementProxy;
 import io.seata.rm.datasource.sql.SQLDeleteRecognizer;
@@ -31,6 +25,12 @@ import io.seata.rm.datasource.undo.KeywordChecker;
 import io.seata.rm.datasource.undo.KeywordCheckerFactory;
 import org.apache.commons.lang.StringUtils;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringJoiner;
+
 /**
  * The type Delete executor.
  *
@@ -39,6 +39,7 @@ import org.apache.commons.lang.StringUtils;
  * @param <T> the type parameter
  * @param <S> the type parameter
  */
+//
 public class DeleteExecutor<T, S extends Statement> extends AbstractDMLBaseExecutor<T, S> {
 
     /**
@@ -53,6 +54,7 @@ public class DeleteExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         super(statementProxy, statementCallback, sqlRecognizer);
     }
 
+//
     @Override
     protected TableRecords beforeImage() throws SQLException {
         SQLDeleteRecognizer visitor = (SQLDeleteRecognizer) sqlRecognizer;
@@ -62,6 +64,7 @@ public class DeleteExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return buildTableRecords(tmeta, selectSQL, paramAppenderList);
     }
 
+//
     private String buildBeforeImageSQL(SQLDeleteRecognizer visitor, TableMeta tableMeta, ArrayList<List<Object>> paramAppenderList) {
         KeywordChecker keywordChecker = KeywordCheckerFactory.getKeywordChecker(JdbcConstants.MYSQL);
         String whereCondition = buildWhereCondition(visitor, paramAppenderList);
@@ -77,6 +80,7 @@ public class DeleteExecutor<T, S extends Statement> extends AbstractDMLBaseExecu
         return selectSQLAppender.toString();
     }
 
+//
     @Override
     protected TableRecords afterImage(TableRecords beforeImage) throws SQLException {
         return TableRecords.empty(getTableMeta());

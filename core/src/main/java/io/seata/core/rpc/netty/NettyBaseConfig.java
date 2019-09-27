@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/24
  */
+//
 public class NettyBaseConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(NettyBaseConfig.class);
 
@@ -107,6 +108,7 @@ public class NettyBaseConfig {
      */
     protected static final int MAX_ALL_IDLE_SECONDS = 0;
 
+//
     static {
         TRANSPORT_PROTOCOL_TYPE = TransportProtocolType.valueOf(CONFIG.getConfig("transport.type",TransportProtocolType.TCP.name()));
         String workerThreadSize = CONFIG.getConfig("transport.thread-factory.worker-thread-size");
@@ -170,6 +172,7 @@ public class NettyBaseConfig {
         MAX_READ_IDLE_SECONDS = MAX_WRITE_IDLE_SECONDS * READIDLE_BASE_WRITEIDLE;
     }
 
+//
     private static void raiseUnsupportedTransportError() throws RuntimeException {
         String errMsg = String.format("Unsupported provider type :[%s] for transport:[%s].", TRANSPORT_SERVER_TYPE,
             TRANSPORT_PROTOCOL_TYPE);
@@ -180,6 +183,7 @@ public class NettyBaseConfig {
     /**
      * The enum Work thread mode.
      */
+//
     enum WorkThreadMode {
 
         /**
@@ -220,6 +224,7 @@ public class NettyBaseConfig {
          * @param name the name
          * @return the mode by name
          */
+//
         public static WorkThreadMode getModeByName(String name) {
             if (Auto.name().equalsIgnoreCase(name)) {
                 return Auto;

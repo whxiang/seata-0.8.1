@@ -26,6 +26,7 @@ import org.apache.commons.lang.ArrayUtils;
  *
  * @author sharajava
  */
+//
 public class IndexMeta {
     private List<ColumnMeta> values = new ArrayList<ColumnMeta>();
 

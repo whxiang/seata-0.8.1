@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentMap;
  * @author sharajava
  * @author Geng Zhang
  */
+//
 public class UndoLogParserFactory {
 
     /**
@@ -52,6 +53,7 @@ public class UndoLogParserFactory {
      * @param name parser name
      * @return the UndoLogParser
      */
+//
     public static UndoLogParser getInstance(String name) {
         UndoLogParser parser = INSTANCES.get(name);
         if (parser == null) {

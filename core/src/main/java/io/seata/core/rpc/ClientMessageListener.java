@@ -23,6 +23,7 @@ import io.seata.core.protocol.RpcMessage;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /10/10
  */
+//
 public interface ClientMessageListener {
     /**
      * On message.

@@ -18,6 +18,7 @@ package io.seata.core.codec;
 /**
  * @author Geng Zhang
  */
+//
 public enum CompressorType {
 
     /**

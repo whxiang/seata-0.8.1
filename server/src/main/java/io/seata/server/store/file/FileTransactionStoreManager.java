@@ -15,6 +15,18 @@
  */
 package io.seata.server.store.file;
 
+import io.seata.common.exception.StoreException;
+import io.seata.common.loader.LoadLevel;
+import io.seata.common.thread.NamedThreadFactory;
+import io.seata.common.util.CollectionUtils;
+import io.seata.server.session.BranchSession;
+import io.seata.server.session.GlobalSession;
+import io.seata.server.session.SessionCondition;
+import io.seata.server.session.SessionManager;
+import io.seata.server.store.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -24,37 +36,16 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
-
-import io.seata.common.exception.StoreException;
-import io.seata.common.loader.LoadLevel;
-import io.seata.common.thread.NamedThreadFactory;
-import io.seata.common.util.CollectionUtils;
-import io.seata.server.session.BranchSession;
-import io.seata.server.session.GlobalSession;
-import io.seata.server.session.SessionCondition;
-import io.seata.server.session.SessionManager;
-import io.seata.server.store.AbstractTransactionStoreManager;
-import io.seata.server.store.FlushDiskMode;
-import io.seata.server.store.ReloadableStore;
-import io.seata.server.store.SessionStorable;
-import io.seata.server.store.StoreConfig;
-import io.seata.server.store.TransactionStoreManager;
-import io.seata.server.store.TransactionWriteStore;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The type File transaction store manager.
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 @LoadLevel(name = "file")
 public class FileTransactionStoreManager extends AbstractTransactionStoreManager
     implements TransactionStoreManager, ReloadableStore {
@@ -142,6 +133,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         this.sessionManager = sessionManager;
     }
 
+//
     private void initFile(String fullFileName) throws IOException {
         this.currFullFileName = fullFileName;
         this.hisFullFileName = fullFileName + HIS_DATA_FILENAME_POSTFIX;
@@ -167,6 +159,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         }
     }
 
+//
     @Override
     public boolean writeSession(LogOperation logOperation, SessionStorable session) {
         writeSessionLock.lock();
@@ -191,6 +184,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         return true;
     }
 
+//
     private void flushDisk(long curFileNum, FileChannel currFileChannel) {
 
         if (FLUSH_DISK_MODE == FlushDiskMode.SYNC_MODEL) {
@@ -208,6 +202,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
      *
      * @throws IOException
      */
+//
     private boolean saveHistory() throws IOException {
         boolean result;
         try {
@@ -223,6 +218,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         return result;
     }
 
+//
     private boolean findTimeoutAndSave() throws IOException {
         List<GlobalSession> globalSessionsOverMaxTimeout =
             sessionManager.findGlobalSessions(new SessionCondition(MAX_TRX_TIMEOUT_MILLS));
@@ -271,6 +267,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         throw new StoreException("unsupport for read from file");
     }
 
+//
     @Override
     public void shutdown() {
         if (null != fileWriteExecutor) {
@@ -296,6 +293,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         closeFile(currRaf);
     }
 
+//
     @Override
     public List<TransactionWriteStore> readWriteStore(int readSize, boolean isHistory) {
         File file = null;
@@ -336,6 +334,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         return false;
     }
 
+//
     private List<TransactionWriteStore> parseDataFile(File file, int readSize, long currentOffset) {
         List<TransactionWriteStore> transactionWriteStores = new ArrayList<>(readSize);
         RandomAccessFile raf = null;
@@ -394,11 +393,13 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
 
     }
 
+//
     private boolean isHisFile(File file) {
 
         return file.getName().endsWith(HIS_DATA_FILENAME_POSTFIX);
     }
 
+//
     private void closeFile(RandomAccessFile raf) {
         try {
             if (null != raf) {
@@ -410,6 +411,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         }
     }
 
+//
     private boolean writeDataFile(byte[] bs) {
         if (bs == null || bs.length >= Integer.MAX_VALUE - 3) {
             return false;
@@ -430,6 +432,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         return writeDataFileByBuffer(byteBuffer);
     }
 
+//
     private boolean writeDataFileByBuffer(ByteBuffer byteBuffer) {
         byteBuffer.flip();
         for (int retry = 0; retry < MAX_WRITE_RETRY; retry++) {
@@ -450,6 +453,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
 
     }
 
+//
     abstract class AbstractFlushRequest implements StoreRequest {
         private final long curFileTrxNum;
 
@@ -469,8 +473,10 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         }
     }
 
+//
     class SyncFlushRequest extends AbstractFlushRequest {
 
+//        用countDownLatch做同步处理
         private final CountDownLatch countDownLatch = new CountDownLatch(1);
 
         public SyncFlushRequest(long curFileTrxNum, FileChannel curFileChannel) {
@@ -490,6 +496,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         }
     }
 
+//
     class AsyncFlushRequest extends AbstractFlushRequest {
 
         public AsyncFlushRequest(long curFileTrxNum, FileChannel curFileChannel) {
@@ -498,6 +505,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
 
     }
 
+//
     class CloseFileRequest implements StoreRequest {
 
         private FileChannel fileChannel;
@@ -521,6 +529,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
     /**
      * The type Write data file runnable.
      */
+//
     class WriteDataFileRunnable implements Runnable {
 
         private LinkedBlockingQueue<StoreRequest> storeRequests = new LinkedBlockingQueue<>();
@@ -529,6 +538,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             storeRequests.add(request);
         }
 
+//
         @Override
         public void run() {
             while (!stopping) {
@@ -545,6 +555,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
         /**
          * handle the rest requests when stopping is true
          */
+//
         private void handleRestRequest() {
             int remainNums = storeRequests.size();
             for (int i = 0; i < remainNums; i++) {
@@ -552,6 +563,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             }
         }
 
+//
         private void handleStoreRequest(StoreRequest storeRequest) {
             if (storeRequest == null) {
                 flushOnCondition(currFileChannel);
@@ -565,6 +577,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             }
         }
 
+//
         private void closeAndFlush(CloseFileRequest req) {
             long diff = FILE_TRX_NUM.get() - FILE_FLUSH_NUM.get();
             flush(req.getFileChannel());
@@ -572,12 +585,14 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             closeFile(currRaf);
         }
 
+//
         private void async(AsyncFlushRequest req) {
             if (req.getCurFileTrxNum() < FILE_FLUSH_NUM.get()) {
                 flushOnCondition(req.getCurFileChannel());
             }
         }
 
+//
         private void syncFlush(SyncFlushRequest req) {
             if (req.getCurFileTrxNum() < FILE_FLUSH_NUM.get()) {
                 long diff = FILE_TRX_NUM.get() - FILE_FLUSH_NUM.get();
@@ -588,6 +603,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             req.wakeupCustomer();
         }
 
+//
         private void flushOnCondition(FileChannel fileChannel) {
             if (FLUSH_DISK_MODE == FlushDiskMode.SYNC_MODEL) {
                 return;
@@ -603,6 +619,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             }
         }
 
+//
         private void flush(FileChannel fileChannel) {
             try {
                 fileChannel.force(false);

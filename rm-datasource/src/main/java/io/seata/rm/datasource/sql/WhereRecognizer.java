@@ -15,16 +15,17 @@
  */
 package io.seata.rm.datasource.sql;
 
+import io.seata.rm.datasource.ParametersHolder;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import io.seata.rm.datasource.ParametersHolder;
 
 /**
  * The interface Where recognizer.
  *
  * @author sharajava
  */
+//
 public interface WhereRecognizer extends SQLRecognizer {
 
     /**

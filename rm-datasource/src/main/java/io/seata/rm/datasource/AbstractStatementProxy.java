@@ -15,14 +15,7 @@
  */
 package io.seata.rm.datasource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
-
-import io.seata.common.exception.NotSupportYetException;
-import io.seata.core.context.RootContext;
+import java.sql.*;
 
 /**
  * The type Abstract statement proxy.
@@ -31,6 +24,7 @@ import io.seata.core.context.RootContext;
  *
  * @param <T> the type parameter
  */
+//
 public abstract class AbstractStatementProxy<T extends Statement> implements Statement {
 
     /**

@@ -25,6 +25,7 @@ import java.util.List;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /1/31
  */
+//
 public interface RegistryService<T> {
 
     /**

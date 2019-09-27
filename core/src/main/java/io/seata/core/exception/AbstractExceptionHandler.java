@@ -111,6 +111,7 @@ public abstract class AbstractExceptionHandler {
      * @param request  the request
      * @param response the response
      */
+//
     public void exceptionHandleTemplate(Callback callback, AbstractTransactionRequest request,
         AbstractTransactionResponse response) {
         try {

@@ -24,6 +24,7 @@ import io.seata.core.constants.ConfigurationKeys;
  * @author Geng Zhang
  * @since 0.7.0
  */
+//
 public class ProtocolConstants {
 
     /**

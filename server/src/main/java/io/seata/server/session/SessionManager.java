@@ -15,19 +15,20 @@
  */
 package io.seata.server.session;
 
-import java.util.Collection;
-import java.util.List;
-
 import io.seata.core.exception.TransactionException;
 import io.seata.core.model.BranchStatus;
 import io.seata.core.model.GlobalStatus;
 import io.seata.core.rpc.Disposable;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * The interface Session manager.
  *
  * @author sharajava
  */
+//
 public interface SessionManager extends SessionLifecycleListener, Disposable {
 
     /**

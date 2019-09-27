@@ -25,7 +25,8 @@ import io.seata.core.protocol.MessageType;
  *
  * @author jimin.jm @alibaba-inc.com
  */
-//
+//发现rpc相关的Request、Response网络传输对象太多了，在保证扩展性的基础上是不是可以优化下，因为主要参数也就是事务组id、事务组status、分支事务id、分支事务status，
+// 在加上附加信息字段，感觉这块设计还有相关序列化设计有点复杂了
 public class BranchReportRequest extends AbstractTransactionRequestToTC {
 
     private String xid;
