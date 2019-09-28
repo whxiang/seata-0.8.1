@@ -22,6 +22,7 @@ import io.seata.tm.api.transaction.TransactionInfo;
  *
  * @author sharajava
  */
+//
 public interface TransactionalExecutor {
 
     /**
@@ -42,6 +43,7 @@ public interface TransactionalExecutor {
     /**
      * The enum Code.
      */
+//
     enum Code {
 
         /**
@@ -72,6 +74,7 @@ public interface TransactionalExecutor {
     /**
      * The type Execution exception.
      */
+//
     class ExecutionException extends Exception {
 
         private GlobalTransaction transaction;

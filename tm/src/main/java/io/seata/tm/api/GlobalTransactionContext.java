@@ -24,6 +24,7 @@ import io.seata.core.model.GlobalStatus;
  *
  * @author sharajava
  */
+//
 public class GlobalTransactionContext {
 
     private GlobalTransactionContext() {
@@ -34,6 +35,7 @@ public class GlobalTransactionContext {
      *
      * @return
      */
+//
     private static GlobalTransaction createNew() {
         GlobalTransaction tx = new DefaultGlobalTransaction();
         return tx;
@@ -57,6 +59,7 @@ public class GlobalTransactionContext {
      *
      * @return new context if no existing there.
      */
+//
     public static GlobalTransaction getCurrentOrCreate() {
         GlobalTransaction tx = getCurrent();
         if (tx == null) {
@@ -72,6 +75,7 @@ public class GlobalTransactionContext {
      * @return reloaded transaction instance.
      * @throws TransactionException the transaction exception
      */
+//
     public static GlobalTransaction reload(String xid) throws TransactionException {
         GlobalTransaction tx = new DefaultGlobalTransaction(xid, GlobalStatus.UnKnown, GlobalTransactionRole.Launcher) {
             @Override

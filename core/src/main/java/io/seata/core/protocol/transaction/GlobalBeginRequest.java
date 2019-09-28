@@ -23,6 +23,7 @@ import io.seata.core.rpc.RpcContext;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class GlobalBeginRequest extends AbstractTransactionRequestToTC {
 
     private int timeout = 60000;

@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author sharajava
  */
+//
 public class DefaultGlobalTransaction implements GlobalTransaction {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultGlobalTransaction.class);
@@ -66,16 +67,19 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
         this.role = role;
     }
 
+//
     @Override
     public void begin() throws TransactionException {
         begin(DEFAULT_GLOBAL_TX_TIMEOUT);
     }
 
+//
     @Override
     public void begin(int timeout) throws TransactionException {
         begin(timeout, DEFAULT_GLOBAL_TX_NAME);
     }
 
+//
     @Override
     public void begin(int timeout, String name) throws TransactionException {
         if (role != GlobalTransactionRole.Launcher) {
@@ -100,6 +104,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
 
     }
 
+//
     @Override
     public void commit() throws TransactionException {
         if (role == GlobalTransactionRole.Participant) {
@@ -125,6 +130,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
 
     }
 
+//
     @Override
     public void rollback() throws TransactionException {
         if (role == GlobalTransactionRole.Participant) {
@@ -149,6 +155,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
         }
     }
 
+//
     @Override
     public GlobalStatus getStatus() throws TransactionException {
         if (xid == null) {
@@ -163,6 +170,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
         return xid;
     }
 
+//
     private void check() {
         if (xid == null) {
             throw new ShouldNeverHappenException();

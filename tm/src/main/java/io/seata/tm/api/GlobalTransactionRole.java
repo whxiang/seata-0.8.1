@@ -20,6 +20,7 @@ package io.seata.tm.api;
  *
  * @author sharajava
  */
+//
 public enum GlobalTransactionRole {
 
     /**

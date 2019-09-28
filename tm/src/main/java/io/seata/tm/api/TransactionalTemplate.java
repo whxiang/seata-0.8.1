@@ -31,6 +31,7 @@ import java.util.List;
  *
  * @author sharajava
  */
+//
 public class TransactionalTemplate {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionalTemplate.class);
@@ -43,6 +44,7 @@ public class TransactionalTemplate {
      * @return the object
      * @throws TransactionalExecutor.ExecutionException the execution exception
      */
+//
     public Object execute(TransactionalExecutor business) throws Throwable {
         // 1. get or create a transaction
         GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
@@ -81,6 +83,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void completeTransactionAfterThrowing(TransactionInfo txInfo, GlobalTransaction tx, Throwable ex) throws TransactionalExecutor.ExecutionException {
         //roll back
         if (txInfo != null && txInfo.rollbackOn(ex)) {
@@ -97,6 +100,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void commitTransaction(GlobalTransaction tx) throws TransactionalExecutor.ExecutionException {
         try {
             triggerBeforeCommit();
@@ -109,14 +113,16 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void rollbackTransaction(GlobalTransaction tx, Throwable ex) throws TransactionException, TransactionalExecutor.ExecutionException {
         triggerBeforeRollback();
         tx.rollback();
         triggerAfterRollback();
-        // 3.1 Successfully rolled back
         throw new TransactionalExecutor.ExecutionException(tx, TransactionalExecutor.Code.RollbackDone, ex);
+        // 3.1 Successfully rolled back
     }
 
+//
     private void beginTransaction(TransactionInfo txInfo, GlobalTransaction tx) throws TransactionalExecutor.ExecutionException {
         try {
             triggerBeforeBegin();
@@ -129,6 +135,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerBeforeBegin() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -139,6 +146,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerAfterBegin() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -149,6 +157,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerBeforeRollback() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -159,6 +168,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerAfterRollback() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -169,6 +179,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerBeforeCommit() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -179,6 +190,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerAfterCommit() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -189,6 +201,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void triggerAfterCompletion() {
         for (TransactionHook hook : getCurrentHooks()) {
             try {
@@ -199,6 +212,7 @@ public class TransactionalTemplate {
         }
     }
 
+//
     private void cleanUp() {
         TransactionHookManager.clear();
     }

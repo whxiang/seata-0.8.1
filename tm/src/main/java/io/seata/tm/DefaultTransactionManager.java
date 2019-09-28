@@ -40,8 +40,10 @@ import io.seata.core.rpc.netty.TmRpcClient;
  *
  * @author sharajava
  */
+//
 public class DefaultTransactionManager implements TransactionManager {
 
+//
     @Override
     public String begin(String applicationId, String transactionServiceGroup, String name, int timeout)
         throws TransactionException {
@@ -55,6 +57,7 @@ public class DefaultTransactionManager implements TransactionManager {
         return response.getXid();
     }
 
+//
     @Override
     public GlobalStatus commit(String xid) throws TransactionException {
         GlobalCommitRequest globalCommit = new GlobalCommitRequest();
@@ -63,6 +66,7 @@ public class DefaultTransactionManager implements TransactionManager {
         return response.getGlobalStatus();
     }
 
+//
     @Override
     public GlobalStatus rollback(String xid) throws TransactionException {
         GlobalRollbackRequest globalRollback = new GlobalRollbackRequest();
@@ -71,6 +75,7 @@ public class DefaultTransactionManager implements TransactionManager {
         return response.getGlobalStatus();
     }
 
+//
     @Override
     public GlobalStatus getStatus(String xid) throws TransactionException {
         GlobalStatusRequest queryGlobalStatus = new GlobalStatusRequest();
@@ -79,6 +84,7 @@ public class DefaultTransactionManager implements TransactionManager {
         return response.getGlobalStatus();
     }
 
+//
     private AbstractTransactionResponse syncCall(AbstractTransactionRequest request) throws TransactionException {
         try {
             return (AbstractTransactionResponse)TmRpcClient.getInstance().sendMsgWithResponse(request);

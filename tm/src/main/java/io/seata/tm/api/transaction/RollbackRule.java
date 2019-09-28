@@ -23,6 +23,7 @@ import java.io.Serializable;
  * @author guoyao
  * @date 2019/4/17
  */
+//
 public class RollbackRule implements Serializable {
 
 
@@ -50,12 +51,13 @@ public class RollbackRule implements Serializable {
         return this.exceptionName;
     }
 
-
+//
     public int getDepth(Throwable ex) {
         return getDepth(ex.getClass(), 0);
     }
 
 
+//
     private int getDepth(Class<?> exceptionClass, int depth) {
         if (exceptionClass.getName().contains(this.exceptionName)) {
             // Found it!

@@ -22,6 +22,7 @@ import java.util.Set;
  * @author guoyao
  * @date 2019/4/17
  */
+//
 public final class TransactionInfo implements Serializable {
 
     public static final int DEFAULT_TIME_OUT = 60000;
@@ -56,6 +57,7 @@ public final class TransactionInfo implements Serializable {
         this.rollbackRules = rollbackRules;
     }
 
+//
     public boolean rollbackOn(Throwable ex) {
 
         RollbackRule winner = null;

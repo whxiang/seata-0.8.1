@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author sharajava
  */
+//
 public class TransactionManagerHolder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionManagerHolder.class);
@@ -49,6 +50,7 @@ public class TransactionManagerHolder {
      *
      * @return the transaction manager
      */
+//
     public static TransactionManager get() {
         if (SingletonHolder.INSTANCE == null) {
             throw new ShouldNeverHappenException("TransactionManager is NOT ready!");

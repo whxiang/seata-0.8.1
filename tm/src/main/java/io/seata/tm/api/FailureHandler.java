@@ -20,6 +20,7 @@ package io.seata.tm.api;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public interface FailureHandler {
 
     /**

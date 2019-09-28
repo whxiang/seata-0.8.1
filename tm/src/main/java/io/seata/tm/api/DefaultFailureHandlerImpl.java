@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
  * @author jimin.jm @alibaba-inc.com
  * @date 2019 /1/8
  */
+//
 public class DefaultFailureHandlerImpl implements FailureHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultFailureHandlerImpl.class);
@@ -68,6 +69,7 @@ public class DefaultFailureHandlerImpl implements FailureHandler {
         timer.newTimeout(new CheckTimerTask(tx, GlobalStatus.Rollbacked), SCHEDULE_INTERVAL_SECONDS, TimeUnit.SECONDS);
     }
 
+//
     protected class CheckTimerTask implements TimerTask {
 
         private final GlobalTransaction tx;
@@ -83,6 +85,7 @@ public class DefaultFailureHandlerImpl implements FailureHandler {
             this.required = required;
         }
 
+//
         @Override
         public void run(Timeout timeout) throws Exception {
             if (!isStopped) {
@@ -98,6 +101,7 @@ public class DefaultFailureHandlerImpl implements FailureHandler {
         }
     }
 
+//
     private boolean shouldStop(final GlobalTransaction tx, GlobalStatus required) {
         try {
             GlobalStatus status = tx.getStatus();
