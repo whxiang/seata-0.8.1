@@ -63,6 +63,7 @@ public class ShutdownHook extends Thread {
         addDisposable(disposable, DEFAULT_PRIORITY);
     }
 
+//
     public void addDisposable(Disposable disposable, int priority) {
         disposables.add(new DisposablePriorityWrapper(disposable, priority));
     }

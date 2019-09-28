@@ -36,6 +36,7 @@ import io.seata.server.session.BranchSession;
  * @author zhangsen
  * @data 2019 -05-15
  */
+//
 @LoadLevel(name = "file")
 public class MemoryLocker extends AbstractLocker {
 
@@ -62,6 +63,7 @@ public class MemoryLocker extends AbstractLocker {
         this.branchSession = branchSession;
     }
 
+//
     @Override
     public boolean acquireLock(List<RowLock> rowLocks) {
         if (CollectionUtils.isEmpty(rowLocks)) {
@@ -123,6 +125,7 @@ public class MemoryLocker extends AbstractLocker {
         return true;
     }
 
+//
     @Override
     public boolean releaseLock(List<RowLock> rowLock) {
         ConcurrentHashMap<Map<String, Long>, Set<String>> lockHolder = branchSession.getLockHolder();
@@ -150,6 +153,7 @@ public class MemoryLocker extends AbstractLocker {
         return true;
     }
 
+//
     @Override
     public boolean isLockable(List<RowLock> rowLocks) {
         if (CollectionUtils.isEmpty(rowLocks)) {

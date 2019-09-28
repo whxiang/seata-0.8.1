@@ -89,6 +89,7 @@ public abstract class AbstractExceptionHandler {
             response.setResultCode(ResultCode.Success);
         }
 
+//
         @Override
         public void onTransactionException(T request, S response,
             TransactionException tex) {

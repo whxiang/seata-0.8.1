@@ -33,6 +33,7 @@ import io.seata.core.store.StoreMode;
  * @author zhangsen
  * @data 2019 -05-15
  */
+//
 @LoadLevel(name = "db")
 public class DataBaseLocker extends AbstractLocker {
 
@@ -54,6 +55,7 @@ public class DataBaseLocker extends AbstractLocker {
             new Object[] {logStoreDataSource});
     }
 
+//
     @Override
     public boolean acquireLock(List<RowLock> locks) {
         if (CollectionUtils.isEmpty(locks)) {
@@ -68,6 +70,7 @@ public class DataBaseLocker extends AbstractLocker {
         }
     }
 
+//
     @Override
     public boolean releaseLock(List<RowLock> locks) {
         if (CollectionUtils.isEmpty(locks)) {
@@ -82,6 +85,7 @@ public class DataBaseLocker extends AbstractLocker {
         }
     }
 
+//
     @Override
     public boolean isLockable(List<RowLock> locks) {
         try {

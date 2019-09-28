@@ -24,6 +24,7 @@ import io.seata.server.session.GlobalSession;
  *
  * @author sharajava
  */
+//
 public interface LockManager {
 
     /**

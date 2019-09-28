@@ -28,6 +28,7 @@ import io.seata.core.constants.ConfigurationKeys;
  *
  * @author zhengyangyong
  */
+//
 public class RegistryFactory {
     public static Registry getInstance() {
         RegistryType registryType;

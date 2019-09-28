@@ -28,6 +28,7 @@ import java.nio.ByteBuffer;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/11
  */
+//
 public class TransactionWriteStore implements SessionStorable {
     private SessionStorable sessionRequest;
     private LogOperation operate;
@@ -97,6 +98,7 @@ public class TransactionWriteStore implements SessionStorable {
         return byResult;
     }
 
+//
     @Override
     public void decode(byte[] src) {
         ByteBuffer byteBuffer = ByteBuffer.wrap(src);
@@ -109,6 +111,7 @@ public class TransactionWriteStore implements SessionStorable {
         this.sessionRequest = tmpSessionStorable;
     }
 
+//
     private SessionStorable getSessionInstanceByOperation(LogOperation logOperation) {
         SessionStorable sessionStorable = null;
         switch (logOperation) {

@@ -50,7 +50,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author zhangsen
  * @data 2019 /4/2
  */
-//
 @LoadLevel(name = "db")
 public class DatabaseTransactionStoreManager extends AbstractTransactionStoreManager
     implements TransactionStoreManager, Initialize {

@@ -30,6 +30,7 @@ import io.seata.server.event.EventBusManager;
  *
  * @author zhengyangyong
  */
+//
 public class MetricsManager {
     private static class SingletonHolder {
         private static MetricsManager INSTANCE = new MetricsManager();
@@ -45,6 +46,7 @@ public class MetricsManager {
         return registry;
     }
 
+//
     public void init() {
         boolean enabled = ConfigurationFactory.getInstance().getBoolean(
             ConfigurationKeys.METRICS_PREFIX + ConfigurationKeys.METRICS_ENABLED, false);

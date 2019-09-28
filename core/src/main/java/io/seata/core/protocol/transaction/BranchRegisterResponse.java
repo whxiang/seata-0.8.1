@@ -24,6 +24,7 @@ import java.io.Serializable;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class BranchRegisterResponse extends AbstractTransactionResponse implements Serializable {
 
     private long branchId;

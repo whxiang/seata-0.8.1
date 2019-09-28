@@ -80,6 +80,7 @@ import static io.seata.core.exception.TransactionExceptionCode.FailedToSendBranc
 /**
  * The type Default coordinator.
  */
+//
 public class DefaultCoordinator extends AbstractTCInboundHandler
     implements TransactionMessageHandler, ResourceManagerInbound, Disposable {
 
@@ -158,6 +159,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
         core.setResourceManagerInbound(this);
     }
 
+//
     @Override
     protected void doGlobalBegin(GlobalBeginRequest request, GlobalBeginResponse response, RpcContext rpcContext)
         throws TransactionException {
@@ -165,6 +167,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
             request.getTransactionName(), request.getTimeout()));
     }
 
+//
     @Override
     protected void doGlobalCommit(GlobalCommitRequest request, GlobalCommitResponse response, RpcContext rpcContext)
         throws TransactionException {
@@ -172,6 +175,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
 
     }
 
+//
     @Override
     protected void doGlobalRollback(GlobalRollbackRequest request, GlobalRollbackResponse response,
                                     RpcContext rpcContext) throws TransactionException {
@@ -179,12 +183,14 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
 
     }
 
+//
     @Override
     protected void doGlobalStatus(GlobalStatusRequest request, GlobalStatusResponse response, RpcContext rpcContext)
         throws TransactionException {
         response.setGlobalStatus(core.getStatus(request.getXid()));
     }
 
+//
     @Override
     protected void doBranchRegister(BranchRegisterRequest request, BranchRegisterResponse response,
                                     RpcContext rpcContext) throws TransactionException {
@@ -194,6 +200,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
 
     }
 
+//
     @Override
     protected void doBranchReport(BranchReportRequest request, BranchReportResponse response, RpcContext rpcContext)
         throws TransactionException {
@@ -203,6 +210,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
 
     }
 
+//
     @Override
     protected void doLockCheck(GlobalLockQueryRequest request, GlobalLockQueryResponse response, RpcContext rpcContext)
         throws TransactionException {
@@ -210,6 +218,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
             request.getXid(), request.getLockKey()));
     }
 
+//
     @Override
     public BranchStatus branchCommit(BranchType branchType, String xid, long branchId, String resourceId,
                                      String applicationData)
@@ -236,6 +245,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
         }
     }
 
+//
     @Override
     public BranchStatus branchRollback(BranchType branchType, String xid, long branchId, String resourceId,
                                        String applicationData)
@@ -268,6 +278,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
      *
      * @throws TransactionException the transaction exception
      */
+//
     protected void timeoutCheck() throws TransactionException {
         Collection<GlobalSession> allSessions = SessionHolder.getRootSessionManager().allSessions();
         if (CollectionUtils.isEmpty(allSessions)) {
@@ -316,6 +327,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
     /**
      * Handle retry rollbacking.
      */
+//
     protected void handleRetryRollbacking() {
         Collection<GlobalSession> rollbackingSessions = SessionHolder.getRetryRollbackingSessionManager().allSessions();
         if (CollectionUtils.isEmpty(rollbackingSessions)) {
@@ -344,6 +356,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
     /**
      * Handle retry committing.
      */
+//
     protected void handleRetryCommitting() {
         Collection<GlobalSession> committingSessions = SessionHolder.getRetryCommittingSessionManager().allSessions();
         if (CollectionUtils.isEmpty(committingSessions)) {
@@ -369,6 +382,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
         }
     }
 
+//
     private boolean isRetryTimeout(long now, long timeout, long beginTime) {
         /**
          * Start timing when the session begin
@@ -383,6 +397,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
     /**
      * Handle async committing.
      */
+//
     protected void handleAsyncCommitting() {
         Collection<GlobalSession> asyncCommittingSessions = SessionHolder.getAsyncCommittingSessionManager()
             .allSessions();
@@ -407,6 +422,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
     /**
      * Undo log delete.
      */
+//
     protected void undoLogDelete() {
         Map<String,Channel> rmChannels = ChannelManager.getRmChannels();
         if (rmChannels == null || rmChannels.isEmpty()) {
@@ -430,6 +446,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
     /**
      * Init.
      */
+//
     public void init() {
         retryRollbacking.scheduleAtFixedRate(() -> {
             try {
@@ -472,6 +489,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
         }, UNDOLOG_DELAY_DELETE_PERIOD, UNDOLOG_DELETE_PERIOD, TimeUnit.MILLISECONDS);
     }
 
+//
     @Override
     public AbstractResultMessage onRequest(AbstractMessage request, RpcContext context) {
         if (!(request instanceof AbstractTransactionRequestToTC)) {
@@ -483,6 +501,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
         return transactionRequest.handle(context);
     }
 
+//
     @Override
     public void onResponse(AbstractResultMessage response, RpcContext context) {
         if (!(response instanceof AbstractTransactionResponse)) {
@@ -491,6 +510,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
 
     }
 
+//
     @Override
     public void destroy() {
         // 1. first shutdown timed task

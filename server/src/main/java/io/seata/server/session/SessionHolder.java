@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author sharajava
  */
+//
 public class SessionHolder {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionHolder.class);
@@ -84,6 +85,7 @@ public class SessionHolder {
      * @param mode the store mode: file、db
      * @throws IOException the io exception
      */
+//
     public static void init(String mode) throws IOException {
         if (StringUtils.isBlank(mode)) {
             //use default
@@ -125,6 +127,7 @@ public class SessionHolder {
     /**
      * Reload.
      */
+//
     protected static void reload() {
         if (ROOT_SESSION_MANAGER instanceof Reloadable) {
             ((Reloadable)ROOT_SESSION_MANAGER).reload();
@@ -207,6 +210,7 @@ public class SessionHolder {
      *
      * @return the root session manager
      */
+//
     public static final SessionManager getRootSessionManager() {
         if (ROOT_SESSION_MANAGER == null) {
             throw new ShouldNeverHappenException("SessionManager is NOT init!");
@@ -219,6 +223,7 @@ public class SessionHolder {
      *
      * @return the async committing session manager
      */
+//
     public static final SessionManager getAsyncCommittingSessionManager() {
         if (ASYNC_COMMITTING_SESSION_MANAGER == null) {
             throw new ShouldNeverHappenException("SessionManager is NOT init!");
@@ -231,6 +236,7 @@ public class SessionHolder {
      *
      * @return the retry committing session manager
      */
+//
     public static final SessionManager getRetryCommittingSessionManager() {
         if (RETRY_COMMITTING_SESSION_MANAGER == null) {
             throw new ShouldNeverHappenException("SessionManager is NOT init!");
@@ -243,6 +249,7 @@ public class SessionHolder {
      *
      * @return the retry rollbacking session manager
      */
+//
     public static final SessionManager getRetryRollbackingSessionManager() {
         if (RETRY_ROLLBACKING_SESSION_MANAGER == null) {
             throw new ShouldNeverHappenException("SessionManager is NOT init!");
@@ -256,10 +263,12 @@ public class SessionHolder {
      * @param xid the xid
      * @return the global session
      */
+//
     public static GlobalSession findGlobalSession(String xid) {
         return getRootSessionManager().findGlobalSession(xid);
     }
 
+//
     public static void destory() {
         ROOT_SESSION_MANAGER.destroy();
         ASYNC_COMMITTING_SESSION_MANAGER.destroy();

@@ -36,6 +36,7 @@ import io.seata.server.session.GlobalSession;
  * @author zhangsen
  * @data 2019 -05-15
  */
+//
 public class DefaultLockManager extends AbstractLockManager {
 
     private static Locker locker = null;
@@ -45,6 +46,7 @@ public class DefaultLockManager extends AbstractLockManager {
      */
     protected static final Configuration CONFIG = ConfigurationFactory.getInstance();
 
+//
     @Override
     public boolean acquireLock(BranchSession branchSession) throws TransactionException {
         if (branchSession == null) {
@@ -64,6 +66,7 @@ public class DefaultLockManager extends AbstractLockManager {
         return getLocker(branchSession).acquireLock(locks);
     }
 
+//
     @Override
     public boolean releaseLock(BranchSession branchSession) throws TransactionException {
         if (branchSession == null) {
@@ -78,6 +81,7 @@ public class DefaultLockManager extends AbstractLockManager {
         }
     }
 
+//
     @Override
     public boolean releaseGlobalSessionLock(GlobalSession globalSession) throws TransactionException {
         ArrayList<BranchSession> branchSessions = globalSession.getBranchSessions();
@@ -104,6 +108,7 @@ public class DefaultLockManager extends AbstractLockManager {
         }
     }
 
+//
     private boolean doReleaseLock(List<RowLock> locks, BranchSession branchSession) {
         if (CollectionUtils.isEmpty(locks)) {
             //no lock
@@ -112,6 +117,7 @@ public class DefaultLockManager extends AbstractLockManager {
         return getLocker(branchSession).releaseLock(locks);
     }
 
+//
     @Override
     public boolean isLockable(String xid, String resourceId, String lockKey) throws TransactionException {
         List<RowLock> locks = collectRowLocks(lockKey, resourceId, xid);
@@ -123,6 +129,7 @@ public class DefaultLockManager extends AbstractLockManager {
         }
     }
 
+//
     @Override
     public void cleanAllLocks() throws TransactionException {
         getLocker().cleanAllLocks();
@@ -133,6 +140,7 @@ public class DefaultLockManager extends AbstractLockManager {
      *
      * @return the locker
      */
+//
     protected Locker getLocker() {
         return getLocker(null);
     }
@@ -143,6 +151,7 @@ public class DefaultLockManager extends AbstractLockManager {
      * @param branchSession the branch session
      * @return the locker
      */
+//
     protected Locker getLocker(BranchSession branchSession) {
         return LockerFactory.get(branchSession);
     }

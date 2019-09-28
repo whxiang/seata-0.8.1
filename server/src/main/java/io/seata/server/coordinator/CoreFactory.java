@@ -20,6 +20,7 @@ package io.seata.server.coordinator;
  *
  * @author sharajava
  */
+//
 public class CoreFactory {
 
     private static class SingletonHolder {

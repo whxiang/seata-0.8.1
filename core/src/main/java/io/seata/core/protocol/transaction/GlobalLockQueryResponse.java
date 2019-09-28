@@ -23,6 +23,7 @@ import io.seata.core.protocol.MessageType;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class GlobalLockQueryResponse extends AbstractTransactionResponse {
 
     private boolean lockable = false;

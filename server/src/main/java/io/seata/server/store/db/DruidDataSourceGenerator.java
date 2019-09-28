@@ -27,9 +27,11 @@ import javax.sql.DataSource;
  * @author zhangsen
  * @data 2019 /4/28
  */
+//
 @LoadLevel(name = "druid")
 public class DruidDataSourceGenerator extends AbstractDataSourceGenerator {
 
+//
     @Override
     public DataSource generateDataSource() {
         DruidDataSource ds = new DruidDataSource();

@@ -24,6 +24,7 @@ import static io.seata.core.constants.ConfigurationKeys.STORE_FILE_PREFIX;
 /**
  * @author lizhao
  */
+//
 public class StoreConfig {
 
     private static final Configuration CONFIGURATION = ConfigurationFactory.getInstance();
@@ -42,6 +43,7 @@ public class StoreConfig {
         return CONFIGURATION.getInt(STORE_FILE_PREFIX + "max-branch-session-size", DEFAULT_MAX_BRANCH_SESSION_SIZE);
     }
 
+//
     public static int getMaxGlobalSessionSize() {
         return CONFIGURATION.getInt(STORE_FILE_PREFIX + "max-global-session-size", DEFAULT_MAX_GLOBAL_SESSION_SIZE);
     }

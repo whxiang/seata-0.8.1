@@ -19,6 +19,7 @@ package io.seata.server.store;
  *
  * @author lizhao
  */
+//
 public enum  FlushDiskMode {
     /**
      * sync flush disk

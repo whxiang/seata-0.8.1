@@ -28,7 +28,6 @@ import java.util.List;
  *
  * @author sharajava
  */
-//
 public interface SessionManager extends SessionLifecycleListener, Disposable {
 
     /**

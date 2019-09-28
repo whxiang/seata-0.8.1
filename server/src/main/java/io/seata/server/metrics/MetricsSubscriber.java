@@ -35,6 +35,7 @@ public class MetricsSubscriber {
 
     private final Map<GlobalStatus, Consumer<GlobalTransactionEvent>> consumers;
 
+//
     public MetricsSubscriber(Registry registry) {
         this.registry = registry;
         consumers = new HashMap<>();
@@ -48,10 +49,12 @@ public class MetricsSubscriber {
         consumers.put(GlobalStatus.TimeoutRollbackFailed, this::processGlobalStatusTimeoutRollbackFailed);
     }
 
+//
     private void processGlobalStatusBegin(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).increase(1);
     }
 
+//
     private void processGlobalStatusCommitted(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
         registry.getCounter(MeterIdConstants.COUNTER_COMMITTED).increase(1);
@@ -60,6 +63,7 @@ public class MetricsSubscriber {
             TimeUnit.MILLISECONDS);
     }
 
+//
     private void processGlobalStatusRollbacked(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
         registry.getCounter(MeterIdConstants.COUNTER_ROLLBACKED).increase(1);
@@ -68,18 +72,22 @@ public class MetricsSubscriber {
             TimeUnit.MILLISECONDS);
     }
 
+//
     private void processGlobalStatusCommitFailed(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
     }
 
+//
     private void processGlobalStatusRollbackFailed(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
     }
 
+//
     private void processGlobalStatusTimeoutRollbacked(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
     }
 
+//
     private void processGlobalStatusTimeoutRollbackFailed(GlobalTransactionEvent event) {
         registry.getCounter(MeterIdConstants.COUNTER_ACTIVE).decrease(1);
     }

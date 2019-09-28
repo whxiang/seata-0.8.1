@@ -28,6 +28,7 @@ import io.seata.common.exception.ShouldNeverHappenException;
  *
  * @author sharajava
  */
+//
 public class UUIDGenerator {
 
     private static final AtomicLong UUID = new AtomicLong(1000);
@@ -39,6 +40,7 @@ public class UUIDGenerator {
      *
      * @return the long
      */
+//
     public static long generateUUID() {
         long id = UUID.incrementAndGet();
         if (id >= UUID_INTERNAL * (serverNodeId + 1)) {
@@ -78,6 +80,7 @@ public class UUIDGenerator {
      *
      * @param serverNodeId the server node id
      */
+//
     public static void init(int serverNodeId) {
         try {
             UUIDGenerator.serverNodeId = serverNodeId;

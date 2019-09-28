@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author zhengyangyong
  */
+//
 public interface Timer extends Meter {
     void record(long value, TimeUnit unit);
 

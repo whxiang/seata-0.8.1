@@ -48,6 +48,7 @@ public abstract class AbstractDataSourceGenerator implements DataSourceGenerator
      * get db driver class name
      * @return the db driver class name
      */
+//
     protected String getDriverClassName() {
 		String driverClassName = CONFIG.getConfig(ConfigurationKeys.STORE_DB_DRIVER_CLASS_NAME);
 		if (StringUtils.isBlank(driverClassName)) {

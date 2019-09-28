@@ -62,6 +62,7 @@ public class XID {
      * @param xid the xid
      * @return the transaction id
      */
+//
     public static long getTransactionId(String xid) {
         if (xid == null) {
             return -1;

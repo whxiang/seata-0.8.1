@@ -42,8 +42,10 @@ import io.seata.server.session.SessionHolder;
  *
  * @author sharajava
  */
+//
 public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler implements TCInboundHandler {
 
+//
     @Override
     public GlobalBeginResponse handle(GlobalBeginRequest request, final RpcContext rpcContext) {
         GlobalBeginResponse response = new GlobalBeginResponse();
@@ -64,9 +66,11 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doGlobalBegin(GlobalBeginRequest request, GlobalBeginResponse response,
         RpcContext rpcContext) throws TransactionException;
 
+//
     @Override
     public GlobalCommitResponse handle(GlobalCommitRequest request, final RpcContext rpcContext) {
         GlobalCommitResponse response = new GlobalCommitResponse();
@@ -88,9 +92,11 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doGlobalCommit(GlobalCommitRequest request, GlobalCommitResponse response,
         RpcContext rpcContext) throws TransactionException;
 
+//
     @Override
     public GlobalRollbackResponse handle(GlobalRollbackRequest request, final RpcContext rpcContext) {
         GlobalRollbackResponse response = new GlobalRollbackResponse();
@@ -101,6 +107,7 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
                 doGlobalRollback(request, response, rpcContext);
             }
 
+//
             @Override
             public void onTransactionException(GlobalRollbackRequest request, GlobalRollbackResponse response,
                 TransactionException tex) {
@@ -113,6 +120,7 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
                 }
             }
 
+//
             @Override
             public void onException(GlobalRollbackRequest request, GlobalRollbackResponse response, Exception rex) {
                 super.onException(request, response, rex);
@@ -135,9 +143,11 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doGlobalRollback(GlobalRollbackRequest request, GlobalRollbackResponse response,
         RpcContext rpcContext) throws TransactionException;
 
+//
     @Override
     public BranchRegisterResponse handle(BranchRegisterRequest request, final RpcContext rpcContext) {
         BranchRegisterResponse response = new BranchRegisterResponse();
@@ -159,9 +169,11 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doBranchRegister(BranchRegisterRequest request, BranchRegisterResponse response,
         RpcContext rpcContext) throws TransactionException;
 
+//
     @Override
     public BranchReportResponse handle(BranchReportRequest request, final RpcContext rpcContext) {
         BranchReportResponse response = new BranchReportResponse();
@@ -182,10 +194,12 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doBranchReport(BranchReportRequest request, BranchReportResponse response,
         RpcContext rpcContext)
         throws TransactionException;
 
+//
     @Override
     public GlobalLockQueryResponse handle(GlobalLockQueryRequest request, final RpcContext rpcContext) {
         GlobalLockQueryResponse response = new GlobalLockQueryResponse();
@@ -207,9 +221,11 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doLockCheck(GlobalLockQueryRequest request, GlobalLockQueryResponse response,
         RpcContext rpcContext) throws TransactionException;
 
+//
     @Override
     public GlobalStatusResponse handle(GlobalStatusRequest request, final RpcContext rpcContext) {
         GlobalStatusResponse response = new GlobalStatusResponse();
@@ -231,6 +247,7 @@ public abstract class AbstractTCInboundHandler extends AbstractExceptionHandler 
      * @param rpcContext the rpc context
      * @throws TransactionException the transaction exception
      */
+//
     protected abstract void doGlobalStatus(GlobalStatusRequest request, GlobalStatusResponse response,
         RpcContext rpcContext) throws TransactionException;
 

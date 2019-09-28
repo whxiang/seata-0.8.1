@@ -49,6 +49,7 @@ public class StringUtils {
      * @param str the str
      * @return the boolean
      */
+//
     public static boolean isNullOrEmpty(String str) {
         return (str == null) || (str.isEmpty());
     }

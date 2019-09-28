@@ -31,7 +31,6 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author sharajava
  */
-//
 @LoadLevel(name = "default")
 public class DefaultSessionManager extends AbstractSessionManager {
 

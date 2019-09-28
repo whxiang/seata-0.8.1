@@ -43,6 +43,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author sharajava
  */
+//
 public class GlobalSession implements SessionLifecycle, SessionStorable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalSession.class);
@@ -104,6 +105,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      *
      * @return the boolean
      */
+//
     public boolean canBeCommittedAsync() {
         for (BranchSession branchSession : branchSessions) {
             if (branchSession.getBranchType() == BranchType.TCC) {
@@ -122,6 +124,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         return (System.currentTimeMillis() - beginTime) > timeout;
     }
 
+//
     @Override
     public void begin() throws TransactionException {
         this.status = GlobalStatus.Begin;
@@ -132,6 +135,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         }
     }
 
+//
     @Override
     public void changeStatus(GlobalStatus status) throws TransactionException {
         this.status = status;
@@ -141,6 +145,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
 
     }
 
+//
     @Override
     public void changeBranchStatus(BranchSession branchSession, BranchStatus status)
         throws TransactionException {
@@ -155,6 +160,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         return active;
     }
 
+//
     @Override
     public void close() throws TransactionException {
         if (active) {
@@ -164,6 +170,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         }
     }
 
+//
     @Override
     public void end() throws TransactionException {
         // Clean locks first
@@ -175,6 +182,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
 
     }
 
+//
     public void clean() throws TransactionException {
         LockerFactory.getLockManager().releaseGlobalSessionLock(this);
 
@@ -185,6 +193,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      *
      * @throws TransactionException the transaction exception
      */
+//
     public void closeAndClean() throws TransactionException {
         close();
         clean();
@@ -209,6 +218,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         lifecycleListeners.remove(sessionLifecycleListener);
     }
 
+//
     @Override
     public void addBranch(BranchSession branchSession) throws TransactionException {
         for (SessionLifecycleListener lifecycleListener : lifecycleListeners) {
@@ -218,6 +228,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         add(branchSession);
     }
 
+//
     @Override
     public void removeBranch(BranchSession branchSession) throws TransactionException {
         for (SessionLifecycleListener lifecycleListener : lifecycleListeners) {
@@ -252,6 +263,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      *
      * @return the sorted branches
      */
+//
     public ArrayList<BranchSession> getSortedBranches() {
         ArrayList<BranchSession> sorted = new ArrayList<>(branchSessions);
         return sorted;
@@ -262,6 +274,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      *
      * @return the reverse sorted branches
      */
+//
     public ArrayList<BranchSession> getReverseSortedBranches() {
         ArrayList<BranchSession> reversed = new ArrayList<>(branchSessions);
         Collections.reverse(reversed);
@@ -428,6 +441,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
      * @param timeout        the timeout
      * @return the global session
      */
+//
     public static GlobalSession createGlobalSession(String applicationId, String txServiceGroup, String txName,
                                                     int timeout) {
         GlobalSession session = new GlobalSession(applicationId, txServiceGroup, txName, timeout);
@@ -443,6 +457,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         this.active = active;
     }
 
+//
     @Override
     public byte[] encode() {
 
@@ -508,6 +523,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         return result;
     }
 
+//
     private int calGlobalSessionSize(byte[] byApplicationIdBytes, byte[] byServiceGroupBytes, byte[] byTxNameBytes,
                                      byte[] xidBytes, byte[] applicationDataBytes) {
         final int size = 8 // transactionId
@@ -527,6 +543,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         return size;
     }
 
+//
     @Override
     public void decode(byte[] a) {
         ByteBuffer byteBuffer = ByteBuffer.wrap(a);
@@ -584,6 +601,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         globalSessionLock.unlock();
     }
 
+//
     public void lockAndExcute(LockRunnable excuteRunnable) throws TransactionException {
         this.lock();
         try {
@@ -593,6 +611,7 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         }
     }
 
+//
     public <T> T lockAndExcute(LockCallable<T> lockCallable) throws TransactionException {
         this.lock();
         try {
@@ -602,12 +621,14 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
         }
     }
 
+//
     private class GlobalSessionLock {
 
         private Lock globalSessionLock = new ReentrantLock();
 
         private static final int GLOBAL_SESSION_LOCK_TIME_OUT_MILLS = 2 * 1000;
 
+//
         public void lock() throws TransactionException {
             try {
                 if (globalSessionLock.tryLock(GLOBAL_SESSION_LOCK_TIME_OUT_MILLS, TimeUnit.MILLISECONDS)) {
@@ -625,12 +646,14 @@ public class GlobalSession implements SessionLifecycle, SessionStorable {
 
     }
 
+//
     @FunctionalInterface
     public interface LockRunnable {
 
         void run() throws TransactionException;
     }
 
+//
     @FunctionalInterface
     public interface LockCallable<V> {
 

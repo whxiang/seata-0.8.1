@@ -37,6 +37,7 @@ public class CollectionUtils {
      * @param col the col
      * @return the boolean
      */
+//
     public static boolean isEmpty(Collection col) {
         return !isNotEmpty(col);
     }
@@ -47,6 +48,7 @@ public class CollectionUtils {
      * @param col the col
      * @return the boolean
      */
+//
     public static boolean isNotEmpty(Collection col) {
         return col != null && col.size() > 0;
     }

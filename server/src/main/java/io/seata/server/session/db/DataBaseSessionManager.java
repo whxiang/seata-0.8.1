@@ -39,7 +39,6 @@ import java.util.List;
  * @author zhangsen
  * @data 2019 /4/4
  */
-//
 @LoadLevel(name = "db")
 public class DataBaseSessionManager extends AbstractSessionManager
     implements SessionManager, SessionLifecycleListener, Initialize {

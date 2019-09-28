@@ -46,6 +46,7 @@ import static io.seata.core.exception.TransactionExceptionCode.LockKeyConflict;
  *
  * @author sharajava
  */
+//
 public class DefaultCore implements Core {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultCore.class);
@@ -61,6 +62,7 @@ public class DefaultCore implements Core {
         this.resourceManagerInbound = resourceManagerInbound;
     }
 
+//
     @Override
     public Long branchRegister(BranchType branchType, String resourceId, String clientId, String xid,
                                String applicationData, String lockKeys) throws TransactionException {
@@ -93,6 +95,7 @@ public class DefaultCore implements Core {
         });
     }
 
+//
     private GlobalSession assertGlobalSessionNotNull(String xid) throws TransactionException {
         GlobalSession globalSession = SessionHolder.findGlobalSession(xid);
         if (globalSession == null) {
@@ -101,6 +104,7 @@ public class DefaultCore implements Core {
         return globalSession;
     }
 
+//
     @Override
     public void branchReport(BranchType branchType, String xid, long branchId, BranchStatus status,
                              String applicationData) throws TransactionException {
@@ -115,6 +119,7 @@ public class DefaultCore implements Core {
         LOGGER.info("Successfully branch report xid = {}, branchId = {}", globalSession.getXid(), branchSession.getBranchId());
     }
 
+//
     @Override
     public boolean lockQuery(BranchType branchType, String resourceId, String xid, String lockKeys)
         throws TransactionException {
@@ -126,6 +131,7 @@ public class DefaultCore implements Core {
 
     }
 
+//
     @Override
     public String begin(String applicationId, String transactionServiceGroup, String name, int timeout)
         throws TransactionException {
@@ -143,6 +149,7 @@ public class DefaultCore implements Core {
         return session.getXid();
     }
 
+//
     @Override
     public GlobalStatus commit(String xid) throws TransactionException {
         GlobalSession globalSession = SessionHolder.findGlobalSession(xid);
@@ -173,6 +180,7 @@ public class DefaultCore implements Core {
         return globalSession.getStatus();
     }
 
+//
     @Override
     public void doGlobalCommit(GlobalSession globalSession, boolean retrying) throws TransactionException {
         //start committing event
@@ -246,18 +254,21 @@ public class DefaultCore implements Core {
 
     }
 
+//
     private void asyncCommit(GlobalSession globalSession) throws TransactionException {
         globalSession.addSessionLifecycleListener(SessionHolder.getAsyncCommittingSessionManager());
         SessionHolder.getAsyncCommittingSessionManager().addGlobalSession(globalSession);
         globalSession.changeStatus(GlobalStatus.AsyncCommitting);
     }
 
+//
     private void queueToRetryCommit(GlobalSession globalSession) throws TransactionException {
         globalSession.addSessionLifecycleListener(SessionHolder.getRetryCommittingSessionManager());
         SessionHolder.getRetryCommittingSessionManager().addGlobalSession(globalSession);
         globalSession.changeStatus(GlobalStatus.CommitRetrying);
     }
 
+//
     private void queueToRetryRollback(GlobalSession globalSession) throws TransactionException {
         globalSession.addSessionLifecycleListener(SessionHolder.getRetryRollbackingSessionManager());
         SessionHolder.getRetryRollbackingSessionManager().addGlobalSession(globalSession);
@@ -269,6 +280,7 @@ public class DefaultCore implements Core {
         }
     }
 
+//
     @Override
     public GlobalStatus rollback(String xid) throws TransactionException {
         GlobalSession globalSession = SessionHolder.findGlobalSession(xid);
@@ -293,6 +305,7 @@ public class DefaultCore implements Core {
         return globalSession.getStatus();
     }
 
+//
     @Override
     public void doGlobalRollback(GlobalSession globalSession, boolean retrying) throws TransactionException {
         //start rollback event
@@ -346,6 +359,7 @@ public class DefaultCore implements Core {
         LOGGER.info("Successfully rollback global, xid = {}", globalSession.getXid());
     }
 
+//
     @Override
     public GlobalStatus getStatus(String xid) throws TransactionException {
         GlobalSession globalSession = SessionHolder.findGlobalSession(xid);

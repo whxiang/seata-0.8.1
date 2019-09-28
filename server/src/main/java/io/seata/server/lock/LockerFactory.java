@@ -35,6 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author sharajava
  */
+//
 public class LockerFactory {
 
     /**
@@ -77,6 +78,7 @@ public class LockerFactory {
      * @param branchSession the branch session
      * @return the lock manager
      */
+//
     public static synchronized final Locker get(BranchSession branchSession) {
         String storeMode = CONFIG.getConfig(ConfigurationKeys.STORE_MODE);
         if (StoreMode.DB.name().equalsIgnoreCase(storeMode)) {

@@ -41,7 +41,6 @@ import java.util.Map;
  *
  * @author jimin.jm @alibaba-inc.com
  */
-//
 @LoadLevel(name = "file")
 public class FileBasedSessionManager extends DefaultSessionManager implements Reloadable {
 

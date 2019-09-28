@@ -24,7 +24,6 @@ import io.seata.core.model.GlobalStatus;
  *
  * @author sharajava
  */
-//
 public interface SessionLifecycleListener {
 
     /**

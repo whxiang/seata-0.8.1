@@ -28,6 +28,7 @@ import io.seata.core.constants.ConfigurationKeys;
  * @author xingfudeshi@gmail.com
  * @date 2019/05/30
  */
+//
 public class ParameterParser {
     private static final String PROGRAM_NAME = "sh seata-server.sh(for linux and mac) or cmd seata-server.bat(for windows)";
     private static final int SERVER_DEFAULT_PORT = 8091;
@@ -58,6 +59,7 @@ public class ParameterParser {
         this.init(args);
     }
 
+//
     private void init(String[] args) {
         try {
             JCommander jCommander = JCommander.newBuilder().addObject(this).build();

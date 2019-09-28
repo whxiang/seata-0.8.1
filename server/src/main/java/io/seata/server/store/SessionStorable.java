@@ -20,6 +20,7 @@ package io.seata.server.store;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public interface SessionStorable {
 
     /**

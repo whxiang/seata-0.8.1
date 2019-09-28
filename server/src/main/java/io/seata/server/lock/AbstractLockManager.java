@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
  * @author zhangsen
  * @data 2019 /4/25
  */
+//
 public abstract class AbstractLockManager implements LockManager {
 
     /**
@@ -44,6 +45,7 @@ public abstract class AbstractLockManager implements LockManager {
      * @param branchSession the branch session
      * @return the list
      */
+//
     protected List<RowLock> collectRowLocks(BranchSession branchSession) {
         List<RowLock> locks = new ArrayList<>();
         if (branchSession == null || StringUtils.isBlank(branchSession.getLockKey())) {
@@ -66,6 +68,7 @@ public abstract class AbstractLockManager implements LockManager {
      * @param xid        the xid
      * @return the list
      */
+//
     protected List<RowLock> collectRowLocks(String lockKey, String resourceId, String xid) {
         return collectRowLocks(lockKey, resourceId, xid, XID.getTransactionId(xid), null);
     }
@@ -80,6 +83,7 @@ public abstract class AbstractLockManager implements LockManager {
      * @param branchID      the branch id
      * @return the list
      */
+//
     protected List<RowLock> collectRowLocks(String lockKey, String resourceId, String xid, Long transactionId,
                                             Long branchID) {
         List<RowLock> locks = new ArrayList<RowLock>();

@@ -45,7 +45,6 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author jimin.jm @alibaba-inc.com
  */
-//
 @LoadLevel(name = "file")
 public class FileTransactionStoreManager extends AbstractTransactionStoreManager
     implements TransactionStoreManager, ReloadableStore {

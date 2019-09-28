@@ -23,6 +23,7 @@ import io.seata.core.model.GlobalStatus;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/13
  */
+//
 public class SessionCondition {
     private Long transactionId;
     private String xid;

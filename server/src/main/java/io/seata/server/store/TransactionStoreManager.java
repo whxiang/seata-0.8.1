@@ -25,7 +25,6 @@ import java.util.List;
  *
  * @author jimin.jm @alibaba-inc.com
  */
-//
 public interface TransactionStoreManager {
 
     /**
@@ -112,6 +111,7 @@ public interface TransactionStoreManager {
          * @param code the code
          * @return the log operation by code
          */
+//
         public static LogOperation getLogOperationByCode(byte code) {
             for (LogOperation temp : values()) {
                 if (temp.getCode() == code) {

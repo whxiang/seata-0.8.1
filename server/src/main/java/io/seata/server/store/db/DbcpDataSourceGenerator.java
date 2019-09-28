@@ -27,9 +27,11 @@ import javax.sql.DataSource;
  * @author zhangsen
  * @data 2019 /4/24
  */
+//
 @LoadLevel(name = "dbcp")
 public class DbcpDataSourceGenerator extends AbstractDataSourceGenerator {
 
+//
     @Override
     public DataSource generateDataSource() {
         BasicDataSource ds = new BasicDataSource();
