@@ -36,6 +36,7 @@ public class RollbackRule implements Serializable {
         this.exceptionName = exceptionName;
     }
 
+//
     public RollbackRule(Class<?> clazz) {
         if (clazz == null) {
             throw new NullPointerException("'clazz' cannot be null");

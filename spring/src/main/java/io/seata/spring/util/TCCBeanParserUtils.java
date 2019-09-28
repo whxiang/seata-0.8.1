@@ -29,6 +29,7 @@ import org.springframework.context.ApplicationContext;
  * @author zhangsen
  * @data 2019 /3/18
  */
+//
 public class TCCBeanParserUtils {
 
     /**
@@ -39,6 +40,7 @@ public class TCCBeanParserUtils {
      * @param applicationContext the application context
      * @return boolean boolean
      */
+//
     public static boolean isTccAutoProxy(Object bean, String beanName, ApplicationContext applicationContext) {
         RemotingDesc remotingDesc = null;
         boolean isRemotingBean = parserRemotingServiceInfo(bean, beanName);
@@ -77,6 +79,7 @@ public class TCCBeanParserUtils {
      * @param applicationContext the application context
      * @return boolean boolean
      */
+//
     protected static boolean isRemotingFactoryBean(Object bean, String beanName,
                                                    ApplicationContext applicationContext) {
         if (!SpringProxyUtils.isProxy(bean)) {
@@ -102,6 +105,7 @@ public class TCCBeanParserUtils {
      * @param remotingDesc the remoting desc
      * @return boolean boolean
      */
+//
     protected static boolean isTccProxyTargetBean(RemotingDesc remotingDesc) {
         if (remotingDesc == null) {
             return false;
@@ -138,6 +142,7 @@ public class TCCBeanParserUtils {
      * @param beanName the bean name
      * @return if sofa:service、sofa:reference、dubbo:reference、dubbo:service return true，else return false
      */
+//
     protected static boolean parserRemotingServiceInfo(Object bean, String beanName) {
         if (DefaultRemotingParser.get().isRemoting(bean, beanName)) {
             return null != DefaultRemotingParser.get().parserRemotingServiceInfo(bean, beanName);
@@ -151,6 +156,7 @@ public class TCCBeanParserUtils {
      * @param beanName the bean name
      * @return remoting desc
      */
+//
     public static RemotingDesc getRemotingDesc(String beanName) {
         return DefaultRemotingParser.get().getRemotingBeanDesc(beanName);
     }

@@ -31,6 +31,7 @@ public class TMClient {
      * @param applicationId           the application id
      * @param transactionServiceGroup the transaction service group
      */
+//
     public static void init(String applicationId, String transactionServiceGroup) {
         TmRpcClient tmRpcClient = TmRpcClient.getInstance(applicationId, transactionServiceGroup);
         tmRpcClient.init();

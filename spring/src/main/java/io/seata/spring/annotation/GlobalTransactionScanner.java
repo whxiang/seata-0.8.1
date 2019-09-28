@@ -60,6 +60,7 @@ import static io.seata.core.constants.ConfigurationKeys.DATASOURCE_AUTOPROXY;
  * @author jimin.jm @alibaba-inc.com
  * @date 2018 /12/28
  */
+//
 public class GlobalTransactionScanner extends AbstractAutoProxyCreator
     implements InitializingBean, ApplicationContextAware,
     DisposableBean, BeanPostProcessor {
@@ -166,6 +167,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
         ShutdownHook.getInstance().destroyAll();
     }
 
+//
     private void initClient() {
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Initializing Global Transaction Clients ... ");
@@ -196,6 +198,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
 
     }
 
+//
     private void registerSpringShutdownHook() {
         if (applicationContext instanceof ConfigurableApplicationContext) {
             ((ConfigurableApplicationContext) applicationContext).registerShutdownHook();
@@ -205,6 +208,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
         ShutdownHook.getInstance().addDisposable(RmRpcClient.getInstance(applicationId, txServiceGroup));
     }
 
+//
     @Override
     protected Object wrapIfNecessary(Object bean, String beanName, Object cacheKey) {
         if (disableGlobalTransaction) {
@@ -254,6 +258,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
         }
     }
 
+//
     private boolean existsAnnotation(Class<?>[] classes) {
         if (classes != null && classes.length > 0) {
             for (Class clazz : classes) {
@@ -305,6 +310,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
         this.setBeanFactory(applicationContext);
     }
 
+//
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof DataSource && !(bean instanceof DataSourceProxy) && ConfigurationFactory.getInstance().getBoolean(DATASOURCE_AUTOPROXY, false)) {

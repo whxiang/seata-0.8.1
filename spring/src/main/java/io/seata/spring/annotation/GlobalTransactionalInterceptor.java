@@ -45,6 +45,7 @@ import java.util.stream.Collectors;
  *
  * @author jimin.jm @alibaba-inc.com
  */
+//
 public class GlobalTransactionalInterceptor implements MethodInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalTransactionalInterceptor.class);
@@ -64,6 +65,7 @@ public class GlobalTransactionalInterceptor implements MethodInterceptor {
 
     }
 
+//
     @Override
     public Object invoke(final MethodInvocation methodInvocation) throws Throwable {
         Class<?> targetClass = (methodInvocation.getThis() != null ? AopUtils.getTargetClass(methodInvocation.getThis()) : null);
@@ -81,6 +83,7 @@ public class GlobalTransactionalInterceptor implements MethodInterceptor {
         }
     }
 
+//
     private Object handleGlobalLock(final MethodInvocation methodInvocation) throws Exception {
         return globalLockTemplate.execute(() -> {
             try {
@@ -95,6 +98,7 @@ public class GlobalTransactionalInterceptor implements MethodInterceptor {
         });
     }
 
+//
     private Object handleGlobalTransaction(final MethodInvocation methodInvocation,
                                            final GlobalTransactional globalTrxAnno) throws Throwable {
         try {
@@ -159,6 +163,7 @@ public class GlobalTransactionalInterceptor implements MethodInterceptor {
         return method == null ? null : method.getAnnotation(clazz);
     }
 
+//
     private String formatMethod(Method method) {
         String paramTypes = Arrays.stream(method.getParameterTypes())
                 .map(Class::getName)

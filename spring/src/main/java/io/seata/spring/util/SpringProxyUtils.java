@@ -28,6 +28,7 @@ import org.springframework.aop.target.EmptyTargetSource;
  *
  * @author zhangsen
  */
+//
 public class SpringProxyUtils {
 
     /**
@@ -37,6 +38,7 @@ public class SpringProxyUtils {
      * @return the class
      * @throws Exception the exception
      */
+//
     public static Class<?> findTargetClass(Object proxy) throws Exception {
         if (AopUtils.isAopProxy(proxy)) {
             AdvisedSupport advised = getAdvisedSupport(proxy);
@@ -52,6 +54,7 @@ public class SpringProxyUtils {
         }
     }
 
+//
     public static Class<?>[] findInterfaces(Object proxy) throws Exception {
         if (AopUtils.isJdkDynamicProxy(proxy)) {
             AdvisedSupport advised = getAdvisedSupport(proxy);
@@ -61,6 +64,7 @@ public class SpringProxyUtils {
         }
     }
 
+//
     private static Class<?>[] getInterfacesByAdvised(AdvisedSupport advised) {
         Class<?>[] interfaces = advised.getProxiedInterfaces();
         if (interfaces.length > 0) {
@@ -70,6 +74,7 @@ public class SpringProxyUtils {
         }
     }
 
+//
     private static Class<?> getFirstInterfaceByAdvised(AdvisedSupport advised) {
         Class<?>[] interfaces = advised.getProxiedInterfaces();
         if (interfaces.length > 0) {
@@ -86,6 +91,7 @@ public class SpringProxyUtils {
      * @return the advised support
      * @throws Exception the exception
      */
+//
     public static AdvisedSupport getAdvisedSupport(Object proxy) throws Exception {
         Field h;
         if (AopUtils.isJdkDynamicProxy(proxy)) {
@@ -106,6 +112,7 @@ public class SpringProxyUtils {
      * @param bean the bean
      * @return the boolean
      */
+//
     public static boolean isProxy(Object bean) {
         if (bean == null) {
             return false;
@@ -126,6 +133,7 @@ public class SpringProxyUtils {
      * @return target interface
      * @throws Exception the exception
      */
+//
     public static Class<?> getTargetInterface(Object proxy) throws Exception {
         if (proxy == null) {
             throw new java.lang.IllegalArgumentException("proxy can not be null");
@@ -147,6 +155,7 @@ public class SpringProxyUtils {
      * @return
      * @throws Exception
      */
+//
     protected static Class getTargetClass(Object proxy) throws Exception {
         if (proxy == null) {
             throw new java.lang.IllegalArgumentException("proxy can not be null");

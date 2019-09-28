@@ -36,6 +36,7 @@ import java.util.Map;
  *
  * @author zhangsen
  */
+//
 public class TccActionInterceptor implements MethodInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TccActionInterceptor.class);
@@ -65,6 +66,7 @@ public class TccActionInterceptor implements MethodInterceptor {
         this.remotingDesc = remotingDesc;
     }
 
+//
     @Override
     public Object invoke(final MethodInvocation invocation) throws Throwable {
         if(!RootContext.inGlobalTransaction()){
@@ -105,6 +107,7 @@ public class TccActionInterceptor implements MethodInterceptor {
      * @param invocation the invocation
      * @return the action interface method
      */
+//
     protected Method getActionInterfaceMethod(MethodInvocation invocation) {
         try {
             Class<?> interfaceType = null;
@@ -136,6 +139,7 @@ public class TccActionInterceptor implements MethodInterceptor {
      * @return proxy interface
      * @throws Exception the exception
      */
+//
     protected Class<?> getProxyInterface(Object proxyBean) throws Exception {
         if (proxyBean.getClass().getName().startsWith(DUBBO_PROXY_NAME_PREFIX)) {
             //dubbo javaassist proxy

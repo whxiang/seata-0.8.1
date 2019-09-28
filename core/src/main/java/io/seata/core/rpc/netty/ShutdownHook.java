@@ -59,6 +59,7 @@ public class ShutdownHook extends Thread {
         return SHUTDOWN_HOOK;
     }
 
+//
     public void addDisposable(Disposable disposable) {
         addDisposable(disposable, DEFAULT_PRIORITY);
     }
@@ -90,6 +91,7 @@ public class ShutdownHook extends Thread {
     /**
      * for spring context
      */
+//
     public static void removeRuntimeShutdownHook() {
         Runtime.getRuntime().removeShutdownHook(SHUTDOWN_HOOK);
 
