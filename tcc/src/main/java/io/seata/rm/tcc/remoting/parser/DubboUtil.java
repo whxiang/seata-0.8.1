@@ -25,6 +25,7 @@ import io.seata.common.util.ReflectionUtil;
  *
  * @author zhangsen
  */
+//
 public class DubboUtil {
 
     /**
@@ -39,6 +40,7 @@ public class DubboUtil {
      * @throws NoSuchMethodException the no such method exception
      * @throws InvocationTargetException the invocation target exception
      */
+//
     public static Class<?> getAssistInterface(Object proxyBean)
         throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException,
         NoSuchMethodException, InvocationTargetException {

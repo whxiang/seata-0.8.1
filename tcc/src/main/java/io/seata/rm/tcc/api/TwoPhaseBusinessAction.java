@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 /**
  * TCC annotation, Define a TCC interface，which added on the try method
  *
- * @author zhangsen
+ * @author zhangsen说明，定义一个TCC接口，其中添加了try方法
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD })

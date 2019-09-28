@@ -26,6 +26,7 @@ import io.seata.common.Constants;
  *
  * @author zhangsen
  */
+//
 public class BusinessActivityContext implements Serializable {
 
     /**  */

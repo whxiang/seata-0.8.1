@@ -22,6 +22,7 @@ import io.seata.common.exception.FrameworkException;
  *
  * @author zhangsen
  */
+//
 public interface RemotingParser {
 
     /**

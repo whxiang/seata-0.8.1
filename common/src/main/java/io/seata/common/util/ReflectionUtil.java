@@ -184,6 +184,7 @@ public class ReflectionUtil {
      * @param clazz the clazz
      * @return set
      */
+//
     public static Set<Class<?>> getInterfaces(Class<?> clazz) {
         if (clazz.isInterface()) {
             return Collections.singleton(clazz);

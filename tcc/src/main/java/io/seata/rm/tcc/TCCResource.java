@@ -25,6 +25,7 @@ import io.seata.core.model.Resource;
  *
  * @author zhangsen
  */
+//
 public class TCCResource implements Resource {
 
     private String resourceGroupId = "DEFAULT";

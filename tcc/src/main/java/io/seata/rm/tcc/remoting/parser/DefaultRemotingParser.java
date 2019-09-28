@@ -37,6 +37,7 @@ import io.seata.rm.tcc.remoting.RemotingParser;
  *
  * @author zhangsen
  */
+//
 public class DefaultRemotingParser {
 
     /**
@@ -72,6 +73,7 @@ public class DefaultRemotingParser {
     /**
      * init parsers
      */
+//
     protected void initRemotingParser() {
         //init all resource managers
         List<RemotingParser> remotingParsers = EnhancedServiceLoader.loadAll(RemotingParser.class);
@@ -87,6 +89,7 @@ public class DefaultRemotingParser {
      * @param beanName the bean name
      * @return boolean boolean
      */
+//
     public boolean isRemoting(Object bean, String beanName) {
         for (RemotingParser remotingParser : allRemotingParsers) {
             if (remotingParser.isRemoting(bean, beanName)) {
@@ -103,6 +106,7 @@ public class DefaultRemotingParser {
      * @param beanName the bean name
      * @return boolean boolean
      */
+//
     public boolean isReference(Object bean, String beanName) {
         for (RemotingParser remotingParser : allRemotingParsers) {
             if (remotingParser.isReference(bean, beanName)) {
@@ -119,6 +123,7 @@ public class DefaultRemotingParser {
      * @param beanName the bean name
      * @return boolean boolean
      */
+//
     public boolean isService(Object bean, String beanName) {
         for (RemotingParser remotingParser : allRemotingParsers) {
             if (remotingParser.isService(bean, beanName)) {
@@ -135,6 +140,7 @@ public class DefaultRemotingParser {
      * @param beanName the bean name
      * @return service desc
      */
+//
     public RemotingDesc getServiceDesc(Object bean, String beanName) {
         List<RemotingDesc> ret = new ArrayList<RemotingDesc>();
         for (RemotingParser remotingParser : allRemotingParsers) {
@@ -159,6 +165,7 @@ public class DefaultRemotingParser {
      * @param beanName the bean name
      * @return remoting desc
      */
+//
     public RemotingDesc parserRemotingServiceInfo(Object bean, String beanName) {
         RemotingDesc remotingBeanDesc = getServiceDesc(bean, beanName);
         if (remotingBeanDesc == null) {

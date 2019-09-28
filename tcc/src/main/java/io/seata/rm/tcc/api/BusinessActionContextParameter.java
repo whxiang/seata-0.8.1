@@ -24,7 +24,8 @@ import java.lang.annotation.Target;
  * the TCC parameters that need to be passed to  the BusinessActivityContext；
  * <p>
  * add this annotation on the parameters of the try method, and the parameters will be passed to  the
- * BusinessActivityContext
+ * BusinessActivityContext需要传递到BusinessActivityContext的TCC参数;
+ 在try方法的参数上添加这个注释，这些参数将被传递到BusinessActivityContext
  *
  * @author zhangsen
  */

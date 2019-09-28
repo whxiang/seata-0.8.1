@@ -32,6 +32,7 @@ import io.seata.rm.tcc.api.BusinessActionContextParameter;
  *
  * @author zhangsen
  */
+//
 public class ActionContextUtil {
 
     /**
@@ -40,6 +41,7 @@ public class ActionContextUtil {
      * @param targetParam the target param
      * @return map map
      */
+//
     public static Map<String, Object> fetchContextFromObject(Object targetParam) {
         try {
             Map<String, Object> context = new HashMap<String, Object>(8);
@@ -91,6 +93,7 @@ public class ActionContextUtil {
      * @param interFace the inter face
      * @param fields    the fields
      */
+//
     public static void getAllField(Class<?> interFace, List<Field> fields) {
         if (interFace == Object.class || interFace.isInterface()) {
             return;

@@ -28,8 +28,10 @@ import io.seata.rm.tcc.remoting.RemotingDesc;
  *
  * @author zhangsen
  */
+//
 public class LocalTCCRemotingParser extends AbstractedRemotingParser {
 
+//
     @Override
     public boolean isReference(Object bean, String beanName) {
         Class<?> classType = bean.getClass();
@@ -42,6 +44,7 @@ public class LocalTCCRemotingParser extends AbstractedRemotingParser {
         return false;
     }
 
+//
     @Override
     public boolean isService(Object bean, String beanName) {
         Class<?> classType = bean.getClass();
@@ -54,6 +57,7 @@ public class LocalTCCRemotingParser extends AbstractedRemotingParser {
         return false;
     }
 
+//
     @Override
     public RemotingDesc getServiceDesc(Object bean, String beanName) throws FrameworkException {
         if (!this.isRemoting(bean, beanName)) {

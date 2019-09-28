@@ -26,6 +26,7 @@ import java.lang.annotation.Target;
  *
  * @author zhangsen
  */
+//
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Inherited

@@ -38,6 +38,7 @@ import io.seata.rm.tcc.api.BusinessActionContext;
  *
  * @author zhangsen
  */
+//
 public class TCCResourceManager extends AbstractResourceManager {
 
     /**
@@ -56,6 +57,7 @@ public class TCCResourceManager extends AbstractResourceManager {
      *
      * @param resource The resource to be managed.
      */
+//
     @Override
     public void registerResource(Resource resource) {
         TCCResource tccResource = (TCCResource)resource;
@@ -79,6 +81,7 @@ public class TCCResourceManager extends AbstractResourceManager {
      * @return
      * @throws TransactionException
      */
+//
     @Override
     public BranchStatus branchCommit(BranchType branchType, String xid, long branchId, String resourceId,
                                      String applicationData) throws TransactionException {
@@ -126,6 +129,7 @@ public class TCCResourceManager extends AbstractResourceManager {
      * @return
      * @throws TransactionException
      */
+//
     @Override
     public BranchStatus branchRollback(BranchType branchType, String xid, long branchId, String resourceId,
                                        String applicationData) throws TransactionException {
@@ -171,6 +175,7 @@ public class TCCResourceManager extends AbstractResourceManager {
      * @param applicationData the application data
      * @return business action context
      */
+//
     protected BusinessActionContext getBusinessActionContext(String xid, long branchId, String resourceId,
                                                              String applicationData) {
         //transfer tcc applicationData to Context

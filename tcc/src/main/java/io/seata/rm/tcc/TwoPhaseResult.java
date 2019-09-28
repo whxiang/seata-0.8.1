@@ -22,6 +22,7 @@ import io.seata.common.util.StringUtils;
  *
  * @author zhangsen
  */
+//
 public class TwoPhaseResult {
 
     /**

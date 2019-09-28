@@ -39,6 +39,7 @@ import java.util.Map;
  *
  * @author zhangsen
  */
+//
 public class ActionInterceptorHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ActionInterceptorHandler.class);
@@ -53,6 +54,7 @@ public class ActionInterceptorHandler {
      * @return map map
      * @throws Throwable the throwable
      */
+//
     public Map<String, Object> proceed(Method method, Object[] arguments, String xid, TwoPhaseBusinessAction businessAction,
                                        Callback<Object> targetCallback) throws Throwable {
         Map<String, Object> ret = new HashMap<String, Object>(16);
@@ -95,6 +97,7 @@ public class ActionInterceptorHandler {
      * @param actionContext  the action context
      * @return the string
      */
+//
     protected String doTccActionLogStore(Method method, Object[] arguments, TwoPhaseBusinessAction businessAction,
                                          BusinessActionContext actionContext) {
         String actionName = actionContext.getActionName();
@@ -130,6 +133,7 @@ public class ActionInterceptorHandler {
      *
      * @param context the context
      */
+//
     protected void initFrameworkContext(Map<String, Object> context) {
         try {
             context.put(Constants.HOST_NAME, NetUtil.getLocalIp());
@@ -145,6 +149,7 @@ public class ActionInterceptorHandler {
      * @param method         the method
      * @param businessAction the business action
      */
+//
     protected void initBusinessContext(Map<String, Object> context, Method method,
                                        TwoPhaseBusinessAction businessAction) {
         if (method != null) {
@@ -166,6 +171,7 @@ public class ActionInterceptorHandler {
      * @param arguments the arguments
      * @return map map
      */
+//
     protected Map<String, Object> fetchActionRequestContext(Method method, Object[] arguments) {
         Map<String, Object> context = new HashMap<String, Object>(8);
 
