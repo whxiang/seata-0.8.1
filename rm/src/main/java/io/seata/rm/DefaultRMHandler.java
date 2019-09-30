@@ -42,6 +42,7 @@ public class DefaultRMHandler extends AbstractRMHandler {
         = new ConcurrentHashMap<BranchType, AbstractRMHandler>();
 
     protected DefaultRMHandler() {
+//        初始化资源handler
         initRMHandlers();
     }
 

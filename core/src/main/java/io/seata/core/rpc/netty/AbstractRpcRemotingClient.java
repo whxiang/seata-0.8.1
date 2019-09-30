@@ -98,10 +98,12 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
 //
     @Override
     public void init() {
+//        初始化netty client
         clientBootstrap.start();
         timerExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
+//                netty server连接
                 clientChannelManager.reconnect(getTransactionServiceGroup());
             }
         }, SCHEDULE_INTERVAL_MILLS, SCHEDULE_INTERVAL_MILLS, TimeUnit.SECONDS);
@@ -321,6 +323,7 @@ public abstract class AbstractRpcRemotingClient extends AbstractRpcRemoting
                     }
                     Channel sendChannel = null;
                     try {
+//                        获取发送的channel
                         sendChannel = clientChannelManager.acquireChannel(address);
                         sendRequest(sendChannel, mergeMessage);
                     } catch (FrameworkException e) {

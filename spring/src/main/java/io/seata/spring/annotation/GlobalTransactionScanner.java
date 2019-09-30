@@ -86,6 +86,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
     private final String applicationId;
     private final String txServiceGroup;
     private final int mode;
+//    全局事务默认不开启
     private final boolean disableGlobalTransaction =
         ConfigurationFactory.getInstance().getBoolean("service.disableGlobalTransaction", false);
 
@@ -176,14 +177,14 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
             throw new IllegalArgumentException(
                 "applicationId: " + applicationId + ", txServiceGroup: " + txServiceGroup);
         }
-        //init TM
+        //init TM 初始化事务管理器
         TMClient.init(applicationId, txServiceGroup);
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info(
                 "Transaction Manager Client is initialized. applicationId[" + applicationId + "] txServiceGroup["
                     + txServiceGroup + "]");
         }
-        //init RM
+        //init RM 初始化资源管理器
         RMClient.init(applicationId, txServiceGroup);
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info(
@@ -300,6 +301,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
             }
             return;
         }
+//        初始化事务协调器client
         initClient();
 
     }
