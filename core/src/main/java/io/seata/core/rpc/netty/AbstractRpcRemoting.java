@@ -238,6 +238,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
         final MessageFuture messageFuture = new MessageFuture();
         messageFuture.setRequestMessage(rpcMessage);
         messageFuture.setTimeout(timeout);
+//        异步发送的结果保存在map中，这里是可以支持高并发的实现
         futures.put(rpcMessage.getId(), messageFuture);
 
         if (address != null) {
@@ -275,6 +276,7 @@ public abstract class AbstractRpcRemoting extends ChannelDuplexHandler implement
         }
         if (timeout > 0) {
             try {
+//                同步获取异步执行结果
                 return messageFuture.get(timeout, TimeUnit.MILLISECONDS);
             } catch (Exception exx) {
                 LOGGER.error("wait response error:" + exx.getMessage() + ",ip:" + address + ",request:" + msg);

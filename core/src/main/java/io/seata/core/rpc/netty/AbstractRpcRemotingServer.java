@@ -128,6 +128,7 @@ public abstract class AbstractRpcRemotingServer extends AbstractRpcRemoting impl
             .childOption(ChannelOption.TCP_NODELAY, true)
             .childOption(ChannelOption.SO_SNDBUF, nettyServerConfig.getServerSocketSendBufSize())
             .childOption(ChannelOption.SO_RCVBUF, nettyServerConfig.getServerSocketResvBufSize())
+//                设置netty流量整形
             .childOption(ChannelOption.WRITE_BUFFER_WATER_MARK,
                 new WriteBufferWaterMark(nettyServerConfig.getWriteBufferLowWaterMark(),
                     nettyServerConfig.getWriteBufferHighWaterMark()))
@@ -152,6 +153,7 @@ public abstract class AbstractRpcRemotingServer extends AbstractRpcRemoting impl
         try {
             ChannelFuture future = this.serverBootstrap.bind(listenPort).sync();
             LOGGER.info("Server started ... ");
+//            向zk注册
             RegistryFactory.getInstance().register(new InetSocketAddress(XID.getIpAddress(), XID.getPort()));
             initialized.set(true);
             future.channel().closeFuture().sync();

@@ -341,6 +341,7 @@ public class ChannelManager {
         String targetIP = clientIdInfo[1];
         int targetPort = Integer.parseInt(clientIdInfo[2]);
 
+//        client信息维护在map中
         ConcurrentMap<String, ConcurrentMap<String, ConcurrentMap<Integer,
             RpcContext>>> applicationIdMap = RM_CHANNELS.get(resourceId);
 
@@ -439,6 +440,7 @@ public class ChannelManager {
         }
 
         if (resultChannel == null) {
+//            channel这个节点没找到从其他节点查找
             resultChannel = tryOtherApp(applicationIdMap, targetApplicationId);
 
             if (resultChannel == null) {

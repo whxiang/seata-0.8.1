@@ -219,6 +219,7 @@ public class RpcServer extends AbstractRpcRemotingServer implements ServerMessag
     @Override
     public Object sendSyncRequest(String resourceId, String clientId, Object message,
                                   long timeout) throws TimeoutException {
+//        按clientId查找之前的netty client
         Channel clientChannel = ChannelManager.getChannel(resourceId, clientId);
         if (clientChannel == null) {
             throw new RuntimeException("rm client is not connected. dbkey:" + resourceId

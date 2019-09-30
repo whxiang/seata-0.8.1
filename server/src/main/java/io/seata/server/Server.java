@@ -61,16 +61,18 @@ public class Server {
         //initialize the parameter parser
         ParameterParser parameterParser = new ParameterParser(args);
 
+//        文件存储模式
         System.setProperty(ConfigurationKeys.STORE_MODE, parameterParser.getStoreMode());
 
         RpcServer rpcServer = new RpcServer(WORKING_THREADS);
-        //server port
+        //server port 默认端口8091
         rpcServer.setListenPort(parameterParser.getPort());
         UUIDGenerator.init(parameterParser.getServerNode());
-        //log store mode : file、db
+        //log store mode : file、db session初始化
         SessionHolder.init(parameterParser.getStoreMode());
 
         DefaultCoordinator coordinator = new DefaultCoordinator(rpcServer);
+//        初始化事务协调器
         coordinator.init();
         rpcServer.setHandler(coordinator);
         // register ShutdownHook
@@ -84,6 +86,7 @@ public class Server {
         }
         XID.setPort(rpcServer.getListenPort());
 
+//        初始化rpcServer
         rpcServer.init();
 
         System.exit(0);

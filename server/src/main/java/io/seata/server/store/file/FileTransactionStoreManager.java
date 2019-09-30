@@ -342,6 +342,7 @@ public class FileTransactionStoreManager extends AbstractTransactionStoreManager
             raf = new RandomAccessFile(file, "r");
             raf.seek(currentOffset);
             fileChannel = raf.getChannel();
+//            设置读取文件的位置
             fileChannel.position(currentOffset);
             long size = raf.length();
             ByteBuffer buffSize = ByteBuffer.allocate(MARK_SIZE);

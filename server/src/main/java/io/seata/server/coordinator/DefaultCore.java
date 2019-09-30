@@ -183,7 +183,7 @@ public class DefaultCore implements Core {
 //
     @Override
     public void doGlobalCommit(GlobalSession globalSession, boolean retrying) throws TransactionException {
-        //start committing event
+        //start committing event 发布事务提交事件
         eventBus.post(new GlobalTransactionEvent(globalSession.getTransactionId(), GlobalTransactionEvent.ROLE_TC,
             globalSession.getTransactionName(), globalSession.getBeginTime(), null, globalSession.getStatus()));
 
@@ -194,6 +194,7 @@ public class DefaultCore implements Core {
                 continue;
             }
             try {
+//                分支事务提交
                 BranchStatus branchStatus = resourceManagerInbound.branchCommit(branchSession.getBranchType(),
                     branchSession.getXid(), branchSession.getBranchId(),
                     branchSession.getResourceId(), branchSession.getApplicationData());
@@ -245,7 +246,7 @@ public class DefaultCore implements Core {
         }
         SessionHelper.endCommitted(globalSession);
 
-        //committed event
+        //committed event 发布事务提交事件
         eventBus.post(new GlobalTransactionEvent(globalSession.getTransactionId(), GlobalTransactionEvent.ROLE_TC,
             globalSession.getTransactionName(), globalSession.getBeginTime(), System.currentTimeMillis(),
             globalSession.getStatus()));
@@ -308,7 +309,7 @@ public class DefaultCore implements Core {
 //
     @Override
     public void doGlobalRollback(GlobalSession globalSession, boolean retrying) throws TransactionException {
-        //start rollback event
+        //start rollback event 发布回滚事件
         eventBus.post(new GlobalTransactionEvent(globalSession.getTransactionId(), GlobalTransactionEvent.ROLE_TC,
             globalSession.getTransactionName(), globalSession.getBeginTime(), null, globalSession.getStatus()));
 
@@ -319,6 +320,7 @@ public class DefaultCore implements Core {
                 continue;
             }
             try {
+//                分支事务回滚
                 BranchStatus branchStatus = resourceManagerInbound.branchRollback(branchSession.getBranchType(),
                     branchSession.getXid(), branchSession.getBranchId(),
                     branchSession.getResourceId(), branchSession.getApplicationData());
@@ -351,7 +353,7 @@ public class DefaultCore implements Core {
         }
         SessionHelper.endRollbacked(globalSession);
 
-        //rollbacked event
+        //rollbacked event 发布事务回滚事件
         eventBus.post(new GlobalTransactionEvent(globalSession.getTransactionId(), GlobalTransactionEvent.ROLE_TC,
             globalSession.getTransactionName(), globalSession.getBeginTime(), System.currentTimeMillis(),
             globalSession.getStatus()));

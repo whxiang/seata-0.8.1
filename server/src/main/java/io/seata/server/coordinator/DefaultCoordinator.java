@@ -259,12 +259,15 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
             request.setApplicationData(applicationData);
             request.setBranchType(branchType);
 
+//            查询全局事务，全局事务维护在map中
             GlobalSession globalSession = SessionHolder.findGlobalSession(xid);
             if (globalSession == null) {
                 return BranchStatus.PhaseTwo_Rollbacked;
             }
+//            查询分支事务，分支事务维护在list中
             BranchSession branchSession = globalSession.getBranch(branchId);
 
+//            发送异步分支事务回滚请求
             BranchRollbackResponse response = (BranchRollbackResponse)messageSender.sendSyncRequest(resourceId,
                 branchSession.getClientId(), request);
             return response.getBranchStatus();
@@ -300,7 +303,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
                 globalSession.close();
                 globalSession.changeStatus(GlobalStatus.TimeoutRollbacking);
 
-                //transaction timeout and start rollbacking event
+                //transaction timeout and start rollbacking event 发布事务超时开始回滚事务事件
                 eventBus.post(
                     new GlobalTransactionEvent(globalSession.getTransactionId(), GlobalTransactionEvent.ROLE_TC,
                         globalSession.getTransactionName(), globalSession.getBeginTime(), null,
@@ -345,6 +348,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
                     continue;
                 }
                 rollbackingSession.addSessionLifecycleListener(SessionHolder.getRootSessionManager());
+//                全局事务回滚
                 core.doGlobalRollback(rollbackingSession, true);
             } catch (TransactionException ex) {
                 LOGGER.info("Failed to retry rollbacking [{}] {} {}",
@@ -374,6 +378,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
                     continue;
                 }
                 committingSession.addSessionLifecycleListener(SessionHolder.getRootSessionManager());
+//                全局事务提交
                 core.doGlobalCommit(committingSession, true);
             } catch (TransactionException ex) {
                 LOGGER.info("Failed to retry committing [{}] {} {}",
@@ -411,6 +416,7 @@ public class DefaultCoordinator extends AbstractTCInboundHandler
                    continue;
                 }
                 asyncCommittingSession.addSessionLifecycleListener(SessionHolder.getRootSessionManager());
+//                全局事务提交
                 core.doGlobalCommit(asyncCommittingSession, true);
             } catch (TransactionException ex) {
                 LOGGER.info("Failed to async committing [{}] {} {}",
