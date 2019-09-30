@@ -75,8 +75,10 @@ public class GlobalTransactionalInterceptor implements MethodInterceptor {
         final GlobalTransactional globalTransactionalAnnotation = getAnnotation(method, GlobalTransactional.class);
         final GlobalLock globalLockAnnotation = getAnnotation(method, GlobalLock.class);
         if (globalTransactionalAnnotation != null) {
+//            操作全局事务
             return handleGlobalTransaction(methodInvocation, globalTransactionalAnnotation);
         } else if (globalLockAnnotation != null) {
+//            操作全局锁
             return handleGlobalLock(methodInvocation);
         } else {
             return methodInvocation.proceed();

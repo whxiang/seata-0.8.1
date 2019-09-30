@@ -46,7 +46,7 @@ public class TransactionalTemplate {
      */
 //
     public Object execute(TransactionalExecutor business) throws Throwable {
-        // 1. get or create a transaction
+        // 1. get or create a transaction 查询或创建全局事务
         GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
 
         // 1.1 get transactionInfo
@@ -56,23 +56,23 @@ public class TransactionalTemplate {
         }
         try {
 
-            // 2. begin transaction
+            // 2. begin transaction 开启事务
             beginTransaction(txInfo, tx);
 
             Object rs = null;
             try {
 
-                // Do Your Business
+                // Do Your Business 执行业务方法
                 rs = business.execute();
 
             } catch (Throwable ex) {
 
-                // 3.the needed business exception to rollback.
+                // 3.the needed business exception to rollback. 出现异常是提交还是回滚事务
                 completeTransactionAfterThrowing(txInfo,tx,ex);
                 throw ex;
             }
 
-            // 4. everything is fine, commit.
+            // 4. everything is fine, commit.完成事务提交
             commitTransaction(tx);
 
             return rs;
@@ -88,6 +88,7 @@ public class TransactionalTemplate {
         //roll back
         if (txInfo != null && txInfo.rollbackOn(ex)) {
             try {
+//                回滚事务
                 rollbackTransaction(tx, ex);
             } catch (TransactionException txe) {
                 // Failed to rollback
@@ -95,7 +96,7 @@ public class TransactionalTemplate {
                         TransactionalExecutor.Code.RollbackFailure, ex);
             }
         } else {
-            // not roll back on this exception, so commit
+            // not roll back on this exception, so commit 没有指定回滚异常所以提交事务
             commitTransaction(tx);
         }
     }

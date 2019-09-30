@@ -82,6 +82,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
 //
     @Override
     public void begin(int timeout, String name) throws TransactionException {
+//        不是事务发起者
         if (role != GlobalTransactionRole.Launcher) {
             check();
             if (LOGGER.isDebugEnabled()) {
@@ -95,8 +96,10 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
         if (RootContext.getXID() != null) {
             throw new IllegalStateException();
         }
+//        开启全局事务返回全局事务id
         xid = transactionManager.begin(null, null, name, timeout);
         status = GlobalStatus.Begin;
+//        把全局事务绑定到事务上下文，单个jvm内全局事务id保存在threadLocal中
         RootContext.bind(xid);
         if (LOGGER.isInfoEnabled()) {
             LOGGER.info("Begin new global transaction [" + xid + "]");
@@ -133,6 +136,7 @@ public class DefaultGlobalTransaction implements GlobalTransaction {
 //
     @Override
     public void rollback() throws TransactionException {
+//        如果事务参与者
         if (role == GlobalTransactionRole.Participant) {
             // Participant has no responsibility of committing
             if (LOGGER.isDebugEnabled()) {

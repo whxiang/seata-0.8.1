@@ -229,6 +229,7 @@ public class GlobalTransactionScanner extends AbstractAutoProxyCreator
                     Class<?> serviceInterface = SpringProxyUtils.findTargetClass(bean);
                     Class<?>[] interfacesIfJdk = SpringProxyUtils.findInterfaces(bean);
 
+//                    检查方法上是否有@GlobalTransactional、@GlobalLock注解
                     if (!existsAnnotation(new Class[]{serviceInterface})
                         && !existsAnnotation(interfacesIfJdk)) {
                         return bean;

@@ -41,13 +41,13 @@ public class GlobalLockTemplate<T> {
 
         Object rs = null;
         try {
-            // add global lock declare
+            // add global lock declare  获得全局锁
             RootContext.bindGlobalLockFlag();
 
-            // Do Your Business
+            // Do Your Business 执行业务方法
             rs = business.call();
         } finally {
-            //clean the global lock declare
+            //clean the global lock declare 释放全局锁
             RootContext.unbindGlobalLockFlag();
         }
 
