@@ -69,6 +69,7 @@ public class TccActionInterceptor implements MethodInterceptor {
 //
     @Override
     public Object invoke(final MethodInvocation invocation) throws Throwable {
+//        不在全局事务中直接执行业务方法
         if(!RootContext.inGlobalTransaction()){
             //not in transaction
             return invocation.proceed();
@@ -77,13 +78,13 @@ public class TccActionInterceptor implements MethodInterceptor {
         TwoPhaseBusinessAction businessAction = method.getAnnotation(TwoPhaseBusinessAction.class);
         //try method
         if (businessAction != null) {
-            //save the xid
+            //save the xid 查询全局事务id
             String xid = RootContext.getXID();
-            //clear the context
+            //clear the context 解绑全局事务id
             RootContext.unbind();
             try {
                 Object[] methodArgs = invocation.getArguments();
-                //Handler the TCC Aspect
+                //Handler the TCC Aspect 执行事务
                 Map<String, Object> ret = actionInterceptorHandler.proceed(method, methodArgs, xid, businessAction,
                         new Callback<Object>() {
                             @Override
@@ -94,7 +95,7 @@ public class TccActionInterceptor implements MethodInterceptor {
                 //return the final result
                 return ret.get(Constants.TCC_METHOD_RESULT);
             } finally {
-                //recovery the context
+                //recovery the context 把全局事务id绑定到上下文中
                 RootContext.bind(xid);
             }
         }

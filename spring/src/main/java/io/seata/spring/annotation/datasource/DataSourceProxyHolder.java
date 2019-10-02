@@ -76,5 +76,4 @@ public class DataSourceProxyHolder {
     public DataSourceProxy getDataSourceProxy(DataSource dataSource) {
         return this.dataSourceProxyMap.get(dataSource);
     }
-
 }

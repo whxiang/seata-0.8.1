@@ -106,7 +106,7 @@ public class ActionInterceptorHandler {
         Map<String, Object> context = fetchActionRequestContext(method, arguments);
         context.put(Constants.ACTION_START_TIME, System.currentTimeMillis());
 
-        //init business context
+        //init business context 初始化tcc执行上下文
         initBusinessContext(context, method, businessAction);
         //Init running environment context
         initFrameworkContext(context);
@@ -117,7 +117,7 @@ public class ActionInterceptorHandler {
         applicationContext.put(Constants.TCC_ACTION_CONTEXT, context);
         String applicationContextStr = JSON.toJSONString(applicationContext);
         try {
-            //registry branch record
+            //registry branch record 注册分支事务
             Long branchId = DefaultResourceManager.get().branchRegister(BranchType.TCC, actionName, null, xid,
                 applicationContextStr, null);
             return String.valueOf(branchId);
@@ -178,6 +178,7 @@ public class ActionInterceptorHandler {
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
         for (int i = 0; i < parameterAnnotations.length; i++) {
             for (int j = 0; j < parameterAnnotations[i].length; j++) {
+//                分支事务之间可以传递的参数
                 if (parameterAnnotations[i][j] instanceof BusinessActionContextParameter) {
                     BusinessActionContextParameter param = (BusinessActionContextParameter)parameterAnnotations[i][j];
                     if (null == arguments[i]) {
